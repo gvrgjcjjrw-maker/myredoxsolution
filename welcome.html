@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome — My Redox Solution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a7d7b;
+            --primary-deep: #1e5f5d;
+            --primary-light: #e6f3f2;
+
+            --hero-bg: #1c2a35;
+            --hero-bg-deep: #141f28;
+
+            --canvas: #ffffff;
+            --surface: #f8f6f3;
+            --surface-warm: #faf8f5;
+
+            --card-cream: #faf5ed;
+            --card-sage: #eef5f0;
+            --card-sky: #edf4fa;
+            --card-gold: #fdf6e8;
+
+            --hairline: #e5e1db;
+            --hairline-soft: #ede9e4;
+
+            --ink: #1a1a1a;
+            --charcoal: #37352f;
+            --slate: #5d5b54;
+            --steel: #787671;
+            --stone: #a4a097;
+            --muted: #bbb8b1;
+            --on-dark: #ffffff;
+            --on-dark-muted: #a4a097;
+
+            --rounded-sm: 6px;
+            --rounded-md: 8px;
+            --rounded-lg: 12px;
+            --rounded-xl: 16px;
+
+            --shadow-subtle: rgba(15, 15, 15, 0.04) 0px 1px 2px 0px;
+            --shadow-card: rgba(15, 15, 15, 0.08) 0px 4px 12px 0px;
+
+            --max-width: 760px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, 'Segoe UI', Helvetica, sans-serif;
+            background: var(--canvas);
+            color: var(--charcoal);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--ink);
+        }
+
+        /* ─── WELCOME HERO ─── */
+        .welcome-hero {
+            background: var(--hero-bg);
+            padding: 80px 24px 72px;
+            text-align: center;
+        }
+
+        .welcome-hero-inner {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .fritz-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--slate);
+            margin: 0 auto 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--on-dark-muted);
+            border: 3px solid rgba(255,255,255,0.15);
+            overflow: hidden;
+        }
+
+        .fritz-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .welcome-hero h1 {
+            color: var(--on-dark);
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.3px;
+        }
+
+        .welcome-hero p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--on-dark-muted);
+            margin-bottom: 16px;
+        }
+
+        .welcome-hero p strong {
+            color: var(--on-dark);
+        }
+
+        .welcome-hero p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ─── SECTIONS ─── */
+        .section {
+            padding: 80px 24px;
+        }
+
+        .section-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-alt { background: var(--surface); }
+        .section-cream { background: var(--card-cream); }
+        .section-sage { background: var(--card-sage); }
+
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.3px;
+            margin-bottom: 24px;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--charcoal);
+        }
+
+        strong { font-weight: 600; color: var(--ink); }
+        em { font-style: italic; }
+
+        /* ─── STRESSOR NARRATIVE ─── */
+        .stressor-narrative {
+            background: #1a1a1a;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .narrative-stage {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 60px 24px;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Couple photo area */
+        .couple-frame {
+            position: relative;
+            width: 280px;
+            height: 320px;
+            margin: 0 auto 32px;
+            border-radius: var(--rounded-xl);
+            overflow: hidden;
+        }
+
+        .couple-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--rounded-xl);
+            transition: opacity 3s ease-in-out;
+        }
+
+        .couple-img.young { opacity: 1; }
+        .couple-img.older { opacity: 0; }
+
+        /* Placeholder styling when no real photos yet */
+        .couple-placeholder {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            transition: opacity 3s ease-in-out;
+            border-radius: var(--rounded-xl);
+        }
+
+        .couple-placeholder.young {
+            background: linear-gradient(135deg, #3a6b69, #4a8a7a);
+            opacity: 1;
+        }
+
+        .couple-placeholder.older {
+            background: linear-gradient(135deg, #5a4a3a, #6a5a4a);
+            opacity: 0;
+        }
+
+        .couple-placeholder .placeholder-icon {
+            font-size: 48px;
+            margin-bottom: 8px;
+            opacity: 0.6;
+        }
+
+        /* Narrative text area */
+        .narrative-text {
+            text-align: center;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            min-height: 180px;
+            position: relative;
+        }
+
+        .narrative-line {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            opacity: 0;
+            transition: opacity 2.5s ease-in-out;
+            padding: 0 8px;
+        }
+
+        .narrative-line.active {
+            opacity: 1;
+        }
+
+        .narrative-line h2 {
+            font-family: 'Lora', Georgia, serif;
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .narrative-line p {
+            color: rgba(255,255,255,0.65);
+            font-size: 17px;
+            line-height: 1.65;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .narrative-line .highlight {
+            color: #e8c170;
+            font-weight: 600;
+        }
+
+        .narrative-line .warning {
+            color: #d4776b;
+            font-weight: 600;
+        }
+
+        /* Stressor ring */
+        .stressor-ring {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+        }
+
+        .ring-word {
+            position: absolute;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 3s ease-in-out;
+            white-space: nowrap;
+        }
+
+        .ring-word.visible {
+            opacity: 1;
+        }
+
+        .ring-word.tier-1 {
+            color: rgba(212, 119, 107, 0.9);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .ring-word.tier-2 {
+            color: rgba(232, 193, 112, 0.8);
+            font-size: 14px;
+        }
+
+        .ring-word.tier-3 {
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        /* Progress dots */
+        .narrative-progress {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .progress-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Replay button */
+        .narrative-replay {
+            display: none;
+            margin-top: 24px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            background: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .narrative-replay:hover {
+            color: rgba(255,255,255,0.8);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .narrative-replay.visible {
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .couple-frame {
+                width: 220px;
+                height: 260px;
+            }
+            .narrative-line h2 { font-size: 24px; }
+            .narrative-line p { font-size: 16px; }
+            .ring-word { font-size: 12px !important; }
+            .ring-word.tier-1 { font-size: 14px !important; }
+        }
+
+        @media (max-width: 480px) {
+            .couple-frame {
+                width: 180px;
+                height: 220px;
+            }
+            .narrative-line h2 { font-size: 22px; }
+            .narrative-text { min-height: 140px; }
+        }
+
+        /* ─── DREAMS QUOTE ─── */
+        .dreams-quote {
+            background: var(--surface-warm);
+            border-top: 1px solid var(--hairline-soft);
+            border-bottom: 1px solid var(--hairline-soft);
+            padding: 56px 24px;
+            text-align: center;
+        }
+
+        .dreams-quote blockquote {
+            max-width: 580px;
+            margin: 0 auto 16px;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 24px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        .dreams-quote .bridge {
+            max-width: 580px;
+            margin: 0 auto;
+            font-size: 17px;
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        /* ─── BOOK + RESEARCH EVIDENCE ─── */
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0 32px;
+            align-items: start;
+        }
+
+        .evidence-card {
+            background: var(--canvas);
+            border: 1px solid var(--hairline);
+            border-radius: var(--rounded-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .evidence-card .card-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .evidence-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .evidence-card p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--slate);
+            margin-bottom: 12px;
+        }
+
+        .evidence-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .evidence-card .book-cover-wrapper {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .evidence-card .book-cover-wrapper img {
+            max-width: 200px;
+            border-radius: var(--rounded-sm);
+            box-shadow: var(--shadow-card);
+        }
+
+        .evidence-card .stat-big {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .evidence-card .graph-wrapper {
+            margin-bottom: 20px;
+            border-radius: var(--rounded-sm);
+            overflow: hidden;
+            border: 1px solid var(--hairline);
+        }
+
+        .evidence-card .graph-wrapper img {
+            width: 100%;
+            display: block;
+        }
+
+        /* ─── DOCTOR QUOTE ─── */
+        .doctor-quote {
+            background: var(--hero-bg);
+            padding: 56px 24px;
+            text-align: center;
+        }
+
+        .doctor-quote blockquote {
+            max-width: 620px;
+            margin: 0 auto 12px;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 22px;
+            font-style: italic;
+            color: var(--on-dark);
+            line-height: 1.5;
+        }
+
+        .doctor-quote .attribution {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--on-dark-muted);
+        }
+
+        /* ─── TESTIMONIAL CLOUD ─── */
+        .cloud-intro {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .cloud-intro h2 {
+            margin-bottom: 12px;
+        }
+
+        .cloud-intro p {
+            max-width: 560px;
+            margin: 0 auto;
+            color: var(--slate);
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--canvas);
+            border: 1px solid var(--hairline);
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--slate);
+            transition: all 0.2s ease;
+            cursor: default;
+            white-space: nowrap;
+        }
+
+        .tag:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .tag-count {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--stone);
+            font-style: italic;
+        }
+
+        /* ─── ORCHESTRA ANALOGY ─── */
+        .orchestra-section {
+            background: var(--canvas);
+            padding: 80px 24px;
+            border-top: 1px solid var(--hairline-soft);
+            border-bottom: 1px solid var(--hairline-soft);
+        }
+
+        .orchestra-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .orchestra-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+            display: block;
+            opacity: 0.8;
+        }
+
+        .orchestra-inner h2 {
+            margin-bottom: 20px;
+        }
+
+        .orchestra-inner p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--charcoal);
+        }
+
+        .orchestra-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 32px 0;
+            text-align: center;
+        }
+
+        .orchestra-item {
+            background: var(--surface);
+            border-radius: var(--rounded-lg);
+            padding: 20px 16px;
+        }
+
+        .orchestra-item .item-icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .orchestra-item .item-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--slate);
+        }
+
+        .orchestra-note {
+            background: var(--primary-light);
+            border-radius: var(--rounded-lg);
+            padding: 24px 28px;
+            margin-top: 32px;
+            border-left: 3px solid var(--primary);
+            text-align: left;
+        }
+
+        .orchestra-note p {
+            font-size: 15px;
+            color: var(--slate);
+            margin-bottom: 0;
+            line-height: 1.65;
+        }
+
+        @media (max-width: 480px) {
+            .orchestra-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .orchestra-item {
+                padding: 14px 12px;
+            }
+        }
+
+        /* ─── PATH CARDS ─── */
+        .paths-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .paths-intro h2 {
+            margin-bottom: 12px;
+        }
+
+        .paths-intro p {
+            max-width: 520px;
+            margin: 0 auto;
+            color: var(--slate);
+        }
+
+        .paths-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .path-card {
+            background: var(--canvas);
+            border: 1px solid var(--hairline);
+            border-radius: var(--rounded-lg);
+            padding: 32px 28px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .path-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-card);
+            transform: translateY(-2px);
+        }
+
+        .path-icon {
+            font-size: 28px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .path-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--ink);
+        }
+
+        .path-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--slate);
+            margin-bottom: 0;
+        }
+
+        .path-card .path-arrow {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        /* ─── QUIET CLOSE ─── */
+        .quiet-close {
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .quiet-close .section-inner {
+            max-width: 580px;
+        }
+
+        .quiet-close h2 {
+            margin-bottom: 20px;
+        }
+
+        .quiet-close p {
+            color: var(--slate);
+            font-size: 17px;
+        }
+
+        .quiet-close .closing-line {
+            color: var(--ink);
+            font-weight: 500;
+            font-size: 18px;
+            margin-top: 32px;
+        }
+
+        .contact-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--on-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: var(--rounded-md);
+            text-decoration: none;
+            transition: background 0.15s ease;
+        }
+
+        .btn-primary:hover { background: var(--primary-deep); }
+
+        .btn-secondary {
+            display: inline-block;
+            color: var(--charcoal);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: var(--rounded-md);
+            text-decoration: none;
+            border: 1px solid var(--hairline);
+            transition: border-color 0.15s ease;
+        }
+
+        .btn-secondary:hover { border-color: var(--charcoal); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--surface);
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--hairline);
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--steel);
+            margin-bottom: 8px;
+        }
+
+        .footer .disclaimer {
+            font-size: 12px;
+            color: var(--stone);
+            font-style: italic;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.5;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .welcome-hero { padding: 56px 20px 48px; }
+            .welcome-hero h1 { font-size: 28px; }
+            .section { padding: 56px 20px; }
+            h2 { font-size: 26px; }
+
+            .evidence-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .paths-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dreams-quote blockquote { font-size: 20px; }
+            .doctor-quote blockquote { font-size: 19px; }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-hero h1 { font-size: 24px; }
+            h2 { font-size: 22px; }
+            p { font-size: 16px; }
+            .evidence-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════
+         WELCOME HERO
+         ═══════════════════════════════════════════ -->
+    <section class="welcome-hero">
+        <div class="welcome-hero-inner">
+            <div class="fritz-photo">
+                <!-- Replace with: <img src="fritz.jpg" alt="Fritz Strehlow"> -->
+                Fritz
+            </div>
+            <h1>Thank You for Being Here</h1>
+            <p>I mean that. You're giving me your time, and I don't take that lightly.</p>
+            <p>My goal with this page is simple: to share enough information so you can make an <strong>educated decision</strong> about whether this is something you'd like to learn more about. That's it. No pressure. Just clarity.</p>
+            <p>Thank you, sincerely, for taking the time.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         THE DREAMS QUOTE
+         ═══════════════════════════════════════════ -->
+    <div class="dreams-quote">
+        <blockquote>"A healthy person has a thousand dreams. A sick person has one."</blockquote>
+        <p class="bridge">I share what I share because I care about both — your dreams and your health. They're connected more than most people realize.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         STRESSOR NARRATIVE
+         ═══════════════════════════════════════════ -->
+    <section class="stressor-narrative" id="stressorNarrative">
+        <div class="narrative-stage">
+
+            <!-- Stressor words orbit around the couple -->
+            <div class="stressor-ring" id="stressorRing"></div>
+
+            <!-- Couple photo with age crossfade -->
+            <div class="couple-frame">
+                <!-- Replace these placeholders with real photos:
+                     - Young: mixed-race couple, 30s, vibrant, outdoors
+                     - Older: same couple concept, 60s, still warm but showing time -->
+                <div class="couple-placeholder young" id="coupleYoung">
+                    <span class="placeholder-icon">&#128107;</span>
+                    Young couple photo
+                </div>
+                <div class="couple-placeholder older" id="coupleOlder">
+                    <span class="placeholder-icon">&#128107;</span>
+                    Same couple, older
+                </div>
+            </div>
+
+            <!-- Narrative text that changes with each phase -->
+            <div class="narrative-text" id="narrativeText">
+                <div class="narrative-line active" data-phase="0">
+                    <h2>Your Body Is a Miracle</h2>
+                    <p>Right now, trillions of cells are communicating, repairing, defending, and renewing — all without you thinking about it. This system has kept humans alive for millennia.</p>
+                </div>
+                <div class="narrative-line" data-phase="1">
+                    <h2>But Look at What It's Fighting</h2>
+                    <p>Every single day, your cells face a world they weren't designed for. The assault is constant — and it's <span class="highlight">getting worse every year.</span></p>
+                </div>
+                <div class="narrative-line" data-phase="2">
+                    <h2>And Here's What No One Tells You</h2>
+                    <p>Starting at puberty, your body's cellular defense system declines by <span class="warning">roughly 1% per year.</span> The very molecules that coordinate your defense, repair, and renewal — produced in smaller quantities, every year, without exception.</p>
+                </div>
+                <div class="narrative-line" data-phase="3">
+                    <h2>More Demand. Less Supply.</h2>
+                    <p>The toxins are increasing. Your defenses are decreasing. The gap widens every single year. <span class="highlight">This is the problem hiding underneath everything else.</span></p>
+                </div>
+                <div class="narrative-line" data-phase="4">
+                    <h2>What If You Could Strengthen the Signal?</h2>
+                    <p>Your body still makes these molecules — if it didn't, you'd be dead within minutes. But it's not making <span class="highlight">enough.</span> And now, for the first time, you can supplement what your body has been losing. Not a drug. Not a vitamin. The actual <span class="highlight">signaling molecules</span> your cells already recognize.</p>
+                </div>
+            </div>
+
+            <!-- Progress dots -->
+            <div class="narrative-progress" id="narrativeDots"></div>
+
+            <!-- Replay -->
+            <button class="narrative-replay" id="narrativeReplay">Watch again</button>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         ORCHESTRA ANALOGY
+         ═══════════════════════════════════════════ -->
+    <section class="orchestra-section">
+        <div class="orchestra-inner">
+            <span class="orchestra-icon">&#127931;</span>
+            <h2>Think of It Like an Orchestra</h2>
+
+            <p>Dr. Gary Samuelson, a medicinal physicist who has studied redox signaling for decades, uses an analogy that makes this click:</p>
+
+            <p><strong>Redox signaling molecules are the conductor of your body's orchestra.</strong></p>
+
+            <p>The conductor doesn't play a single instrument. Doesn't make a single note of music. But without the conductor, every section of the orchestra — strings, brass, percussion, woodwinds — falls out of sync. The musicians are all there. The instruments are all there. The talent is all there. But the music just doesn't work.</p>
+
+            <div class="orchestra-grid">
+                <div class="orchestra-item">
+                    <span class="item-icon">&#129728;</span>
+                    <span class="item-label">Immune System</span>
+                </div>
+                <div class="orchestra-item">
+                    <span class="item-icon">&#10084;&#65039;</span>
+                    <span class="item-label">Cardiovascular</span>
+                </div>
+                <div class="orchestra-item">
+                    <span class="item-icon">&#129504;</span>
+                    <span class="item-label">Neurological</span>
+                </div>
+                <div class="orchestra-item">
+                    <span class="item-icon">&#128170;</span>
+                    <span class="item-label">Muscles &amp; Joints</span>
+                </div>
+                <div class="orchestra-item">
+                    <span class="item-icon">&#127811;</span>
+                    <span class="item-label">Digestive</span>
+                </div>
+                <div class="orchestra-item">
+                    <span class="item-icon">&#9889;</span>
+                    <span class="item-label">Hormonal</span>
+                </div>
+            </div>
+
+            <p>Each system in your body is a section of the orchestra. They all have the ability to do their job. But they need direction — coordination — to work together. That's what redox signaling molecules do.</p>
+
+            <p>When the conductor is strong, the music is extraordinary. When the conductor weakens, every section suffers — not because anything is broken, but because <strong>the coordination is fading.</strong></p>
+
+            <div class="orchestra-note">
+                <p>This is also why redox signaling molecules don't treat, cure, or diagnose anything. The conductor doesn't play the violin. But give your body back a strong conductor, and every section of the orchestra can start playing the way it was designed to.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         THE SCOPE — EVIDENCE SECTION
+         ═══════════════════════════════════════════ -->
+    <section class="section">
+        <div class="section-inner">
+            <span class="section-label">What the Science Is Saying</span>
+            <h2>This Is Bigger Than I Expected</h2>
+
+            <p>When I first looked into this, I thought it was one product for one kind of problem. I was wrong. The deeper I went, the more I realized I had stumbled into something the research world is just beginning to understand — and the rest of us haven't heard about yet.</p>
+
+            <p>Let me show you two things. Neither of them came from ASEA.</p>
+
+            <div class="evidence-grid">
+
+                <!-- BOOK CARD -->
+                <div class="evidence-card">
+                    <span class="card-label">Independent Research</span>
+                    <div class="book-cover-wrapper">
+                        <!-- Replace with actual book cover image -->
+                        <img src="book-cover-one-disease.jpg" alt="One Disease: Redox Imbalance by Michael R. Sherer — book cover showing dozens of diseases all tracing back to one root cause">
+                    </div>
+                    <h3>A Researcher Who Never Heard of ASEA</h3>
+                    <p>In 2021, health researcher Michael Sherer published <em>One Disease: Redox Imbalance.</em> His thesis: virtually every major chronic disease traces back to the same root mechanism — an imbalance in your body's redox signaling system.</p>
+                    <p>He arrived at this conclusion independently, from the published research alone. He had no connection to ASEA. Look at the cover — every one of those diseases, one root cause.</p>
+                </div>
+
+                <!-- RESEARCH GRAPH CARD -->
+                <div class="evidence-card">
+                    <span class="card-label">Published Research</span>
+                    <div class="graph-wrapper">
+                        <!-- Replace with PubMed graph screenshot -->
+                        <img src="pubmed-redox-signaling.jpg" alt="PubMed search results showing explosive growth in redox signaling research — 48,222 published papers">
+                    </div>
+                    <span class="stat-big">48,222</span>
+                    <h3>Published Studies on Redox Signaling</h3>
+                    <p>This is a search for "redox signaling" on PubMed — the U.S. National Library of Medicine. Look at the growth curve. This field barely existed 30 years ago. Now it's one of the fastest-growing areas in biomedical research.</p>
+                    <p>The science isn't weak. The awareness is.</p>
+                </div>
+
+            </div>
+
+            <p>This is the trajectory. The question isn't <em>whether</em> the world will learn about redox signaling. It's <em>when.</em> And whether you'll already be years ahead when it does.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         DOCTOR QUOTE
+         ═══════════════════════════════════════════ -->
+    <div class="doctor-quote">
+        <blockquote>"If you're waiting for your doctor to tell you about redox signaling, you may be waiting a very long time."</blockquote>
+        <span class="attribution">— Dr. Carmen Keith, DC</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         TESTIMONIAL TAG CLOUD
+         ═══════════════════════════════════════════ -->
+    <section class="section section-alt">
+        <div class="section-inner" style="max-width: 860px;">
+            <div class="cloud-intro">
+                <span class="section-label">Real People, Real Experiences</span>
+                <h2>180+ People Have Shared Their Stories</h2>
+                <p>These are the areas of life where people noticed a difference after supporting their body's redox signaling. Each one represents a real person, on video, telling their own story.</p>
+            </div>
+
+            <div class="tag-cloud">
+                <span class="tag">Energy</span>
+                <span class="tag">Sleep</span>
+                <span class="tag">Joint Discomfort</span>
+                <span class="tag">Mental Clarity</span>
+                <span class="tag">Immune Function</span>
+                <span class="tag">Athlete</span>
+                <span class="tag">Gut Health</span>
+                <span class="tag">Skin</span>
+                <span class="tag">Inflammatory Response</span>
+                <span class="tag">Mood</span>
+                <span class="tag">Memory</span>
+                <span class="tag">Mobility</span>
+                <span class="tag">Hair Loss</span>
+                <span class="tag">Circulation</span>
+                <span class="tag">Blood Pressure</span>
+                <span class="tag">Blood Sugar</span>
+                <span class="tag">Breathing</span>
+                <span class="tag">Allergies</span>
+                <span class="tag">Headaches</span>
+                <span class="tag">Stress</span>
+                <span class="tag">Hormone Balance</span>
+                <span class="tag">Weight Loss</span>
+                <span class="tag">Eyesight</span>
+                <span class="tag">Hearing</span>
+                <span class="tag">Heart</span>
+                <span class="tag">Detox</span>
+                <span class="tag">Cholesterol</span>
+                <span class="tag">Back Discomfort</span>
+                <span class="tag">Animals</span>
+                <span class="tag">Epigenetics</span>
+                <span class="tag">Neurological</span>
+                <span class="tag">Kidney Health</span>
+                <span class="tag">Oral Health</span>
+                <span class="tag">Skin Anti-Aging</span>
+                <span class="tag">General Discomfort</span>
+                <span class="tag">Maternity</span>
+                <span class="tag">Food Intolerance</span>
+                <span class="tag">Adrenal</span>
+                <span class="tag">EMF Sensitivity</span>
+                <span class="tag">Speech</span>
+                <span class="tag">Numbness</span>
+                <span class="tag">Prostate Health</span>
+            </div>
+
+            <p class="tag-count">Over 180 video testimonials across 60+ categories — from athletes to skeptics.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SELF-SELECTION PATHS
+         ═══════════════════════════════════════════ -->
+    <section class="section">
+        <div class="section-inner" style="max-width: 860px;">
+            <div class="paths-intro">
+                <h2>Where Would You Like to Start?</h2>
+                <p>Everyone comes to this from a different place. There's no wrong door.</p>
+            </div>
+
+            <div class="paths-grid">
+
+                <a class="path-card" href="#something-off">
+                    <span class="path-icon">&#9876;</span>
+                    <h3>Something's Off</h3>
+                    <p>You're dealing with fatigue, inflammation, slow recovery, or something you can't quite name. You've tried things. You're open but cautious.</p>
+                    <span class="path-arrow">Learn how this works &rarr;</span>
+                </a>
+
+                <a class="path-card" href="#prevention">
+                    <span class="path-icon">&#9881;</span>
+                    <h3>Nothing's Wrong (Yet)</h3>
+                    <p>You feel fine. But you think ahead. You'd rather maintain what you have than try to get it back later. Prevention over reaction.</p>
+                    <span class="path-arrow">See the science &rarr;</span>
+                </a>
+
+                <a class="path-card" href="#performance">
+                    <span class="path-icon">&#9889;</span>
+                    <h3>I Want an Edge</h3>
+                    <p>You're already performing — gym, sport, demanding work. You're not broken. You want to recover faster and push harder. Marginal gains matter.</p>
+                    <span class="path-arrow">See performance data &rarr;</span>
+                </a>
+
+                <a class="path-card" href="#business">
+                    <span class="path-icon">&#9733;</span>
+                    <h3>The Business Side</h3>
+                    <p>You see what I see — a real product backed by real science in a market that doesn't know it exists yet. You're curious about what building this together looks like.</p>
+                    <span class="path-arrow">Explore the opportunity &rarr;</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         QUIET CLOSE
+         ═══════════════════════════════════════════ -->
+    <section class="quiet-close section-alt">
+        <div class="section-inner">
+            <h2>No Pressure. Just a Door.</h2>
+
+            <p>I'm not going to follow up and ask if you watched anything. This page isn't going anywhere. When you're ready — if you're ever ready — I'm here.</p>
+
+            <p>But I'll tell you this honestly: I've watched people I care about wait. Some of them ran out of time. I don't say that to scare you. I say it because it's true, and because I'd rather be honest with you than polite.</p>
+
+            <p class="closing-line">Talk to me whenever you want. I'll be glad to hear from you.</p>
+
+            <div class="contact-row">
+                <a href="mailto:fstrehlow@gmail.com" class="btn-primary">Email Fritz</a>
+                <a href="https://myredoxsolution.com" class="btn-secondary">Read the Full Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════ -->
+    <footer class="footer">
+        <p>Fritz Strehlow — ASEA Independent Associate</p>
+        <p class="disclaimer">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Testimonials reflect individual experiences and are not guaranteed.</p>
+    </footer>
+
+    <script>
+    (function() {
+        // ─── STRESSOR WORDS ───
+        // The most recognizable everyday stressors — condensed to ~16
+        var stressors = [
+            { text: "Processed Food", tier: 1 },
+            { text: "Air Pollution", tier: 1 },
+            { text: "Chronic Stress", tier: 1 },
+            { text: "Poor Sleep", tier: 1 },
+            { text: "Pesticides", tier: 1 },
+            { text: "Heavy Metals", tier: 1 },
+            { text: "Medications", tier: 2 },
+            { text: "Microplastics", tier: 2 },
+            { text: "Sugar", tier: 2 },
+            { text: "EMF / Cell Phones", tier: 2 },
+            { text: "Alcohol", tier: 2 },
+            { text: "Cleaning Chemicals", tier: 3 },
+            { text: "Forever Chemicals", tier: 1 },
+            { text: "Sedentary Lifestyle", tier: 2 },
+            { text: "Screen Time", tier: 3 },
+            { text: "Tap Water", tier: 3 }
+        ];
+
+        // Position words in a rough orbit around center
+        // [left%, top%] — avoiding middle where the couple sits
+        var positions = [
+            [5, 8],  [30, 3],  [60, 5],  [85, 10],
+            [0, 28], [25, 25], [65, 22], [92, 30],
+            [2, 50], [20, 48], [70, 45], [88, 52],
+            [5, 70], [28, 72], [62, 75], [85, 70]
+        ];
+
+        var ring = document.getElementById('stressorRing');
+
+        // Create all word elements (hidden initially)
+        var wordEls = stressors.map(function(s, i) {
+            var el = document.createElement('span');
+            el.className = 'ring-word tier-' + s.tier;
+            el.textContent = s.text;
+            el.style.left = positions[i][0] + '%';
+            el.style.top = positions[i][1] + '%';
+            ring.appendChild(el);
+            return el;
+        });
+
+        // ─── NARRATIVE PHASES ───
+        var phases = document.querySelectorAll('.narrative-line');
+        var totalPhases = phases.length;
+        var currentPhase = 0;
+        var phaseTimer = null;
+        var started = false;
+
+        // Phase timing (ms)
+        var phaseDurations = [7000, 8000, 9000, 8000, 0]; // last phase stays
+
+        // Build progress dots
+        var dotsContainer = document.getElementById('narrativeDots');
+        for (var d = 0; d < totalPhases; d++) {
+            var dot = document.createElement('button');
+            dot.className = 'progress-dot' + (d === 0 ? ' active' : '');
+            dot.dataset.phase = d;
+            dot.addEventListener('click', function() {
+                goToPhase(parseInt(this.dataset.phase));
+            });
+            dotsContainer.appendChild(dot);
+        }
+        var dots = dotsContainer.querySelectorAll('.progress-dot');
+
+        function goToPhase(n) {
+            clearTimeout(phaseTimer);
+            currentPhase = n;
+
+            // Update narrative text
+            phases.forEach(function(p) { p.classList.remove('active'); });
+            phases[n].classList.add('active');
+
+            // Update dots
+            dots.forEach(function(d) { d.classList.remove('active'); });
+            dots[n].classList.add('active');
+
+            // Phase-specific visuals
+            var coupleYoung = document.getElementById('coupleYoung');
+            var coupleOlder = document.getElementById('coupleOlder');
+            var replayBtn = document.getElementById('narrativeReplay');
+
+            // Phase 0: miracle — clean, no stressors, young couple
+            if (n === 0) {
+                coupleYoung.style.opacity = '1';
+                coupleOlder.style.opacity = '0';
+                wordEls.forEach(function(el) { el.classList.remove('visible'); });
+                replayBtn.classList.remove('visible');
+            }
+
+            // Phase 1: stressors appear — show first 8 words
+            if (n === 1) {
+                coupleYoung.style.opacity = '1';
+                coupleOlder.style.opacity = '0';
+                wordEls.forEach(function(el, i) {
+                    if (i < 8) {
+                        setTimeout(function() { el.classList.add('visible'); }, i * 200);
+                    } else {
+                        el.classList.remove('visible');
+                    }
+                });
+            }
+
+            // Phase 2: aging — couple crossfades, all stressors visible
+            if (n === 2) {
+                coupleYoung.style.opacity = '0';
+                coupleOlder.style.opacity = '1';
+                wordEls.forEach(function(el, i) {
+                    setTimeout(function() { el.classList.add('visible'); }, i * 150);
+                });
+            }
+
+            // Phase 3: the gap — all stressors, older couple, words pulse brighter
+            if (n === 3) {
+                coupleYoung.style.opacity = '0';
+                coupleOlder.style.opacity = '1';
+                wordEls.forEach(function(el) { el.classList.add('visible'); });
+            }
+
+            // Phase 4: hope — stressors fade, couple stays older, message of possibility
+            if (n === 4) {
+                coupleYoung.style.opacity = '0';
+                coupleOlder.style.opacity = '1';
+                wordEls.forEach(function(el, i) {
+                    setTimeout(function() { el.classList.remove('visible'); }, i * 100);
+                });
+                replayBtn.classList.add('visible');
+            }
+
+            // Auto-advance (unless last phase)
+            if (n < totalPhases - 1) {
+                phaseTimer = setTimeout(function() {
+                    goToPhase(n + 1);
+                }, phaseDurations[n]);
+            }
+        }
+
+        // ─── INTERSECTION OBSERVER: start when section scrolls into view ───
+        var section = document.getElementById('stressorNarrative');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !started) {
+                    started = true;
+                    goToPhase(0);
+                }
+            });
+        }, { threshold: 0.4 });
+
+        observer.observe(section);
+
+        // Replay button
+        document.getElementById('narrativeReplay').addEventListener('click', function() {
+            started = false;
+            this.classList.remove('visible');
+            setTimeout(function() {
+                started = true;
+                goToPhase(0);
+            }, 300);
+        });
+    })();
+    </script>
+</body>
+</html>
