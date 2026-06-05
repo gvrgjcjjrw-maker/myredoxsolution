@@ -313,12 +313,30 @@
 
         .ring-word.visible {
             opacity: 1;
+            animation: wordFloat 6s ease-in-out infinite;
         }
 
         .ring-word.tier-1 {
             color: rgba(225, 110, 95, 1);
             font-size: 26px;
             font-weight: 700;
+        }
+
+        /* Each word gets a slightly different float so they don't move in unison */
+        .ring-word:nth-child(1) { animation-duration: 5s; }
+        .ring-word:nth-child(2) { animation-duration: 7s; animation-delay: 0.5s; }
+        .ring-word:nth-child(3) { animation-duration: 6s; animation-delay: 1s; }
+        .ring-word:nth-child(4) { animation-duration: 8s; animation-delay: 0.3s; }
+        .ring-word:nth-child(5) { animation-duration: 5.5s; animation-delay: 0.8s; }
+        .ring-word:nth-child(6) { animation-duration: 7.5s; animation-delay: 0.2s; }
+        .ring-word:nth-child(7) { animation-duration: 6.5s; animation-delay: 0.6s; }
+
+        @keyframes wordFloat {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(6px, -8px); }
+            50% { transform: translate(-4px, -14px); }
+            75% { transform: translate(8px, -6px); }
+            100% { transform: translate(0, 0); }
         }
 
         /* Progress dots */
@@ -1164,12 +1182,13 @@
             { text: "EMFs", tier: 1 }
         ];
 
-        // Spread 7 words around the couple — all visible, not overlapping photo
+        // Spread 7 words around upper area near the couple photo
+        // Nothing below 45% — that's where the narrative text lives
         var positions = [
-            [5, 5],   [55, 2],
-            [0, 32],  [75, 30],
-            [0, 60],  [72, 62],
-            [30, 88]
+            [2, 2],    [55, 0],
+            [0, 18],   [72, 16],
+            [0, 35],   [70, 34],
+            [25, 45]
         ];
 
         var ring = document.getElementById('stressorRing');
