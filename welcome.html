@@ -248,7 +248,7 @@
             width: 100%;
             max-width: 560px;
             margin: 0 auto;
-            min-height: 180px;
+            min-height: 240px;
             position: relative;
         }
 
@@ -893,14 +893,8 @@
     <section class="stressor-narrative" id="stressorNarrative">
         <div class="narrative-stage">
 
-            <!-- Stressor words orbit around the couple -->
-            <div class="stressor-ring" id="stressorRing"></div>
-
             <!-- Couple photo with age crossfade -->
             <div class="couple-frame">
-                <!-- Replace these placeholders with real photos:
-                     - Young: mixed-race couple, 30s, vibrant, outdoors
-                     - Older: same couple concept, 60s, still warm but showing time -->
                 <img class="couple-img young" id="coupleYoung" src="couple-young.jpg" alt="A vibrant couple in their thirties">
                 <img class="couple-img older" id="coupleOlder" src="couple-older.jpg" alt="The same couple, older, still full of life">
             </div>
@@ -908,12 +902,13 @@
             <!-- Narrative text that changes with each phase -->
             <div class="narrative-text" id="narrativeText">
                 <div class="narrative-line active" data-phase="0">
-                    <h2>Your Body Is a Miracle</h2>
-                    <p>Right now, trillions of cells are communicating, repairing, defending, and renewing — all without you thinking about it. This system has kept humans alive for millennia.</p>
+                    <p>Every day, your body is fighting battles you can't see.</p>
+                    <p><span class="highlight">Not enough sleep. Processed food. EMFs. Environmental toxins. Career challenges. Finances. Aging.</span></p>
+                    <p>These stressors place a tremendous burden on your cells and can contribute to <span class="warning">oxidative stress</span> — the imbalance between damage and repair.</p>
                 </div>
                 <div class="narrative-line" data-phase="1">
-                    <h2>But Look at What It's Fighting</h2>
-                    <p>Every single day, your cells face a world they weren't designed for. The assault is constant — and it's <span class="highlight">getting worse every year.</span></p>
+                    <p>The question isn't whether you're under attack.</p>
+                    <p>The question is whether your cells have the <span class="highlight">resources they need</span> to respond, repair, and communicate effectively.</p>
                 </div>
                 <div class="narrative-line" data-phase="2">
                     <h2>And Here's What No One Tells You</h2>
@@ -921,7 +916,7 @@
                 </div>
                 <div class="narrative-line" data-phase="3">
                     <h2>More Demand. Less Supply.</h2>
-                    <p>The toxins are increasing. Your defenses are decreasing. The gap widens every single year. <span class="highlight">This is the problem hiding underneath everything else.</span></p>
+                    <p>The stressors are increasing. Your defenses are decreasing. The gap widens every single year. <span class="highlight">This is the problem hiding underneath everything else.</span></p>
                 </div>
                 <div class="narrative-line" data-phase="4">
                     <h2>What If You Could Strengthen the Signal?</h2>
@@ -1176,59 +1171,6 @@
 
     <script>
     (function() {
-        // ─── STRESSOR WORDS ───
-        // 6 stressors people instantly recognize — shown one at a time
-        var stressors = [
-            { text: "Diet", side: 'left' },
-            { text: "Medications", side: 'right' },
-            { text: "Alcohol", side: 'left' },
-            { text: "Poor Sleep", side: 'right' },
-            { text: "Anxiety", side: 'left' },
-            { text: "EMFs", side: 'right' }
-        ];
-
-        // Starting positions — equal distance from photo on both sides
-        var positions = [
-            [2, 15],    // Diet - left
-            [78, 12],   // Medications - right
-            [2, 30],    // Alcohol - left
-            [78, 28],   // Poor Sleep - right
-            [2, 42],    // Anxiety - left
-            [78, 40]    // EMFs - right
-        ];
-
-        var ring = document.getElementById('stressorRing');
-        var currentStressor = 0;
-        var stressorTimer = null;
-        var stressorStarted = false;
-
-        // Create all word elements (hidden initially)
-        var wordEls = stressors.map(function(s, i) {
-            var el = document.createElement('span');
-            el.className = 'ring-word tier-1';
-            el.textContent = s.text;
-            el.style.left = positions[i][0] + '%';
-            el.style.top = positions[i][1] + '%';
-            ring.appendChild(el);
-            return { el: el, side: s.side };
-        });
-
-        // Show one stressor at a time
-        function showNextStressor() {
-            // Remove animation class from all
-            wordEls.forEach(function(w) {
-                w.el.classList.remove('active-right', 'active-left');
-                w.el.style.opacity = '0';
-            });
-
-            // Activate current word
-            var current = wordEls[currentStressor];
-            var animClass = current.side === 'left' ? 'active-right' : 'active-left';
-            current.el.classList.add(animClass);
-
-            currentStressor = (currentStressor + 1) % stressors.length;
-        }
-
         // ─── NARRATIVE PHASES ───
         var phases = document.querySelectorAll('.narrative-line');
         var totalPhases = phases.length;
@@ -1236,8 +1178,8 @@
         var phaseTimer = null;
         var started = false;
 
-        // Phase timing (ms)
-        var phaseDurations = [9000, 10000, 11000, 10000, 0]; // last phase stays
+        // Phase timing (ms) — generous reading time
+        var phaseDurations = [12000, 10000, 11000, 10000, 0]; // last phase stays
 
         // Build progress dots
         var dotsContainer = document.getElementById('narrativeDots');
@@ -1269,65 +1211,29 @@
             var coupleOlder = document.getElementById('coupleOlder');
             var replayBtn = document.getElementById('narrativeReplay');
 
-            // Stop any running stressor cycle
-            clearInterval(stressorTimer);
-            stressorStarted = false;
-            wordEls.forEach(function(w) {
-                w.el.classList.remove('active-right', 'active-left');
-                w.el.style.opacity = '0';
-            });
-
-            // Phase 0: miracle — clean, young couple
-            if (n === 0) {
+            // Phases 0-1: young couple
+            if (n <= 1) {
                 coupleYoung.style.opacity = '1';
                 coupleOlder.style.opacity = '0';
                 replayBtn.classList.remove('visible');
             }
 
-            // Phase 1: stressors — one at a time drifting toward couple
-            if (n === 1) {
-                coupleYoung.style.opacity = '1';
-                coupleOlder.style.opacity = '0';
-                currentStressor = 0;
-                showNextStressor();
-                stressorTimer = setInterval(showNextStressor, 4500);
-                stressorStarted = true;
-            }
-
-            // Phase 2: aging — couple crossfades, stressors keep cycling
+            // Phase 2: couple ages
             if (n === 2) {
                 coupleYoung.style.opacity = '0';
                 coupleOlder.style.opacity = '1';
-                if (!stressorStarted) {
-                    currentStressor = 0;
-                    showNextStressor();
-                    stressorTimer = setInterval(showNextStressor, 4500);
-                    stressorStarted = true;
-                }
             }
 
-            // Phase 3: the gap — older couple, stressors keep cycling
+            // Phase 3: older couple stays
             if (n === 3) {
                 coupleYoung.style.opacity = '0';
                 coupleOlder.style.opacity = '1';
-                if (!stressorStarted) {
-                    currentStressor = 0;
-                    showNextStressor();
-                    stressorTimer = setInterval(showNextStressor, 4500);
-                    stressorStarted = true;
-                }
             }
 
-            // Phase 4: hope — stressors stop, message of possibility
+            // Phase 4: hope
             if (n === 4) {
                 coupleYoung.style.opacity = '0';
                 coupleOlder.style.opacity = '1';
-                clearInterval(stressorTimer);
-                stressorStarted = false;
-                wordEls.forEach(function(w) {
-                    w.el.classList.remove('active-right', 'active-left');
-                    w.el.style.opacity = '0';
-                });
                 replayBtn.classList.add('visible');
             }
 
