@@ -313,7 +313,6 @@
 
         .ring-word.visible {
             opacity: 1;
-            animation: wordFloat 6s ease-in-out infinite;
         }
 
         .ring-word.tier-1 {
@@ -322,21 +321,35 @@
             font-weight: 700;
         }
 
-        /* Each word gets a slightly different float so they don't move in unison */
-        .ring-word:nth-child(1) { animation-duration: 5s; }
-        .ring-word:nth-child(2) { animation-duration: 7s; animation-delay: 0.5s; }
-        .ring-word:nth-child(3) { animation-duration: 6s; animation-delay: 1s; }
-        .ring-word:nth-child(4) { animation-duration: 8s; animation-delay: 0.3s; }
-        .ring-word:nth-child(5) { animation-duration: 5.5s; animation-delay: 0.8s; }
-        .ring-word:nth-child(6) { animation-duration: 7.5s; animation-delay: 0.2s; }
-        .ring-word:nth-child(7) { animation-duration: 6.5s; animation-delay: 0.6s; }
+        /* Left-side words drift right toward photo and fade */
+        .ring-word.drift-right.visible {
+            animation: driftRight 7s ease-in infinite;
+        }
 
-        @keyframes wordFloat {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(4px, -5px); }
-            50% { transform: translate(-3px, -8px); }
-            75% { transform: translate(5px, -3px); }
-            100% { transform: translate(0, 0); }
+        /* Right-side words drift left toward photo and fade */
+        .ring-word.drift-left.visible {
+            animation: driftLeft 7s ease-in infinite;
+        }
+
+        /* Stagger each word so they don't all move in sync */
+        .ring-word:nth-child(1) { animation-delay: 0s; }
+        .ring-word:nth-child(2) { animation-delay: 1.5s; }
+        .ring-word:nth-child(3) { animation-delay: 0.8s; }
+        .ring-word:nth-child(4) { animation-delay: 2s; }
+        .ring-word:nth-child(5) { animation-delay: 0.4s; }
+        .ring-word:nth-child(6) { animation-delay: 1.2s; }
+        .ring-word:nth-child(7) { animation-delay: 0.6s; }
+
+        @keyframes driftRight {
+            0% { transform: translate(0, 0); opacity: 1; }
+            60% { opacity: 0.8; }
+            100% { transform: translate(80px, 10px); opacity: 0; }
+        }
+
+        @keyframes driftLeft {
+            0% { transform: translate(0, 0); opacity: 1; }
+            60% { opacity: 0.8; }
+            100% { transform: translate(-80px, 10px); opacity: 0; }
         }
 
         /* Progress dots */
@@ -1182,12 +1195,13 @@
             { text: "EMFs", tier: 1 }
         ];
 
-        // All words in the top third, far left/right — clear of photo and text
+        // Words start near the edges and drift toward the couple photo
+        // [left%, top%, side] — side determines drift direction
         var positions = [
-            [0, 2],    [62, 0],
-            [0, 14],   [72, 12],
-            [0, 26],   [72, 25],
-            [0, 38]
+            [8, 4, 'right'],     [60, 2, 'left'],
+            [10, 16, 'right'],   [62, 15, 'left'],
+            [8, 28, 'right'],    [60, 27, 'left'],
+            [12, 40, 'right']
         ];
 
         var ring = document.getElementById('stressorRing');
@@ -1195,7 +1209,7 @@
         // Create all word elements (hidden initially)
         var wordEls = stressors.map(function(s, i) {
             var el = document.createElement('span');
-            el.className = 'ring-word tier-' + s.tier;
+            el.className = 'ring-word tier-' + s.tier + ' drift-' + positions[i][2];
             el.textContent = s.text;
             el.style.left = positions[i][0] + '%';
             el.style.top = positions[i][1] + '%';
