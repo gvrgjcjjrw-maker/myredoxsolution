@@ -303,7 +303,7 @@
         .ring-word {
             position: absolute;
             font-family: 'Inter', sans-serif;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 600;
             opacity: 0;
             transition: opacity 3s ease-in-out;
@@ -318,7 +318,7 @@
 
         .ring-word.tier-1 {
             color: rgba(225, 110, 95, 1);
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 700;
         }
 
@@ -333,9 +333,9 @@
 
         @keyframes wordFloat {
             0% { transform: translate(0, 0); }
-            25% { transform: translate(6px, -8px); }
-            50% { transform: translate(-4px, -14px); }
-            75% { transform: translate(8px, -6px); }
+            25% { transform: translate(4px, -5px); }
+            50% { transform: translate(-3px, -8px); }
+            75% { transform: translate(5px, -3px); }
             100% { transform: translate(0, 0); }
         }
 
@@ -394,8 +394,8 @@
             }
             .narrative-line h2 { font-size: 24px; }
             .narrative-line p { font-size: 16px; }
-            .ring-word { font-size: 20px !important; }
-            .ring-word.tier-1 { font-size: 22px !important; }
+            .ring-word { font-size: 17px !important; }
+            .ring-word.tier-1 { font-size: 19px !important; }
         }
 
         @media (max-width: 480px) {
@@ -1182,13 +1182,12 @@
             { text: "EMFs", tier: 1 }
         ];
 
-        // Spread 7 words around upper area near the couple photo
-        // Nothing below 45% — that's where the narrative text lives
+        // All words in the top third, far left/right — clear of photo and text
         var positions = [
-            [2, 2],    [55, 0],
-            [0, 18],   [72, 16],
-            [0, 35],   [70, 34],
-            [25, 45]
+            [0, 2],    [62, 0],
+            [0, 14],   [72, 12],
+            [0, 26],   [72, 25],
+            [0, 38]
         ];
 
         var ring = document.getElementById('stressorRing');
