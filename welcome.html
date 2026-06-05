@@ -204,10 +204,8 @@
             object-fit: cover;
             border-radius: var(--rounded-xl);
             transition: opacity 3s ease-in-out;
+            opacity: 0;
         }
-
-        .couple-img.young { opacity: 1; }
-        .couple-img.older { opacity: 0; }
 
         /* Placeholder styling when no real photos yet */
         .couple-placeholder {
@@ -893,10 +891,15 @@
     <section class="stressor-narrative" id="stressorNarrative">
         <div class="narrative-stage">
 
-            <!-- Couple photo with age crossfade -->
+            <!-- Couple photo with gradual age crossfade -->
             <div class="couple-frame">
-                <img class="couple-img young" id="coupleYoung" src="couple-young.jpg" alt="A vibrant couple in their thirties">
-                <img class="couple-img older" id="coupleOlder" src="couple-older.jpg" alt="The same couple, older, still full of life">
+                <img class="couple-img" data-age="0" src="couple-20s.jpg" alt="A couple in their twenties" style="opacity:1;">
+                <img class="couple-img" data-age="1" src="couple-30s.jpg" alt="The couple in their thirties">
+                <img class="couple-img" data-age="2" src="couple-40s.jpg" alt="The couple in their forties">
+                <img class="couple-img" data-age="3" src="couple-50s.jpg" alt="The couple in their fifties">
+                <img class="couple-img" data-age="4" src="couple-60s.jpg" alt="The couple in their sixties">
+                <img class="couple-img" data-age="5" src="couple-70s.jpg" alt="The couple in their seventies">
+                <img class="couple-img" data-age="6" src="couple-80s.jpg" alt="The couple in their eighties">
             </div>
 
             <!-- Narrative text that changes with each phase -->
@@ -1207,33 +1210,39 @@
             dots[n].classList.add('active');
 
             // Phase-specific visuals
-            var coupleYoung = document.getElementById('coupleYoung');
-            var coupleOlder = document.getElementById('coupleOlder');
+            var ageImgs = document.querySelectorAll('.couple-img');
             var replayBtn = document.getElementById('narrativeReplay');
+            replayBtn.classList.remove('visible');
 
-            // Phases 0-1: young couple
-            if (n <= 1) {
-                coupleYoung.style.opacity = '1';
-                coupleOlder.style.opacity = '0';
-                replayBtn.classList.remove('visible');
+            // Map phases to age images:
+            // Phase 0: 20s → Phase 1: 30s,40s → Phase 2: 50s → Phase 3: 60s,70s → Phase 4: 80s
+            function showAge(index) {
+                ageImgs.forEach(function(img) { img.style.opacity = '0'; });
+                if (ageImgs[index]) ageImgs[index].style.opacity = '1';
             }
 
-            // Phase 2: couple ages
+            if (n === 0) {
+                showAge(0); // 20s
+            }
+
+            if (n === 1) {
+                // Progress through 30s then 40s
+                showAge(1); // 30s
+                setTimeout(function() { if (currentPhase === 1) showAge(2); }, 5000); // 40s
+            }
+
             if (n === 2) {
-                coupleYoung.style.opacity = '0';
-                coupleOlder.style.opacity = '1';
+                showAge(3); // 50s
             }
 
-            // Phase 3: older couple stays
             if (n === 3) {
-                coupleYoung.style.opacity = '0';
-                coupleOlder.style.opacity = '1';
+                // Progress through 60s then 70s
+                showAge(4); // 60s
+                setTimeout(function() { if (currentPhase === 3) showAge(5); }, 5000); // 70s
             }
 
-            // Phase 4: hope
             if (n === 4) {
-                coupleYoung.style.opacity = '0';
-                coupleOlder.style.opacity = '1';
+                showAge(6); // 80s
                 replayBtn.classList.add('visible');
             }
 
