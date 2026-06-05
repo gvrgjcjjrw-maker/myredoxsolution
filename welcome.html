@@ -188,6 +188,7 @@
         /* Couple photo area */
         .couple-frame {
             position: relative;
+            z-index: 2;
             width: 280px;
             height: 320px;
             margin: 0 auto 32px;
@@ -296,6 +297,7 @@
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             pointer-events: none;
+            z-index: 1;
         }
 
         .ring-word {
@@ -1183,14 +1185,14 @@
             { text: "Physical Inactivity", tier: 2 }
         ];
 
-        // Position words in a wide orbit around center
-        // [left%, top%] — pushed well away from the couple photo
+        // Position words so some pass behind the couple photo
+        // Mix of outer positions and positions that overlap the photo area
         var positions = [
-            [2, 3],   [30, 0],  [58, 2],  [82, 6],
-            [0, 22],  [0, 38],  [72, 18], [78, 35],
-            [0, 55],  [0, 72],  [72, 55], [78, 72],
-            [2, 88],  [28, 92], [55, 90], [80, 88],
-            [35, 0]
+            [2, 3],   [32, 5],  [55, 2],  [78, 8],
+            [0, 25],  [25, 30], [58, 28], [80, 32],
+            [0, 48],  [30, 50], [55, 48], [82, 52],
+            [0, 70],  [28, 72], [55, 68], [78, 72],
+            [38, 8]
         ];
 
         var ring = document.getElementById('stressorRing');
