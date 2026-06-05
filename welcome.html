@@ -303,11 +303,12 @@
         .ring-word {
             position: absolute;
             font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            font-weight: 500;
+            font-size: 24px;
+            font-weight: 600;
             opacity: 0;
             transition: opacity 3s ease-in-out;
             white-space: nowrap;
+            color: rgba(225, 110, 95, 1);
         }
 
         .ring-word.visible {
@@ -316,20 +317,8 @@
 
         .ring-word.tier-1 {
             color: rgba(225, 110, 95, 1);
-            font-size: 21px;
+            font-size: 26px;
             font-weight: 700;
-        }
-
-        .ring-word.tier-2 {
-            color: rgba(240, 200, 110, 0.95);
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .ring-word.tier-3 {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 16px;
-            font-weight: 500;
         }
 
         /* Progress dots */
@@ -387,8 +376,8 @@
             }
             .narrative-line h2 { font-size: 24px; }
             .narrative-line p { font-size: 16px; }
-            .ring-word { font-size: 15px !important; }
-            .ring-word.tier-1 { font-size: 18px !important; }
+            .ring-word { font-size: 20px !important; }
+            .ring-word.tier-1 { font-size: 22px !important; }
         }
 
         @media (max-width: 480px) {
@@ -1164,35 +1153,23 @@
     <script>
     (function() {
         // ─── STRESSOR WORDS ───
-        // The most recognizable everyday stressors — condensed to ~16
+        // 7 stressors people instantly recognize in their own life
         var stressors = [
-            { text: "Processed Food", tier: 1 },
-            { text: "Air Pollution", tier: 1 },
-            { text: "Chronic Stress", tier: 1 },
+            { text: "Diet", tier: 1 },
+            { text: "Medications", tier: 1 },
+            { text: "Alcohol", tier: 1 },
             { text: "Poor Sleep", tier: 1 },
-            { text: "Pesticides", tier: 1 },
-            { text: "Heavy Metals", tier: 1 },
-            { text: "Medications", tier: 2 },
-            { text: "Microplastics", tier: 2 },
-            { text: "Sugar", tier: 2 },
-            { text: "EMF / Cell Phones", tier: 2 },
-            { text: "Alcohol", tier: 2 },
-            { text: "Cleaning Chemicals", tier: 3 },
-            { text: "Forever Chemicals", tier: 1 },
-            { text: "Sedentary Lifestyle", tier: 2 },
-            { text: "Screen Time", tier: 3 },
-            { text: "Tap Water", tier: 3 },
-            { text: "Physical Inactivity", tier: 2 }
+            { text: "Anxiety", tier: 1 },
+            { text: "Exercise", tier: 1 },
+            { text: "EMFs", tier: 1 }
         ];
 
-        // Position words so some pass behind the couple photo
-        // Mix of outer positions and positions that overlap the photo area
+        // Spread 7 words around the couple — all visible, not overlapping photo
         var positions = [
-            [2, 3],   [32, 5],  [55, 2],  [78, 8],
-            [0, 25],  [25, 30], [58, 28], [80, 32],
-            [0, 48],  [30, 50], [55, 48], [82, 52],
-            [0, 70],  [28, 72], [55, 68], [78, 72],
-            [38, 8]
+            [5, 5],   [55, 2],
+            [0, 32],  [75, 30],
+            [0, 60],  [72, 62],
+            [30, 88]
         ];
 
         var ring = document.getElementById('stressorRing');
@@ -1261,7 +1238,7 @@
                 coupleYoung.style.opacity = '1';
                 coupleOlder.style.opacity = '0';
                 wordEls.forEach(function(el, i) {
-                    if (i < 9) {
+                    if (i < 7) {
                         setTimeout(function() { el.classList.add('visible'); }, i * 200);
                     } else {
                         el.classList.remove('visible');
