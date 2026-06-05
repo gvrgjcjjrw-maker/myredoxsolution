@@ -321,35 +321,28 @@
             font-weight: 700;
         }
 
-        /* Left-side words drift right toward photo and fade */
-        .ring-word.drift-right.visible {
-            animation: driftRight 7s ease-in infinite;
+        /* Drift from left toward center */
+        .ring-word.active-right {
+            animation: driftRight 4s ease-in forwards;
         }
 
-        /* Right-side words drift left toward photo and fade */
-        .ring-word.drift-left.visible {
-            animation: driftLeft 7s ease-in infinite;
+        /* Drift from right toward center */
+        .ring-word.active-left {
+            animation: driftLeft 4s ease-in forwards;
         }
-
-        /* Stagger each word so they don't all move in sync */
-        .ring-word:nth-child(1) { animation-delay: 0s; }
-        .ring-word:nth-child(2) { animation-delay: 1.5s; }
-        .ring-word:nth-child(3) { animation-delay: 0.8s; }
-        .ring-word:nth-child(4) { animation-delay: 2s; }
-        .ring-word:nth-child(5) { animation-delay: 0.4s; }
-        .ring-word:nth-child(6) { animation-delay: 1.2s; }
-        .ring-word:nth-child(7) { animation-delay: 0.6s; }
 
         @keyframes driftRight {
-            0% { transform: translate(0, 0); opacity: 1; }
-            60% { opacity: 0.8; }
-            100% { transform: translate(80px, 10px); opacity: 0; }
+            0% { opacity: 0; transform: translateX(0); }
+            20% { opacity: 1; }
+            70% { opacity: 0.6; }
+            100% { transform: translateX(100px); opacity: 0; }
         }
 
         @keyframes driftLeft {
-            0% { transform: translate(0, 0); opacity: 1; }
-            60% { opacity: 0.8; }
-            100% { transform: translate(-80px, 10px); opacity: 0; }
+            0% { opacity: 0; transform: translateX(0); }
+            20% { opacity: 1; }
+            70% { opacity: 0.6; }
+            100% { transform: translateX(-100px); opacity: 0; }
         }
 
         /* Progress dots */
@@ -1184,38 +1177,58 @@
     <script>
     (function() {
         // ─── STRESSOR WORDS ───
-        // 7 stressors people instantly recognize in their own life
+        // 6 stressors people instantly recognize — shown one at a time
         var stressors = [
-            { text: "Diet", tier: 1 },
-            { text: "Medications", tier: 1 },
-            { text: "Alcohol", tier: 1 },
-            { text: "Poor Sleep", tier: 1 },
-            { text: "Anxiety", tier: 1 },
-            { text: "Exercise", tier: 1 },
-            { text: "EMFs", tier: 1 }
+            { text: "Diet", side: 'left' },
+            { text: "Medications", side: 'right' },
+            { text: "Alcohol", side: 'left' },
+            { text: "Poor Sleep", side: 'right' },
+            { text: "Anxiety", side: 'left' },
+            { text: "EMFs", side: 'right' }
         ];
 
-        // Words start near the edges and drift toward the couple photo
-        // [left%, top%, side] — side determines drift direction
+        // Starting positions — left words on far left, right words on far right
+        // Each word appears at a vertical position near the couple
         var positions = [
-            [8, 4, 'right'],     [60, 2, 'left'],
-            [10, 16, 'right'],   [62, 15, 'left'],
-            [8, 28, 'right'],    [60, 27, 'left'],
-            [12, 40, 'right']
+            [2, 15],    // Diet - left
+            [68, 12],   // Medications - right
+            [2, 30],    // Alcohol - left
+            [68, 28],   // Poor Sleep - right
+            [2, 42],    // Anxiety - left
+            [68, 40]    // EMFs - right
         ];
 
         var ring = document.getElementById('stressorRing');
+        var currentStressor = 0;
+        var stressorTimer = null;
+        var stressorStarted = false;
 
         // Create all word elements (hidden initially)
         var wordEls = stressors.map(function(s, i) {
             var el = document.createElement('span');
-            el.className = 'ring-word tier-' + s.tier + ' drift-' + positions[i][2];
+            el.className = 'ring-word tier-1';
             el.textContent = s.text;
             el.style.left = positions[i][0] + '%';
             el.style.top = positions[i][1] + '%';
             ring.appendChild(el);
-            return el;
+            return { el: el, side: s.side };
         });
+
+        // Show one stressor at a time
+        function showNextStressor() {
+            // Remove animation class from all
+            wordEls.forEach(function(w) {
+                w.el.classList.remove('active-right', 'active-left');
+                w.el.style.opacity = '0';
+            });
+
+            // Activate current word
+            var current = wordEls[currentStressor];
+            var animClass = current.side === 'left' ? 'active-right' : 'active-left';
+            current.el.classList.add(animClass);
+
+            currentStressor = (currentStressor + 1) % stressors.length;
+        }
 
         // ─── NARRATIVE PHASES ───
         var phases = document.querySelectorAll('.narrative-line');
@@ -1257,49 +1270,64 @@
             var coupleOlder = document.getElementById('coupleOlder');
             var replayBtn = document.getElementById('narrativeReplay');
 
-            // Phase 0: miracle — clean, no stressors, young couple
+            // Stop any running stressor cycle
+            clearInterval(stressorTimer);
+            stressorStarted = false;
+            wordEls.forEach(function(w) {
+                w.el.classList.remove('active-right', 'active-left');
+                w.el.style.opacity = '0';
+            });
+
+            // Phase 0: miracle — clean, young couple
             if (n === 0) {
                 coupleYoung.style.opacity = '1';
                 coupleOlder.style.opacity = '0';
-                wordEls.forEach(function(el) { el.classList.remove('visible'); });
                 replayBtn.classList.remove('visible');
             }
 
-            // Phase 1: stressors appear — show first 8 words
+            // Phase 1: stressors — one at a time drifting toward couple
             if (n === 1) {
                 coupleYoung.style.opacity = '1';
                 coupleOlder.style.opacity = '0';
-                wordEls.forEach(function(el, i) {
-                    if (i < 7) {
-                        setTimeout(function() { el.classList.add('visible'); }, i * 200);
-                    } else {
-                        el.classList.remove('visible');
-                    }
-                });
+                currentStressor = 0;
+                showNextStressor();
+                stressorTimer = setInterval(showNextStressor, 4500);
+                stressorStarted = true;
             }
 
-            // Phase 2: aging — couple crossfades, all stressors visible
+            // Phase 2: aging — couple crossfades, stressors keep cycling
             if (n === 2) {
                 coupleYoung.style.opacity = '0';
                 coupleOlder.style.opacity = '1';
-                wordEls.forEach(function(el, i) {
-                    setTimeout(function() { el.classList.add('visible'); }, i * 150);
-                });
+                if (!stressorStarted) {
+                    currentStressor = 0;
+                    showNextStressor();
+                    stressorTimer = setInterval(showNextStressor, 4500);
+                    stressorStarted = true;
+                }
             }
 
-            // Phase 3: the gap — all stressors, older couple, words pulse brighter
+            // Phase 3: the gap — older couple, stressors keep cycling
             if (n === 3) {
                 coupleYoung.style.opacity = '0';
                 coupleOlder.style.opacity = '1';
-                wordEls.forEach(function(el) { el.classList.add('visible'); });
+                if (!stressorStarted) {
+                    currentStressor = 0;
+                    showNextStressor();
+                    stressorTimer = setInterval(showNextStressor, 4500);
+                    stressorStarted = true;
+                }
             }
 
-            // Phase 4: hope — stressors fade, couple stays older, message of possibility
+            // Phase 4: hope — stressors stop, message of possibility
             if (n === 4) {
                 coupleYoung.style.opacity = '0';
                 coupleOlder.style.opacity = '1';
-                wordEls.forEach(function(el, i) {
-                    setTimeout(function() { el.classList.remove('visible'); }, i * 100);
+                clearInterval(stressorTimer);
+                stressorStarted = false;
+                wordEls.forEach(function(w) {
+                    w.el.classList.remove('active-right', 'active-left');
+                    w.el.style.opacity = '0';
                 });
                 replayBtn.classList.add('visible');
             }
