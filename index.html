@@ -144,6 +144,168 @@
             .manifesto-line.closing { font-size: 19px; }
         }
 
+        /* ─── HOOK ─── */
+        .hook {
+            background: var(--hero-bg);
+            padding: 72px 24px 56px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .hook-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hook-headline {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--on-dark);
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 36px;
+        }
+
+        .hook-stressors {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 16px;
+        }
+
+        .hook-stressors li {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: rgba(255,255,255,0.55);
+            padding: 6px 16px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+        }
+
+        .hook-preframe {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.45);
+            font-size: 15px;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 460px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hook-sub {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.5);
+            font-size: 17px;
+            margin-top: -20px;
+            margin-bottom: 36px;
+        }
+
+        .hook-why {
+            max-width: 540px;
+            margin: 0 auto 40px;
+            text-align: left;
+        }
+
+        .hook-why p {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .hook-why p:last-child {
+            color: var(--on-dark);
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .hook-proof {
+            max-width: 540px;
+            margin: 0 auto 44px;
+            text-align: left;
+            padding: 28px 32px;
+            background: rgba(255,255,255,0.04);
+            border-left: 3px solid #e8c170;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .hook-proof p {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.7);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .hook-proof-lead {
+            color: var(--on-dark) !important;
+            font-weight: 600;
+            font-size: 16px !important;
+        }
+
+        .hook-proof strong {
+            color: var(--on-dark);
+        }
+
+        .hook-proof-kicker {
+            color: #e8c170 !important;
+            font-style: italic;
+            margin-bottom: 0 !important;
+        }
+
+        .hook-turn {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--on-dark);
+            font-size: 22px;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        .hook-turn .but {
+            display: block;
+            margin-top: 12px;
+            color: #e8c170;
+            font-weight: 600;
+        }
+
+        .hook-scroll-cue {
+            margin-top: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .hook-scroll-cue span {
+            display: block;
+            margin-top: 8px;
+            font-size: 18px;
+            animation: gentle-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes gentle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+
+        @media (max-width: 768px) {
+            .hook { padding: 56px 20px 44px; }
+            .hook-headline { font-size: 26px; }
+            .hook-turn { font-size: 19px; }
+            .hook-stressors li { font-size: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            .hook-headline { font-size: 23px; }
+            .hook-turn { font-size: 17px; }
+        }
+
         /* ─── SECTIONS ─── */
         .section {
             padding: 80px 24px;
@@ -1145,6 +1307,50 @@
 <body>
 
     <!-- ═══════════════════════════════════════════
+         THE HOOK — First thing anyone sees
+         ═══════════════════════════════════════════ -->
+    <section class="hook">
+        <div class="hook-inner">
+            <p class="hook-preframe">What you're about to read may be disturbing. Consider it a wake-up call. But stay with me &mdash; there's a happy ending to this story.</p>
+
+            <h1 class="hook-headline">Everyone's body is under attack.</h1>
+            <p class="hook-sub">And most people have no idea.</p>
+
+            <ul class="hook-stressors">
+                <li>Processed food</li>
+                <li>Stress</li>
+                <li>Poor sleep</li>
+                <li>Toxins</li>
+                <li>Aging</li>
+                <li>Pollution</li>
+                <li>Medications</li>
+                <li>Sedentary lifestyle</li>
+            </ul>
+
+            <div class="hook-why">
+                <p>Why don't you feel it? Because your body has a built-in protection system &mdash; trillions of cells communicating every second, identifying threats, repairing damage, and neutralizing toxins before you ever notice.</p>
+                <p>It's been quietly saving your life since the day you were born.</p>
+            </div>
+
+            <div class="hook-proof">
+                <p class="hook-proof-lead">But here's how deep the problem goes:</p>
+                <p>In 2005, researchers tested the umbilical cord blood of 10 newborns &mdash; babies who hadn't yet taken their first breath of outside air. They found <strong>287 industrial chemicals</strong>. An average of <strong>200 per baby</strong>. Of those, 180 cause cancer. 217 are toxic to the brain and nervous system.</p>
+                <p>The placenta &mdash; designed to protect &mdash; couldn't filter them out.</p>
+                <p class="hook-proof-kicker">That's what we're born into. Imagine what's accumulated in your body over 30, 40, 50 years of living.</p>
+            </div>
+
+            <p class="hook-turn">
+                Your body was built to handle it.
+                <span class="but">Up to a point.</span>
+            </p>
+
+            <div class="hook-scroll-cue">
+                <span>↓</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
          SECTION 1: THE MANIFESTO
          ═══════════════════════════════════════════ -->
     <section class="manifesto" id="manifesto">
@@ -1378,6 +1584,13 @@
             </div>
 
             <p class="redox-punchline">It's not that the body forgot what to do. It's that the body can't hear itself as clearly anymore.</p>
+
+            <div class="redox-significance" style="margin-top: 40px; padding: 28px 32px; background: var(--card-gold); border-radius: var(--rounded-lg); border-left: 3px solid #c8a94e;">
+                <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px;"><strong>How significant is this?</strong> When an independent AI system trained on the entire medical literature was asked to rank a technology capable of restoring the body's natural redox balance, it placed it <strong>among the top 5 most important medical breakthroughs in human history</strong> &mdash; alongside vaccines, antibiotics, and gene editing.</p>
+                <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px;"><strong>Why?</strong> Because the medical literature identifies oxidative stress as a root cause or major accelerant of virtually every chronic health challenge we face. When asked what conditions a perfect redox modulator might affect, the AI's answer was striking: <em>nearly all of them.</em></p>
+                <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px;">James Watson &mdash; co-discoverer of the DNA double helix &mdash; has said the most important research he's now pursuing is in reactive oxygen species and redox medicine.</p>
+                <p style="font-size: 14px; color: var(--slate); line-height: 1.6; margin-bottom: 0; font-style: italic;">This isn't fringe science looking for legitimacy. It's foundational science waiting for the world to catch up.</p>
+            </div>
         </div>
     </section>
 
@@ -1387,31 +1600,96 @@
     <section class="story-section">
         <div class="story-inner">
             <span class="section-label">My Experience</span>
-            <h2>What I've Noticed</h2>
+            <h2>A Skeptic's Story</h2>
 
-            <p>I'll be honest &mdash; I was skeptical.</p>
+            <p>If someone had told me years ago that a simple nutritional supplement would have a profound impact on my life, I probably would have smiled politely and walked away.</p>
 
-            <p>I've seen enough health products come and go to know that most of them overpromise and underdeliver. I wasn't looking for a miracle. I was looking for something that made sense.</p>
+            <p>Like most people, I'd tried products before. They all came with glowing testimonials, impressive marketing, and promises that <em>this one was different.</em> Time after time, I found myself disappointed. So when I first heard about ASEA, I had absolutely no reason to believe it would be any different.</p>
 
-            <p>What made sense to me was this: if the body's communication system weakens over time, and if that communication system runs on specific molecules, then supplementing those molecules isn't a gimmick &mdash; it's just giving the body back what it's losing.</p>
+            <p>In fact, I was probably more skeptical than most.</p>
 
-            <p>So I tried it.</p>
+            <p>My career was in corporate accounting and finance. I spent decades looking for evidence, not stories. I wasn't searching for the next miracle product. I certainly wasn't looking for a network marketing company.</p>
 
-            <p>I'm not going to tell you it changed my life overnight. That's not how this works, and that's not what happened.</p>
+            <p>But one thing caught my attention.</p>
 
-            <p>What happened was quieter than that.</p>
+            <p>ASEA wasn't claiming to be another vitamin, antioxidant, herb, or exotic plant discovered in some remote jungle. It was talking about something I'd never heard before &mdash; <strong>Redox Signaling Molecules.</strong> Molecules my own body naturally produces. Molecules involved in cellular communication.</p>
+
+            <p>That was different.</p>
+
+            <p>I decided to try it, but my expectations were low. I honestly thought there was a good chance this would become another bottle collecting dust in the cabinet.</p>
+
+            <h3 style="font-family: 'Lora', Georgia, serif; font-size: 20px; color: var(--ink); margin: 40px 0 16px;">Then something unexpected happened.</h3>
+
+            <p>I didn't experience one dramatic overnight transformation. Instead, over time I began noticing things that had quietly changed.</p>
+
+            <p>Since my early twenties, I would occasionally experience episodes that could completely derail my day. Thankfully, they were relatively rare, but as I got older they seemed to be occurring more often. Whenever I felt one coming on, I would take medication and hope I had caught it early enough.</p>
+
+            <p>When I began drinking ASEA, I wasn't expecting anything to change in that area. It wasn't even on my radar.</p>
+
+            <p>Then, sometime later, I realized something surprising. <strong>I couldn't remember the last time I'd had one.</strong></p>
+
+            <p>Days turned into weeks. Weeks turned into months. Months eventually turned into years.</p>
+
+            <p>I can't say with certainty why they stopped. I can only tell you what I personally experienced. It wasn't something I expected, and it certainly wasn't something I was looking for.</p>
+
+            <p>There were other observations as well.</p>
 
             <ul class="story-changes">
-                <li>I started sleeping more deeply. Not dramatically &mdash; just noticeably. I'd wake up feeling like the sleep actually <em>did something.</em></li>
-                <li>My energy through the afternoon leveled out. The 2pm fog didn't disappear &mdash; it just stopped running the show.</li>
-                <li>Recovery after workouts shortened. Not from days to minutes. From days to a day.</li>
+                <li>The canker sores I'd struggled with since childhood went from being a chronic, recurring problem to becoming a rare occurrence.</li>
+                <li>My recovery from workouts improved. At an age when many people begin slowing down, I'm in the gym six days a week, keeping pace with people young enough to be my children.</li>
+                <li>My cholesterol eventually returned to a normal range.</li>
+                <li>Overall, I simply felt like my body was functioning better.</li>
             </ul>
 
-            <p>Small things. Subtle things. The kind of things you only notice because you've been paying attention.</p>
+            <h3 style="font-family: 'Lora', Georgia, serif; font-size: 20px; color: var(--ink); margin: 40px 0 16px;">Then something made an even deeper impression.</h3>
+
+            <p>My father was approaching 90 when I introduced him to ASEA.</p>
+
+            <p>Like anyone with an aging parent, I wanted him to enjoy as many healthy, active years as possible. I wasn't expecting miracles. I simply thought that if this product had become an important part of my life, it was worth sharing with his.</p>
+
+            <p>Over the years, I watched him continue to enjoy life, stay mentally sharp, and remain engaged with the people around him.</p>
+
+            <p>Then one day, completely out of the blue, he looked at me and said something I'll never forget.</p>
 
             <div class="story-reflection">
-                <p>These weren't the effects of something being <em>added</em> to my body. These felt like the effects of something being <em>restored.</em> Like the body was doing what it always knew how to do &mdash; it just needed the support to do it again.</p>
+                <p style="font-size: 20px; text-align: center;"><em>&ldquo;I think this stuff is keeping me alive.&rdquo;</em></p>
             </div>
+
+            <p>Those weren't my words. They were his.</p>
+
+            <p>Can I prove why he felt that way? No. But hearing those words from my father left a lasting impression on me. He has since passed away, but those words have stayed with me ever since.</p>
+
+            <h3 style="font-family: 'Lora', Georgia, serif; font-size: 20px; color: var(--ink); margin: 40px 0 16px;">And then there was the dog.</h3>
+
+            <p>Our aging German Shepherd had gradually slowed down over the years, just as you would expect. Then, after she began drinking ASEA as well, she started running, playing, and showing an energy level I hadn't seen in years.</p>
+
+            <p>Can I explain exactly why? No. I simply know what I observed.</p>
+
+            <p>And dogs don't read testimonials. They don't know what they're supposed to expect. They simply act the way they feel.</p>
+
+            <div class="story-reflection" style="margin-top: 40px;">
+                <p>Could I prove that ASEA was responsible for every one of these observations? No. And I would never make that claim. All I can honestly do is share my personal experience after nearly a decade of consistently using the product &mdash; and encourage people to do their own research and make their own decision.</p>
+            </div>
+
+            <h3 style="font-family: 'Lora', Georgia, serif; font-size: 20px; color: var(--ink); margin: 40px 0 16px;">That experience changed something bigger than my health.</h3>
+
+            <p>It changed my mission.</p>
+
+            <p>I began studying the science behind cellular communication, oxidative stress, and Redox Signaling Molecules. I read the research. I listened to physicians, scientists, and researchers. I wanted to understand why my experience might make biological sense.</p>
+
+            <p>The more I learned, the more convinced I became that this wasn't just another supplement. It represented an entirely different way of thinking about health &mdash; starting at the cellular level.</p>
+
+            <p>Today, I don't tell people what ASEA will do for them. I can't. Every person is different. What I can tell them is what happened to me. What I observed in my father. What I observed in our aging dog. Why the science fascinated me. And why I believe everyone deserves the opportunity to learn about a technology that almost no one has heard of.</p>
+
+            <p class="story-close" style="font-size: 18px; color: var(--ink); margin-top: 40px; font-weight: 500;">I'm not here to convince anyone.</p>
+
+            <p>I'm here because if someone had never shared this information with me, I would have missed out on something that has genuinely changed my life.</p>
+
+            <p>If you're perfectly happy with the way your body is functioning today, perhaps this story isn't for you. But if you've ever wondered whether your body is working as efficiently as it once did, perhaps it's worth taking a closer look.</p>
+
+            <p>Read the science. Ask hard questions. Be skeptical. I certainly was.</p>
+
+            <p style="font-weight: 600; color: var(--primary-deep);">Then decide for yourself.</p>
         </div>
     </section>
 
@@ -1799,6 +2077,28 @@
 
             <div class="faq-item">
                 <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Honestly? This sounds too good to be true.</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Good. That's the right instinct. Most things that sound too good to be true are.</p>
+                    <p>So let me tell you what changed my mind. I didn't start by believing in a product. I started by asking a question: <em>how important is redox signaling to the human body?</em></p>
+                    <p>Here's what I found:</p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>Over <strong>4,000 peer-reviewed papers</strong> on redox signaling in the National Library of Medicine &mdash; with the pace accelerating every year</li>
+                        <li><strong>James Watson</strong>, co-discoverer of DNA's double helix structure, now says the most important research he's doing is in reactive oxygen species &mdash; redox medicine</li>
+                        <li>When an independent AI system trained on the complete medical literature was asked to rank a technology that could restore the body's natural redox balance, it placed it <strong>among the top 5 medical breakthroughs in human history</strong> &mdash; alongside vaccines, antibiotics, and gene editing &mdash; and estimated its patent value in the <strong>hundreds of billions of dollars</strong></li>
+                    </ul>
+                    <p>When that same AI was asked what health challenges a perfect redox modulator might affect, its answer was simple: <em>virtually all of them</em> &mdash; because the medical literature identifies oxidative stress as a root cause or major accelerant of nearly every chronic condition we face.</p>
+                    <p>None of that has anything to do with ASEA. That's the <em>category</em> of science. The question of whether one company has actually figured out how to stabilize these molecules outside the body &mdash; that's a separate question, and a fair one.</p>
+                    <p>Here's one more thing to consider: the company behind this technology does somewhere in the range of $200&ndash;300 million in annual revenue. Meanwhile, the AI estimated the patent value of a true redox homeostatic modulator at <em>hundreds of billions</em>. That gap doesn't mean it doesn't work. It means the world hasn't caught up yet &mdash; which is exactly what the PubMed growth curve, the handwashing analogy, and James Watson's pivot all suggest.</p>
+                    <p>Here's what I'd suggest: don't take my word for it. Look up "redox signaling" on PubMed.gov yourself. Read about Dr. Gary Samuelson, the atomic medical physicist who stabilized the molecules. Watch the Genesis video. Talk to me, and I'll share what I've seen &mdash; not as a salesman, but as someone who was exactly as skeptical as you are right now.</p>
+                    <p>The difference between "too good to be true" and "too important to ignore" is evidence. I think the evidence is there. But I'd rather you decide that for yourself.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
                     <span>"Isn't this just salt water?"</span>
                     <span class="faq-icon">+</span>
                 </button>
@@ -1921,6 +2221,20 @@
                     <p>You absolutely should. Nothing replaces nutrition, movement, sleep, and stress management. This doesn't compete with any of that &mdash; it supports it.</p>
                     <p>Think of it this way: eating well gives your body the raw materials. Exercise builds strength and endurance. But neither of those can increase the production of redox signaling molecules your body has been losing since puberty. That decline happens regardless of how healthy your lifestyle is.</p>
                     <p>This isn't instead of a healthy life. It's the piece most healthy people are missing.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>But I'm healthy. I feel fine. Why would I need this?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>I'm glad you feel fine. Genuinely. But here's something worth sitting with:</p>
+                    <p>"Feeling fine" and "functioning optimally at the cellular level" are not the same thing. Your body is doing extraordinary work right now that you'll never feel &mdash; identifying and eliminating cellular threats, repairing DNA damage, clearing out cells that aren't functioning correctly. It does this silently, around the clock, without sending you a notification.</p>
+                    <p>The question isn't whether that system works. It's whether it has the same resources to work as well as it did 20 years ago.</p>
+                    <p>As Dr. Ray Dixon puts it after 38 years of clinical practice: everyone past puberty is deficient in redox signaling molecules. Not "might be." <em>Is.</em> It's simple math &mdash; roughly 1% fewer per year, no exceptions, regardless of how healthy your lifestyle is. A 50-year-old has significantly fewer of these molecules than they did at 20, no matter how well they eat or how often they exercise.</p>
+                    <p>Most people don't think about cellular maintenance until something forces them to. This is a chance to think about it before that happens.</p>
                 </div>
             </div>
 
