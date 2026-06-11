@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Stories — My Redox Solution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a7d7b;
+            --primary-deep: #1e5f5d;
+            --primary-light: #e6f3f2;
+
+            --hero-bg: #1c2a35;
+
+            --canvas: #ffffff;
+            --surface: #f8f6f3;
+            --surface-warm: #faf8f5;
+
+            --hairline: #e5e1db;
+            --hairline-soft: #ede9e4;
+
+            --ink: #1a1a1a;
+            --charcoal: #37352f;
+            --slate: #5d5b54;
+            --steel: #787671;
+            --stone: #a4a097;
+            --muted: #bbb8b1;
+            --on-dark: #ffffff;
+            --on-dark-muted: #a4a097;
+
+            --rounded-sm: 6px;
+            --rounded-md: 8px;
+            --rounded-lg: 12px;
+            --rounded-xl: 16px;
+
+            --shadow-card: rgba(15, 15, 15, 0.08) 0px 4px 12px 0px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, 'Segoe UI', Helvetica, sans-serif;
+            background: var(--canvas);
+            color: var(--charcoal);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--ink);
+        }
+
+        a { color: var(--primary); }
+
+        /* ─── HEADER ─── */
+        .page-header {
+            background: var(--hero-bg);
+            padding: 60px 24px 56px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: var(--on-dark);
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            font-size: 17px;
+            color: var(--on-dark-muted);
+            max-width: 560px;
+            margin: 0 auto 24px;
+            line-height: 1.6;
+        }
+
+        .page-header .back-link {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+        }
+
+        .page-header .back-link:hover {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* ─── FILTER BAR ─── */
+        .filter-bar {
+            background: var(--surface);
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--hairline);
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .filter-bar-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--stone);
+            margin-right: 8px;
+        }
+
+        .filter-btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--hairline);
+            background: var(--canvas);
+            color: var(--slate);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--on-dark);
+            border-color: var(--primary);
+        }
+
+        /* ─── TESTIMONIAL GRID ─── */
+        .testimonials-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--canvas);
+            border: 1px solid var(--hairline);
+            border-radius: var(--rounded-lg);
+            padding: 28px;
+            transition: all 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-card);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-category {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .testimonial-name {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .testimonial-context {
+            font-size: 13px;
+            color: var(--stone);
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .testimonial-quote {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--charcoal);
+            margin-bottom: 0;
+        }
+
+        .testimonial-quote em {
+            font-style: italic;
+        }
+
+        .testimonial-video-link {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .testimonial-video-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ─── EMPTY STATE ─── */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 24px;
+            color: var(--stone);
+            font-size: 16px;
+        }
+
+        /* ─── CTA BOTTOM ─── */
+        .testimonials-cta {
+            background: var(--surface-warm);
+            padding: 64px 24px;
+            text-align: center;
+            border-top: 1px solid var(--hairline-soft);
+        }
+
+        .testimonials-cta-inner {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .testimonials-cta h2 {
+            margin-bottom: 16px;
+        }
+
+        .testimonials-cta p {
+            font-size: 17px;
+            color: var(--slate);
+            margin-bottom: 24px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--on-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: var(--rounded-md);
+            text-decoration: none;
+            transition: background 0.15s ease;
+        }
+
+        .btn-primary:hover { background: var(--primary-deep); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--surface);
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--hairline);
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--steel);
+            margin-bottom: 8px;
+        }
+
+        .footer .disclaimer {
+            font-size: 12px;
+            color: var(--stone);
+            font-style: italic;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.5;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .page-header { padding: 48px 20px 40px; }
+            .page-header h1 { font-size: 28px; }
+            .testimonials-grid { grid-template-columns: 1fr; padding: 32px 20px 60px; }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 { font-size: 24px; }
+            .testimonial-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════
+         PAGE HEADER
+         ═══════════════════════════════════════════ -->
+    <header class="page-header">
+        <a href="index.html" class="back-link">&larr; Back to main page</a>
+        <h1>Real People. Real Stories.</h1>
+        <p>These aren't paid endorsements or scripted reviews. They're people who tried something, noticed a difference, and wanted to share what happened. Each story is their own.</p>
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+         FILTER BAR
+         ═══════════════════════════════════════════ -->
+    <div class="filter-bar">
+        <div class="filter-bar-inner">
+            <span class="filter-label">Filter:</span>
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="energy">Energy</button>
+            <button class="filter-btn" data-category="sleep">Sleep</button>
+            <button class="filter-btn" data-category="recovery">Recovery</button>
+            <button class="filter-btn" data-category="mental-clarity">Mental Clarity</button>
+            <button class="filter-btn" data-category="immune">Immune</button>
+            <button class="filter-btn" data-category="joints">Joints &amp; Mobility</button>
+            <button class="filter-btn" data-category="skin">Skin</button>
+            <button class="filter-btn" data-category="gut">Gut Health</button>
+            <button class="filter-btn" data-category="athlete">Athlete</button>
+            <button class="filter-btn" data-category="skeptic">Former Skeptic</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         TESTIMONIALS GRID
+         ═══════════════════════════════════════════ -->
+    <div class="testimonials-grid" id="testimonialGrid">
+
+        <!-- ── PLACEHOLDER TESTIMONIALS ──
+             Replace these with real testimonials as you collect them.
+             Each card needs:
+             - data-category: matches a filter button (comma-separate for multiple)
+             - Name, context, and their words
+             - Optional video link
+        -->
+
+        <div class="testimonial-card" data-category="energy,skeptic">
+            <span class="testimonial-category">Energy / Former Skeptic</span>
+            <div class="testimonial-name">Placeholder Name</div>
+            <div class="testimonial-context">Age 52 &mdash; tried ASEA after months of skepticism</div>
+            <p class="testimonial-quote">"Replace this with a real testimonial. Include their actual words &mdash; the more specific and unpolished, the more believable. What did they notice? When? What surprised them?"</p>
+            <a href="#" class="testimonial-video-link">Watch their story &rarr;</a>
+        </div>
+
+        <div class="testimonial-card" data-category="sleep">
+            <span class="testimonial-category">Sleep</span>
+            <div class="testimonial-name">Placeholder Name</div>
+            <div class="testimonial-context">Struggled with sleep quality for years</div>
+            <p class="testimonial-quote">"Replace with real testimonial about sleep improvements. Did they fall asleep faster? Stay asleep? Wake up feeling different? Specific details matter."</p>
+            <a href="#" class="testimonial-video-link">Watch their story &rarr;</a>
+        </div>
+
+        <div class="testimonial-card" data-category="recovery,athlete">
+            <span class="testimonial-category">Recovery / Athlete</span>
+            <div class="testimonial-name">Placeholder Name</div>
+            <div class="testimonial-context">Competitive athlete &mdash; CrossFit / marathon / etc.</div>
+            <p class="testimonial-quote">"Replace with real testimonial about athletic recovery. How did recovery change? Times? Soreness? Ability to train consecutive days?"</p>
+            <a href="#" class="testimonial-video-link">Watch their story &rarr;</a>
+        </div>
+
+        <div class="testimonial-card" data-category="mental-clarity">
+            <span class="testimonial-category">Mental Clarity</span>
+            <div class="testimonial-name">Placeholder Name</div>
+            <div class="testimonial-context">Professional who noticed cognitive changes</div>
+            <p class="testimonial-quote">"Replace with real testimonial about mental clarity, focus, or brain fog lifting. What specifically changed in their daily thinking or work?"</p>
+            <a href="#" class="testimonial-video-link">Watch their story &rarr;</a>
+        </div>
+
+        <div class="testimonial-card" data-category="immune">
+            <span class="testimonial-category">Immune Function</span>
+            <div class="testimonial-name">Placeholder Name</div>
+            <div class="testimonial-context">Noticed immune changes over time</div>
+            <p class="testimonial-quote">"Replace with real testimonial about immune function. Did they stop getting sick as often? Recover faster from illness? Be specific."</p>
+            <a href="#" class="testimonial-video-link">Watch their story &rarr;</a>
+        </div>
+
+        <div class="testimonial-card" data-category="joints">
+            <span class="testimonial-category">Joints &amp; Mobility</span>
+            <div class="testimonial-name">Placeholder Name</div>
+            <div class="testimonial-context">Dealt with joint discomfort for years</div>
+            <p class="testimonial-quote">"Replace with real testimonial about joint comfort or mobility improvements. What could they do that they couldn't before? Morning stiffness? Range of motion?"</p>
+            <a href="#" class="testimonial-video-link">Watch their story &rarr;</a>
+        </div>
+
+        <div class="testimonial-card" data-category="skin">
+            <span class="testimonial-category">Skin</span>
+            <div class="testimonial-name">Placeholder Name</div>
+            <div class="testimonial-context">Noticed skin changes with Renu 28</div>
+            <p class="testimonial-quote">"Replace with real testimonial about skin improvements. Texture? Appearance? Specific areas? Before/after timeline?"</p>
+            <a href="#" class="testimonial-video-link">Watch their story &rarr;</a>
+        </div>
+
+        <div class="testimonial-card" data-category="gut">
+            <span class="testimonial-category">Gut Health</span>
+            <div class="testimonial-name">Placeholder Name</div>
+            <div class="testimonial-context">Struggled with digestive issues</div>
+            <p class="testimonial-quote">"Replace with real testimonial about gut health or digestive improvements. What changed? How quickly? What had they tried before?"</p>
+            <a href="#" class="testimonial-video-link">Watch their story &rarr;</a>
+        </div>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         CTA BOTTOM
+         ═══════════════════════════════════════════ -->
+    <section class="testimonials-cta">
+        <div class="testimonials-cta-inner">
+            <h2>Curious?</h2>
+            <p>Every one of these people started exactly where you are now &mdash; wondering if this was real. The only way to know is to try.</p>
+            <a id="cta-email" href="mailto:fstrehlow@gmail.com" class="btn-primary">Talk to Fritz</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════ -->
+    <footer class="footer">
+        <p id="footer-name">Fritz Strehlow &mdash; ASEA Independent Associate</p>
+        <p class="disclaimer">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Testimonials reflect individual experiences and are not guaranteed.</p>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════
+         FILTER + REP PERSONALIZATION SCRIPTS
+         ═══════════════════════════════════════════ -->
+    <script>
+    (function() {
+        // ─── FILTER LOGIC ───
+        var filterBtns = document.querySelectorAll('.filter-btn');
+        var cards = document.querySelectorAll('.testimonial-card');
+        var grid = document.getElementById('testimonialGrid');
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                // Update active state
+                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+
+                var category = btn.dataset.category;
+
+                // Show/hide cards
+                var visibleCount = 0;
+                cards.forEach(function(card) {
+                    if (category === 'all' || card.dataset.category.indexOf(category) !== -1) {
+                        card.style.display = '';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show "no results" if needed
+                var noResults = document.querySelector('.no-results');
+                if (noResults) noResults.remove();
+                if (visibleCount === 0) {
+                    var msg = document.createElement('div');
+                    msg.className = 'no-results';
+                    msg.textContent = 'More stories coming soon for this category.';
+                    grid.appendChild(msg);
+                }
+            });
+        });
+
+        // ─── REP PERSONALIZATION ───
+        var reps = {
+            fritz: { name: 'Fritz', fullName: 'Fritz Strehlow', email: 'fstrehlow@gmail.com' },
+            paul: { name: 'Paul', fullName: 'Paul & Assia Strehlow', email: 'PAUL_EMAIL_HERE' },
+            ricky: { name: 'Ricky', fullName: 'Ricky Strehlow', email: 'RICKY_EMAIL_HERE' }
+        };
+
+        var params = new URLSearchParams(window.location.search);
+        var repKey = (params.get('rep') || 'fritz').toLowerCase();
+        var rep = reps[repKey] || reps.fritz;
+
+        var emailBtn = document.getElementById('cta-email');
+        if (emailBtn) {
+            emailBtn.href = 'mailto:' + rep.email;
+            emailBtn.textContent = 'Talk to ' + rep.name;
+        }
+
+        var footerName = document.getElementById('footer-name');
+        if (footerName) {
+            footerName.textContent = rep.fullName + ' — ASEA Independent Associate';
+        }
+
+        document.title = 'Real Stories — ' + rep.fullName;
+    })();
+    </script>
+
+</body>
+</html>
