@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Skeptic's Story — My Redox Solution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a7d7b;
+            --primary-deep: #1e5f5d;
+            --primary-light: #e6f3f2;
+            --hero-bg: #1c2a35;
+            --canvas: #ffffff;
+            --surface: #f8f6f3;
+            --surface-warm: #faf8f5;
+            --card-cream: #faf5ed;
+            --card-gold: #fdf6e8;
+            --hairline: #e5e1db;
+            --hairline-soft: #ede9e4;
+            --ink: #1a1a1a;
+            --charcoal: #37352f;
+            --slate: #5d5b54;
+            --steel: #787671;
+            --stone: #a4a097;
+            --on-dark: #ffffff;
+            --rounded-sm: 6px;
+            --rounded-md: 8px;
+            --rounded-lg: 12px;
+            --shadow-card: rgba(15, 15, 15, 0.08) 0px 4px 12px 0px;
+            --max-width: 700px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, 'Segoe UI', Helvetica, sans-serif;
+            background: var(--canvas);
+            color: var(--charcoal);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 { font-family: 'Lora', Georgia, serif; color: var(--ink); }
+
+        /* ─── NAV ─── */
+        .nav {
+            background: var(--hero-bg);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-home {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--on-dark);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .nav-home:hover { opacity: 1; }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover { color: var(--on-dark); }
+        .nav-links a.active { color: var(--on-dark); }
+
+        @media (max-width: 480px) {
+            .nav { flex-direction: column; gap: 12px; }
+            .nav-links { gap: 16px; }
+        }
+
+        /* ─── HERO ─── */
+        .page-hero {
+            background: var(--hero-bg);
+            padding: 60px 24px 72px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            color: var(--on-dark);
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .page-hero p {
+            color: rgba(255,255,255,0.55);
+            font-size: 17px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero { padding: 44px 20px 56px; }
+            .page-hero h1 { font-size: 28px; }
+        }
+
+        /* ─── STORY ─── */
+        .story-section {
+            padding: 64px 24px 80px;
+        }
+
+        .story-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .story-inner p {
+            font-size: 17px;
+            line-height: 1.75;
+            margin-bottom: 20px;
+        }
+
+        .story-inner h3 {
+            font-size: 20px;
+            margin: 48px 0 16px;
+        }
+
+        .story-changes {
+            margin: 32px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .story-changes li {
+            font-size: 17px;
+            line-height: 1.75;
+            color: var(--charcoal);
+            padding: 12px 0 12px 20px;
+            border-bottom: 1px solid var(--hairline-soft);
+            position: relative;
+        }
+
+        .story-changes li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .story-changes li:last-child { border-bottom: none; }
+
+        .story-reflection {
+            background: var(--surface);
+            border-radius: var(--rounded-lg);
+            padding: 28px;
+            margin: 32px 0;
+            border: 1px solid var(--hairline);
+        }
+
+        .story-reflection p {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        strong { font-weight: 600; color: var(--ink); }
+        em { font-style: italic; }
+
+        /* ─── FAMILY ─── */
+        .family-section {
+            background: var(--surface);
+            padding: 64px 24px;
+            border-top: 1px solid var(--hairline-soft);
+        }
+
+        .family-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .family-inner h2 { margin-bottom: 8px; }
+
+        .family-intro {
+            color: var(--slate);
+            font-size: 17px;
+            margin-bottom: 40px;
+        }
+
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .family-card {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            padding: 24px 16px;
+            border-radius: var(--rounded-lg);
+            transition: all 0.2s ease;
+        }
+
+        .family-card:hover {
+            background: var(--canvas);
+            box-shadow: var(--shadow-card);
+            transform: translateY(-2px);
+        }
+
+        .family-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            overflow: hidden;
+            border: 3px solid var(--hairline);
+            transition: border-color 0.2s ease;
+        }
+
+        .family-card:hover .family-photo { border-color: var(--primary); }
+
+        .family-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+        }
+
+        .family-name {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        .family-role {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .family-bio {
+            font-size: 14px;
+            line-height: 1.55;
+            color: var(--slate);
+            margin-bottom: 0;
+        }
+
+        .family-link {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .family-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            padding: 56px 24px;
+            text-align: center;
+            background: var(--surface-warm);
+            border-top: 1px solid var(--hairline-soft);
+        }
+
+        .cta-section p {
+            font-size: 17px;
+            color: var(--slate);
+            max-width: 480px;
+            margin: 0 auto 24px;
+        }
+
+        .contact-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--on-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: var(--rounded-md);
+            text-decoration: none;
+            transition: background 0.15s ease;
+        }
+
+        .btn-primary:hover { background: var(--primary-deep); }
+
+        .btn-secondary {
+            display: inline-block;
+            color: var(--charcoal);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: var(--rounded-md);
+            text-decoration: none;
+            border: 1px solid var(--hairline);
+            transition: border-color 0.15s ease;
+        }
+
+        .btn-secondary:hover { border-color: var(--charcoal); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--surface);
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--hairline);
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--steel);
+            margin-bottom: 8px;
+        }
+
+        .footer .disclaimer {
+            font-size: 12px;
+            color: var(--stone);
+            font-style: italic;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a class="nav-home" href="index.html">My Redox Solution</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="my-story.html" class="active">My Story</a>
+            <a href="faq.html">FAQ</a>
+            <a href="doctors.html">Doctors</a>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <h1>A Skeptic's Story</h1>
+        <p>How a corporate accountant who didn't believe in supplements ended up sharing one with everyone he knows.</p>
+    </div>
+
+    <section class="story-section">
+        <div class="story-inner">
+
+            <p>If someone had told me years ago that a simple nutritional supplement would have a profound impact on my life, I probably would have smiled politely and walked away.</p>
+
+            <p>Like most people, I'd tried products before. They all came with glowing testimonials, impressive marketing, and promises that <em>this one was different.</em> The weight loss pill that did nothing. The hair regrowth product that promised "most" people see results. Time after time, I found myself disillusioned &mdash; not just with individual products, but with the entire system of product marketing. So when I first heard about ASEA, I had absolutely no reason to believe it would be any different.</p>
+
+            <p>In fact, I was probably more skeptical than most. I'd reached the point where I wouldn't even try a product unless it came with a money-back guarantee. That's not disappointment &mdash; that's a protective wall built from years of broken promises.</p>
+
+            <p>My career was in corporate accounting and finance. I spent decades looking for evidence, not stories. I wasn't searching for the next miracle product. I certainly wasn't looking for a network marketing company.</p>
+
+            <p>But one thing caught my attention.</p>
+
+            <p>ASEA wasn't claiming to be another vitamin, antioxidant, herb, or exotic plant discovered in some remote jungle. It was talking about something I'd never heard before &mdash; <strong>Redox Signaling Molecules.</strong> Molecules my own body naturally produces. Molecules involved in cellular communication.</p>
+
+            <p>That was different.</p>
+
+            <p>I decided to try it, but my expectations were low. I honestly thought there was a good chance this would become another bottle collecting dust in the cabinet.</p>
+
+            <h3>Then something unexpected happened.</h3>
+
+            <p>I didn't experience one dramatic overnight transformation. Instead, over time I began noticing things that had quietly changed.</p>
+
+            <p>Since my early twenties, I would occasionally experience episodes that could completely derail my day. Thankfully, they were relatively rare, but as I got older they seemed to be occurring more often. Whenever I felt one coming on, I would take medication and hope I had caught it early enough.</p>
+
+            <p>When I began drinking ASEA, I wasn't expecting anything to change in that area. It wasn't even on my radar.</p>
+
+            <p>Then, sometime later, I realized something surprising. <strong>I couldn't remember the last time I'd had one.</strong></p>
+
+            <p>Days turned into weeks. Weeks turned into months. Months eventually turned into years.</p>
+
+            <p>I can't say with certainty why they stopped. I can only tell you what I personally experienced. It wasn't something I expected, and it certainly wasn't something I was looking for.</p>
+
+            <p>There were other observations as well.</p>
+
+            <ul class="story-changes">
+                <li>The canker sores I'd struggled with since childhood went from being a chronic, recurring problem to becoming a rare occurrence.</li>
+                <li>My recovery from workouts improved. At an age when many people begin slowing down, I'm in the gym six days a week, keeping pace with people young enough to be my children.</li>
+                <li>My cholesterol eventually returned to a normal range.</li>
+                <li>I kept catching myself remembering things I would usually struggle to recall.</li>
+                <li>Overall, I simply felt like my body was functioning better.</li>
+            </ul>
+
+            <h3>Then something made an even deeper impression.</h3>
+
+            <p>My father was approaching 90 when I introduced him to ASEA.</p>
+
+            <p>Like anyone with an aging parent, I wanted him to enjoy as many healthy, active years as possible. I wasn't expecting miracles. I simply thought that if this product had become an important part of my life, it was worth sharing with his.</p>
+
+            <p>Over the years, I watched him continue to enjoy life, stay mentally sharp, and remain engaged with the people around him.</p>
+
+            <p>Then one day, completely out of the blue, he looked at me and said something I'll never forget.</p>
+
+            <div class="story-reflection">
+                <p style="font-size: 20px; text-align: center;"><em>&ldquo;I think this stuff is keeping me alive.&rdquo;</em></p>
+            </div>
+
+            <p>Those weren't my words. They were his.</p>
+
+            <p>Can I prove why he felt that way? No. But hearing those words from my father left a lasting impression on me. He has since passed away, but those words have stayed with me ever since.</p>
+
+            <h3>And then there was the dog.</h3>
+
+            <p>Our aging German Shepherd had gradually slowed down over the years, just as you would expect. Then, after she began drinking ASEA as well, she started running, playing, and showing an energy level I hadn't seen in years.</p>
+
+            <p>Can I explain exactly why? No. I simply know what I observed.</p>
+
+            <p>And dogs don't read testimonials. They don't know what they're supposed to expect. They simply act the way they feel.</p>
+
+            <div class="story-reflection" style="margin-top: 40px;">
+                <p>Could I prove that ASEA was responsible for every one of these observations? No. And I would never make that claim. All I can honestly do is share my personal experience after nearly a decade of consistently using the product &mdash; and encourage people to do their own research and make their own decision.</p>
+            </div>
+
+            <h3>That experience changed something bigger than my health.</h3>
+
+            <p>It changed my mission.</p>
+
+            <p>I began studying the science behind cellular communication, oxidative stress, and Redox Signaling Molecules. I read the research. I listened to physicians, scientists, and researchers. I wanted to understand why my experience might make biological sense.</p>
+
+            <p>The more I learned, the more convinced I became that this wasn't just another supplement. It represented an entirely different way of thinking about health &mdash; starting at the cellular level.</p>
+
+            <p>Today, I don't tell people what ASEA will do for them. I can't. Every person is different. What I can tell them is what happened to me. What I observed in my father. What I observed in our aging dog. Why the science fascinated me. And why I believe everyone deserves the opportunity to learn about a technology that almost no one has heard of.</p>
+
+            <p style="font-size: 18px; color: var(--ink); margin-top: 40px; font-weight: 500;">I'm not here to convince anyone.</p>
+
+            <p>I'm here because if someone had never shared this information with me, I would have missed out on something that has genuinely changed my life.</p>
+
+            <p>If you're perfectly happy with the way your body is functioning today, perhaps this story isn't for you. But if you've ever wondered whether your body is working as efficiently as it once did, perhaps it's worth taking a closer look.</p>
+
+            <p>Read the science. Ask hard questions. Be skeptical. I certainly was.</p>
+
+            <p style="font-weight: 600; color: var(--primary-deep);">Then decide for yourself.</p>
+        </div>
+    </section>
+
+    <!-- MEET THE FAMILY -->
+    <section class="family-section">
+        <div class="family-inner">
+            <span style="font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary); margin-bottom: 12px; display: block;">Why This Is Personal</span>
+            <h2>Meet the Strehlows</h2>
+            <p class="family-intro">My family uses this too. Each of them found their own reason.</p>
+
+            <div class="family-grid">
+                <a class="family-card" href="https://aseaglobal.com/PaulIV" target="_blank">
+                    <div class="family-photo">
+                        <img src="Assia.jpeg" alt="Paul & Assia Strehlow">
+                    </div>
+                    <div class="family-name">Paul & Assia</div>
+                    <div class="family-role">The Next Generation</div>
+                    <p class="family-bio">They saw what it did for our family and started using it themselves. Now they share it with others the same way I do.</p>
+                    <span class="family-link">Learn more &rarr;</span>
+                </a>
+
+                <a class="family-card" href="https://www.aseaglobal.com/RStrehlow" target="_blank">
+                    <div class="family-photo">
+                        <img src="Ricky.jpeg" alt="Ricky Strehlow">
+                    </div>
+                    <div class="family-name">Ricky</div>
+                    <div class="family-role">The Athlete</div>
+                    <p class="family-bio">Martial arts, track & field at Cal Poly, and now CrossFit. Ricky uses it for recovery &mdash; because at his level, recovery is performance.</p>
+                    <span class="family-link">Learn more &rarr;</span>
+                </a>
+
+                <a class="family-card" href="https://strehlowphotography.com/" target="_blank">
+                    <div class="family-photo">
+                        <img src="Parker.jpg" alt="Parker Strehlow">
+                    </div>
+                    <div class="family-name">Parker</div>
+                    <div class="family-role">Wedding Photographer & Videographer</div>
+                    <p class="family-bio">Captures moments that matter. One of his videos &mdash; a surprise orchestral proposal &mdash; has been seen over 30 million times.</p>
+                    <span class="family-link">See his work &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <p>Have questions about my experience? Want to learn more about what I've been taking for nearly a decade?</p>
+        <div class="contact-row">
+            <a id="cta-email" href="mailto:fstrehlow@gmail.com" class="btn-primary">Email Fritz</a>
+            <a href="faq.html" class="btn-secondary">Read the FAQ</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p id="footer-name">Fritz Strehlow &mdash; ASEA Independent Associate</p>
+        <p class="disclaimer">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Testimonials reflect individual experiences and are not guaranteed.</p>
+    </footer>
+
+    <script>
+    (function() {
+        var reps = {
+            fritz: { name: 'Fritz', fullName: 'Fritz Strehlow', email: 'fstrehlow@gmail.com', contactLabel: 'Email Fritz' },
+            paul: { name: 'Paul', fullName: 'Paul & Assia Strehlow', email: 'PAUL_EMAIL_HERE', contactLabel: 'Email Paul' },
+            ricky: { name: 'Ricky', fullName: 'Ricky Strehlow', email: 'RICKY_EMAIL_HERE', contactLabel: 'Email Ricky' }
+        };
+        var params = new URLSearchParams(window.location.search);
+        var repKey = (params.get('rep') || 'fritz').toLowerCase();
+        var rep = reps[repKey] || reps.fritz;
+        var emailBtn = document.getElementById('cta-email');
+        if (emailBtn) { emailBtn.href = 'mailto:' + rep.email; emailBtn.textContent = rep.contactLabel; }
+        var footerName = document.getElementById('footer-name');
+        if (footerName) { footerName.textContent = rep.fullName + ' — ASEA Independent Associate'; }
+        document.title = 'A Skeptic\'s Story — ' + rep.fullName;
+    })();
+    </script>
+
+</body>
+</html>

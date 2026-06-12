@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — My Redox Solution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a7d7b;
+            --primary-deep: #1e5f5d;
+            --primary-light: #e6f3f2;
+            --hero-bg: #1c2a35;
+            --canvas: #ffffff;
+            --surface: #f8f6f3;
+            --surface-warm: #faf8f5;
+            --hairline: #e5e1db;
+            --hairline-soft: #ede9e4;
+            --ink: #1a1a1a;
+            --charcoal: #37352f;
+            --slate: #5d5b54;
+            --steel: #787671;
+            --stone: #a4a097;
+            --on-dark: #ffffff;
+            --rounded-md: 8px;
+            --rounded-lg: 12px;
+            --max-width: 700px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, 'Segoe UI', Helvetica, sans-serif;
+            background: var(--canvas);
+            color: var(--charcoal);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 { font-family: 'Lora', Georgia, serif; color: var(--ink); }
+
+        /* ─── NAV ─── */
+        .nav {
+            background: var(--hero-bg);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-home {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--on-dark);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .nav-home:hover { opacity: 1; }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover { color: var(--on-dark); }
+        .nav-links a.active { color: var(--on-dark); }
+
+        @media (max-width: 480px) {
+            .nav { flex-direction: column; gap: 12px; }
+            .nav-links { gap: 16px; }
+        }
+
+        /* ─── HERO ─── */
+        .page-hero {
+            background: var(--hero-bg);
+            padding: 60px 24px 72px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            color: var(--on-dark);
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .page-hero p {
+            color: rgba(255,255,255,0.55);
+            font-size: 17px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero { padding: 44px 20px 56px; }
+            .page-hero h1 { font-size: 28px; }
+        }
+
+        /* ─── FAQ ─── */
+        .faq-section {
+            padding: 64px 24px 80px;
+        }
+
+        .faq-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        .faq-item:first-of-type {
+            border-top: 1px solid var(--hairline);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.4;
+            gap: 16px;
+        }
+
+        .faq-question:hover { color: var(--primary-deep); }
+
+        .faq-icon {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 300;
+            color: var(--stone);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            width: 24px;
+            text-align: center;
+        }
+
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 800px;
+            padding: 0 0 24px 0;
+        }
+
+        .faq-answer p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--slate);
+            margin-bottom: 12px;
+        }
+
+        .faq-answer p:last-child { margin-bottom: 0; }
+        .faq-answer strong { color: var(--charcoal); }
+
+        @media (max-width: 768px) {
+            .faq-section { padding: 44px 20px 60px; }
+            .faq-question { font-size: 16px; }
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            padding: 56px 24px;
+            text-align: center;
+            background: var(--surface-warm);
+            border-top: 1px solid var(--hairline-soft);
+        }
+
+        .cta-section p {
+            font-size: 17px;
+            color: var(--slate);
+            max-width: 480px;
+            margin: 0 auto 24px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--on-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: var(--rounded-md);
+            text-decoration: none;
+            transition: background 0.15s ease;
+        }
+
+        .btn-primary:hover { background: var(--primary-deep); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--surface);
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--hairline);
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--steel);
+            margin-bottom: 8px;
+        }
+
+        .footer .disclaimer {
+            font-size: 12px;
+            color: var(--stone);
+            font-style: italic;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a class="nav-home" href="index.html">My Redox Solution</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="my-story.html">My Story</a>
+            <a href="faq.html" class="active">FAQ</a>
+            <a href="doctors.html">Doctors</a>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <h1>Common Questions</h1>
+        <p>These are the questions I'd ask too. Here are my honest answers.</p>
+    </div>
+
+    <section class="faq-section">
+        <div class="faq-inner">
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Honestly? This sounds too good to be true.</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Good. That's the right instinct. Most things that sound too good to be true are.</p>
+                    <p>So let me tell you what changed my mind. I didn't start by believing in a product. I started by asking a question: <em>how important is redox signaling to the human body?</em></p>
+                    <p>Here's what I found:</p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>Over <strong>4,000 peer-reviewed papers</strong> on redox signaling in the National Library of Medicine &mdash; with the pace accelerating every year</li>
+                        <li><strong>James Watson</strong>, co-discoverer of DNA's double helix structure, now says the most important research he's doing is in reactive oxygen species &mdash; redox medicine</li>
+                        <li>When an independent AI system trained on the complete medical literature was asked to rank a technology that could restore the body's natural redox balance, it placed it <strong>among the top 5 medical breakthroughs in human history</strong> &mdash; alongside vaccines, antibiotics, and gene editing &mdash; and estimated its patent value in the <strong>hundreds of billions of dollars</strong></li>
+                    </ul>
+                    <p>When that same AI was asked what health challenges a perfect redox modulator might affect, its answer was simple: <em>virtually all of them</em> &mdash; because the medical literature identifies oxidative stress as a root cause or major accelerant of nearly every chronic condition we face.</p>
+                    <p>None of that has anything to do with ASEA. That's the <em>category</em> of science. The question of whether one company has actually figured out how to stabilize these molecules outside the body &mdash; that's a separate question, and a fair one.</p>
+                    <p>Here's one more thing to consider: the company behind this technology does somewhere in the range of $200&ndash;300 million in annual revenue. Meanwhile, the AI estimated the patent value of a true redox homeostatic modulator at <em>hundreds of billions</em>. That gap doesn't mean it doesn't work. It means the world hasn't caught up yet &mdash; which is exactly what the PubMed growth curve, the handwashing analogy, and James Watson's pivot all suggest.</p>
+                    <p>Here's what I'd suggest: don't take my word for it. Look up "redox signaling" on PubMed.gov yourself. Read about Dr. Gary Samuelson, the atomic medical physicist who stabilized the molecules. Watch the Genesis video. Talk to me, and I'll share what I've seen &mdash; not as a salesman, but as someone who was exactly as skeptical as you are right now.</p>
+                    <p>The difference between "too good to be true" and "too important to ignore" is evidence. I think the evidence is there. But I'd rather you decide that for yourself.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>"Isn't this just salt water?"</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>I get why people say that. The ingredients list shows salt and water. But that's like saying the ingredients of a diamond are "carbon" &mdash; technically true, completely misleading.</p>
+                    <p>What matters is what happens to those ingredients during a patented, 3-day electrochemical process that reorganizes them into redox signaling molecules &mdash; the same type of molecules your cells already produce. There are 40+ patents protecting this process because no one else has figured out how to stabilize these molecules outside the body.</p>
+                    <p>If it were just salt water, it wouldn't have those patents, it wouldn't show results in published studies, and I wouldn't be sharing it with people I care about.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Why haven't I heard of redox signaling before?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Because the science is ahead of public awareness. Go to <strong>PubMed.gov</strong> &mdash; the U.S. National Library of Medicine's research database &mdash; and search "redox signaling." You'll find over 4,000 published papers, and the growth curve is accelerating. In the first half of 2026 alone, 259 new papers were published &mdash; a pace that would nearly double last year's total.</p>
+                    <p>The research is there. It just hasn't made the leap from the lab to the doctor's office yet &mdash; and that's normal. Think about how long it took for the microbiome to go from obscure science to something everyone talks about. Redox signaling is on that same trajectory, just earlier on the curve.</p>
+                    <p>The fact that you haven't heard of it isn't a red flag. It's the whole point.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Is this an MLM?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>I understand the skepticism &mdash; the industry has earned it. But here's a distinction that matters: ASEA isn't a network marketing company that came up with a product. It's an R&amp;D biotech company that uses network marketing as its distribution model.</p>
+                    <p>The science came first. The founders spent years and millions of dollars stabilizing redox signaling molecules &mdash; a breakthrough in cellular biology. Then they had to figure out how to get it to people.</p>
+                    <p>They did what any business would do first: they took it to pharmaceutical companies. Barr Pharmaceuticals flew a team of scientists to Salt Lake City, studied the work, and said, <strong>&ldquo;We want to buy this.&rdquo;</strong></p>
+                    <p>But there was a condition. The pharmaceutical company would own the product entirely. Everyone who was already using it would have to stop. The founder, Verdis Norton, told them he had people who believed this product had saved their lives &mdash; he couldn't pull it away from them.</p>
+                    <p>The pharmaceutical executive looked at him and said, <em>&ldquo;Verdis, people die every day. Pull them off it. We own it now.&rdquo;</em></p>
+                    <p>Verdis walked away. He later said his grandchildren's grandchildren would never have had to work another day in their lives from what that deal was worth. He walked away anyway.</p>
+                    <p>The problem remained: the label says salt and water. No retail store is going to put that on a shelf and expect it to sell itself. It requires education. It requires someone explaining what it actually is and why it matters. Word of mouth wasn't just the best distribution model &mdash; it was the only one that made sense for a product this misunderstood.</p>
+                    <p>So yes, the distribution is network marketing. But the company is biotech. The product came from science, not from a business model looking for something to sell. That's a meaningful difference.</p>
+                    <p>If the business side interests you, great &mdash; we can talk about that. If it doesn't, that's fine too. The product works the same either way.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Where did this technology actually come from?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>ASEA's technology originated with a company called <strong>Medical Discoveries, Inc.</strong> &mdash; a Utah-based bio-pharmaceutical company incorporated in 1991. MDI was publicly traded, filed with the SEC, and spent over a decade and millions of dollars developing a product called MDI-P: an anti-infective solution made from electrolyzed saline containing stabilized reactive molecules.</p>
+                    <p>This wasn't garage science. MDI-P was tested at some of the most respected research institutions in the country &mdash; Dana-Farber Cancer Institute (a Harvard affiliate), Albany Medical College, Baylor College of Medicine, Indiana University, UCLA, and the University of Washington. The company filed an Investigatory New Drug application with the FDA for Cystic Fibrosis and HIV. They held eight U.S. patents, two Japanese patents, and one Mexican patent.</p>
+                    <p>At Dana-Farber, MDI-P destroyed over 90% of HIV in cell cultures &mdash; with no cell toxicity. At Albany Medical College, it cleared Legionella and Candida within 60 seconds. In chronic toxicity studies, six months of weekly injections in mice showed zero toxic effects. This is all in the public record &mdash; you can look up the SEC filing yourself.</p>
+                    <p>When MDI eventually ran out of funding, Verdis Norton &mdash; a retired Kraft Foods executive who had been consulting for the company &mdash; recognized what they had. He assembled an investment team, purchased the research and patents, and brought in atomic medical physicist Dr. Gary Samuelson to take the science further. Samuelson's breakthrough was stabilizing these reactive molecules in a bio-identical form that could last 18&ndash;24 months in a bottle. That became ASEA.</p>
+                    <p>If you want the full origin story in the founders' own words, search for the <strong>ASEA Genesis video</strong> &mdash; it's worth the watch.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Why aren't there more large-scale clinical studies?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>This is probably the most important question on this page, so I want to give it a real answer.</p>
+                    <p>Dr. Ahvie Herskowitz &mdash; a cardiologist and immunologist who trained at Albert Einstein College of Medicine, Johns Hopkins, and UCSF, with over 115 peer-reviewed publications &mdash; puts it bluntly: developing a drug through the FDA for a single indication costs somewhere between <strong>$250 million and a billion dollars</strong>. And that approval would cover one condition. The FDA's framework is designed for one drug, one disease. When ASEA's precursor technology was taken to the FDA, they didn't know what to do with it &mdash; because it was too foundational to fit any single division.</p>
+                    <p>As Dr. Herskowitz explains: <em>&ldquo;The FDA had no ability to understand mitochondrial modulation. They said, 'How could it be that one thing could impact every animal model you ever tested?' That's the criticism. But the reason it works is because it's a fundamental process.&rdquo;</em></p>
+                    <p>That said, the science isn't absent &mdash; it's just not packaged the way people expect. There are pre-clinical studies from Dana-Farber Cancer Institute, Albany Medical College, Baylor, and the University of Washington. There's a double-blind metabolomics study from Appalachian State University that found ASEA shifted 43 metabolites in just seven days &mdash; a result that stunned the research team. There's a gene expression study showing significant activation of signaling pathway genes. And there are over 50,000 peer-reviewed papers on redox signaling biology in the PubMed database.</p>
+                    <p>Dr. Herskowitz also offers some perspective: <em>&ldquo;Handwashing took 40 years in the 1800s. And that's probably around the right amount of time. ASEA is what, 15, 20 years old? You have to count to 40 years before anyone would actually do it.&rdquo;</em></p>
+                    <p>He didn't need a billion-dollar trial to convince himself. He put approximately 100 of his own patients on it &mdash; ranging from world-class athletes to Stage 4 cancer patients &mdash; and watched the results. His conclusion: <em>&ldquo;Everything gets better.&rdquo;</em></p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>How long does it take to notice something?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>It varies. Some people notice changes in days. For me, it was more like 2&ndash;3 weeks of subtle shifts &mdash; better sleep, steadier energy, faster recovery. For others, it takes a month or two.</p>
+                    <p>The honest answer is: this isn't caffeine. It's not designed to give you a jolt. It's designed to support your body's own processes, and those processes take time. The people who tend to notice the most are the ones who pay attention to the quiet changes rather than waiting for something dramatic.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>How much should I take?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Dr. Ray Dixon &mdash; a chiropractor, osteopath, and naturopath with 38 years of clinical practice &mdash; puts it simply: <em>&ldquo;Your magic is between two cups a day and that bottle a day.&rdquo;</em></p>
+                    <p>A bottle is 32 ounces. A cup is about 2 ounces. Here's the general range he recommends:</p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <li><strong>General wellness:</strong> 4 oz (2 cups) &mdash; some people get results here</li>
+                        <li><strong>Most people:</strong> 8&ndash;12 oz (4&ndash;6 cups)</li>
+                        <li><strong>Significant health challenges:</strong> 12&ndash;16 oz (6&ndash;8 cups)</li>
+                        <li><strong>Serious situations:</strong> Up to a full bottle per day (32 oz)</li>
+                    </ul>
+                    <p>He also stresses giving it time &mdash; a minimum of 3&ndash;4 months to really notice changes. The body rebuilds gradually. Chronic issues may retrace over the course of a year or more.</p>
+                    <p>As he puts it: <em>&ldquo;It's not about working or not working. If you've got something universally profound, of course it's working. It's whether you're working &mdash; staying consistent, giving it enough time, and paying attention to the quiet shifts.&rdquo;</em></p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>What does it cost?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>The honest answer? It depends on how you buy it.</p>
+                    <p>A case of four bottles on Amazon runs about <strong>$207</strong>. The same case through ASEA directly, as a Brand Partner on subscription, is <strong>$140</strong> &mdash; that's a $67 difference every month. Brand Partner enrollment is $40 one-time, so the savings pay for themselves in the first order. There's also a 10% discount on your first order with the promo code <strong>redoxsolution</strong>.</p>
+                    <p>For context, $140 a month works out to about $4.60 a day &mdash; roughly what many people spend on coffee. I understand that's still real money, and I'm not going to tell you it's cheap.</p>
+                    <p>What I will say is this: the production process takes three days per batch using a patented technology no one else has. This isn't a powder mixed in a warehouse. And unlike most supplements that give your body something it doesn't naturally use, this gives your body back something it already makes &mdash; just not enough of anymore.</p>
+                    <p>The question I'd ask isn't &ldquo;is it expensive?&rdquo; It's &ldquo;what's it worth to feel like your body is working the way it's supposed to?&rdquo;</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Can't I just eat well and exercise?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>You absolutely should. Nothing replaces nutrition, movement, sleep, and stress management. This doesn't compete with any of that &mdash; it supports it.</p>
+                    <p>Think of it this way: eating well gives your body the raw materials. Exercise builds strength and endurance. But neither of those can increase the production of redox signaling molecules your body has been losing since puberty. That decline happens regardless of how healthy your lifestyle is.</p>
+                    <p>This isn't instead of a healthy life. It's the piece most healthy people are missing.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>But I'm healthy. I feel fine. Why would I need this?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>I'm glad you feel fine. Genuinely. But here's something worth sitting with:</p>
+                    <p>"Feeling fine" and "functioning optimally at the cellular level" are not the same thing. Your body is doing extraordinary work right now that you'll never feel &mdash; identifying and eliminating cellular threats, repairing DNA damage, clearing out cells that aren't functioning correctly. It does this silently, around the clock, without sending you a notification.</p>
+                    <p>The question isn't whether that system works. It's whether it has the same resources to work as well as it did 20 years ago.</p>
+                    <p>As Dr. Ray Dixon puts it after 38 years of clinical practice: everyone past puberty is deficient in redox signaling molecules. Not "might be." <em>Is.</em> It's simple math &mdash; roughly 1% fewer per year, no exceptions, regardless of how healthy your lifestyle is. A 50-year-old has significantly fewer of these molecules than they did at 20, no matter how well they eat or how often they exercise.</p>
+                    <p>Most people don't think about cellular maintenance until something forces them to. This is a chance to think about it before that happens.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Is it FDA approved?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>The FDA doesn't approve supplements &mdash; that's not how the system works. What the FDA does is regulate manufacturing standards, and ASEA is produced in an FDA-registered, NSF-certified facility that meets pharmaceutical-grade standards.</p>
+                    <p>The product has also been independently tested and certified by BioAgilytix (a leading biosafety lab) as safe and native to the human body. It's not a drug, it's not making drug claims, and it's manufactured to a standard that exceeds most of what's on supplement shelves.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>What does it taste like?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Like pool water. I'm not going to sugarcoat it &mdash; literally or figuratively. The taste is unusual. Most people get used to it within a few days. Some never love it.</p>
+                    <p>But here's the thing: if you're choosing a health product based on taste, you're optimizing for the wrong thing. This isn't a smoothie. It's cellular support. The taste is a function of what the molecules are, not a failure of flavoring.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>How is this different from other supplements?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Most supplements add something to your body &mdash; a vitamin, a mineral, an herb. Your body then has to figure out what to do with it.</p>
+                    <p>Redox signaling molecules are different. Your body already makes them. It already knows exactly what to do with them. The problem isn't that your body doesn't recognize them &mdash; it's that your body doesn't make enough of them anymore.</p>
+                    <p>This is the difference between giving someone a tool they've never used and giving a master craftsman back the tool they've been missing. The body doesn't need instructions. It needs supply.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>What if it doesn't work for me?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Then it doesn't work for you, and I'll respect that. I'm not here to convince anyone against their own experience.</p>
+                    <p>What I'd suggest is giving it a real trial &mdash; at least 30 days, consistently. Not because I need you to buy more, but because cellular processes don't flip like a switch. The body rebuilds gradually.</p>
+                    <p>ASEA offers a satisfaction guarantee. If you try it and genuinely feel nothing, you're not stuck. But I'd encourage you to pay attention to the small things &mdash; sleep, recovery, energy patterns. The changes are often quieter than people expect.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <p>Still have questions? I'd rather have a real conversation than send you to another page.</p>
+        <a id="cta-email" href="mailto:fstrehlow@gmail.com" class="btn-primary">Email Fritz</a>
+    </section>
+
+    <footer class="footer">
+        <p id="footer-name">Fritz Strehlow &mdash; ASEA Independent Associate</p>
+        <p class="disclaimer">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Testimonials reflect individual experiences and are not guaranteed.</p>
+    </footer>
+
+    <script>
+    (function() {
+        var reps = {
+            fritz: { name: 'Fritz', fullName: 'Fritz Strehlow', email: 'fstrehlow@gmail.com', contactLabel: 'Email Fritz' },
+            paul: { name: 'Paul', fullName: 'Paul & Assia Strehlow', email: 'PAUL_EMAIL_HERE', contactLabel: 'Email Paul' },
+            ricky: { name: 'Ricky', fullName: 'Ricky Strehlow', email: 'RICKY_EMAIL_HERE', contactLabel: 'Email Ricky' }
+        };
+        var params = new URLSearchParams(window.location.search);
+        var repKey = (params.get('rep') || 'fritz').toLowerCase();
+        var rep = reps[repKey] || reps.fritz;
+        var emailBtn = document.getElementById('cta-email');
+        if (emailBtn) { emailBtn.href = 'mailto:' + rep.email; emailBtn.textContent = rep.contactLabel; }
+        var footerName = document.getElementById('footer-name');
+        if (footerName) { footerName.textContent = rep.fullName + ' — ASEA Independent Associate'; }
+        document.title = 'FAQ — ' + rep.fullName;
+    })();
+    </script>
+
+</body>
+</html>
