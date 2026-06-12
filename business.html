@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Business Opportunity — My Redox Solution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a7d7b;
+            --primary-deep: #1e5f5d;
+            --primary-light: #e6f3f2;
+            --hero-bg: #1c2a35;
+            --canvas: #ffffff;
+            --surface: #f8f6f3;
+            --surface-warm: #faf8f5;
+            --card-cream: #faf5ed;
+            --card-gold: #fdf6e8;
+            --hairline: #e5e1db;
+            --hairline-soft: #ede9e4;
+            --ink: #1a1a1a;
+            --charcoal: #37352f;
+            --slate: #5d5b54;
+            --steel: #787671;
+            --stone: #a4a097;
+            --on-dark: #ffffff;
+            --rounded-sm: 6px;
+            --rounded-md: 8px;
+            --rounded-lg: 12px;
+            --shadow-card: rgba(15, 15, 15, 0.08) 0px 4px 12px 0px;
+            --max-width: 700px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, 'Segoe UI', Helvetica, sans-serif;
+            background: var(--canvas);
+            color: var(--charcoal);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 { font-family: 'Lora', Georgia, serif; color: var(--ink); }
+        strong { font-weight: 600; color: var(--ink); }
+        em { font-style: italic; }
+        p { font-size: 17px; line-height: 1.7; margin-bottom: 20px; color: var(--charcoal); }
+
+        /* ─── NAV ─── */
+        .nav {
+            background: var(--hero-bg);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-home {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--on-dark);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .nav-home:hover { opacity: 1; }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover { color: var(--on-dark); }
+        .nav-links a.active { color: var(--on-dark); }
+
+        @media (max-width: 480px) {
+            .nav { flex-direction: column; gap: 12px; }
+            .nav-links { gap: 16px; }
+        }
+
+        /* ─── HERO ─── */
+        .page-hero {
+            background: var(--hero-bg);
+            padding: 60px 24px 72px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            color: var(--on-dark);
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .page-hero p {
+            color: rgba(255,255,255,0.55);
+            font-size: 17px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero { padding: 44px 20px 56px; }
+            .page-hero h1 { font-size: 28px; }
+        }
+
+        /* ─── SECTIONS ─── */
+        .section {
+            padding: 64px 24px;
+        }
+
+        .section-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-alt { background: var(--surface); }
+        .section-warm { background: var(--surface-warm); }
+
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.3px;
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 48px 20px; }
+            h2 { font-size: 26px; }
+        }
+
+        @media (max-width: 480px) {
+            h2 { font-size: 22px; }
+            p { font-size: 16px; }
+        }
+
+        /* ─── GAP VISUAL ─── */
+        .gap-visual {
+            background: var(--hero-bg);
+            border-radius: var(--rounded-lg);
+            padding: 40px 32px;
+            margin: 36px 0;
+            text-align: center;
+        }
+
+        .gap-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .gap-item {
+            text-align: center;
+        }
+
+        .gap-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .gap-number {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--on-dark);
+            display: block;
+        }
+
+        .gap-number.gold { color: #e8c170; }
+
+        .gap-arrow {
+            font-size: 28px;
+            color: rgba(255,255,255,0.25);
+        }
+
+        .gap-caption {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .gap-caption strong {
+            color: #e8c170;
+        }
+
+        @media (max-width: 480px) {
+            .gap-number { font-size: 24px; }
+            .gap-row { gap: 16px; }
+        }
+
+        /* ─── TIMELINE ─── */
+        .timeline {
+            margin: 36px 0;
+            padding: 0;
+            list-style: none;
+            border-left: 3px solid var(--primary);
+            padding-left: 28px;
+        }
+
+        .timeline li {
+            position: relative;
+            margin-bottom: 28px;
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--charcoal);
+        }
+
+        .timeline li::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid var(--canvas);
+        }
+
+        .timeline li:last-child { margin-bottom: 0; }
+
+        .timeline .year {
+            font-family: 'Lora', Georgia, serif;
+            font-weight: 600;
+            color: var(--primary-deep);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* ─── ADVANTAGE CARDS ─── */
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 36px 0;
+        }
+
+        .advantage-card {
+            background: var(--surface);
+            border-radius: var(--rounded-lg);
+            padding: 28px 24px;
+        }
+
+        .advantage-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary-deep);
+        }
+
+        .advantage-card p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--slate);
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .advantage-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ─── CALLOUT ─── */
+        .callout {
+            background: var(--card-gold);
+            border-radius: var(--rounded-lg);
+            padding: 28px 32px;
+            margin: 36px 0;
+            border-left: 3px solid #c8a94e;
+        }
+
+        .callout p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .callout p:last-child { margin-bottom: 0; }
+
+        /* ─── WHO IT'S FOR ─── */
+        .who-list {
+            list-style: none;
+            padding: 0;
+            margin: 28px 0;
+        }
+
+        .who-list li {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--charcoal);
+            padding: 14px 0 14px 32px;
+            border-bottom: 1px solid var(--hairline-soft);
+            position: relative;
+        }
+
+        .who-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 22px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .who-list li:last-child { border-bottom: none; }
+
+        /* ─── QUOTE ─── */
+        .biz-quote {
+            background: var(--surface);
+            border-radius: var(--rounded-lg);
+            padding: 28px;
+            margin: 36px 0;
+            border: 1px solid var(--hairline);
+            text-align: center;
+        }
+
+        .biz-quote p {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .biz-quote .attr {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--stone);
+            font-style: normal;
+            margin-bottom: 0;
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            padding: 64px 24px;
+            text-align: center;
+            background: var(--hero-bg);
+        }
+
+        .cta-inner {
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            color: var(--on-dark);
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: rgba(255,255,255,0.65);
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p:last-of-type { margin-bottom: 32px; }
+
+        .contact-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--on-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: var(--rounded-md);
+            text-decoration: none;
+            transition: background 0.15s ease;
+        }
+
+        .btn-primary:hover { background: var(--primary-deep); }
+
+        .btn-secondary {
+            display: inline-block;
+            color: rgba(255,255,255,0.7);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: var(--rounded-md);
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.15s ease;
+        }
+
+        .btn-secondary:hover { border-color: rgba(255,255,255,0.5); color: var(--on-dark); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--surface);
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--hairline);
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--steel);
+            margin-bottom: 8px;
+        }
+
+        .footer .disclaimer {
+            font-size: 12px;
+            color: var(--stone);
+            font-style: italic;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a class="nav-home" href="index.html">My Redox Solution</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="my-story.html">My Story</a>
+            <a href="faq.html">FAQ</a>
+            <a href="doctors.html">Doctors</a>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <h1>The Business Side</h1>
+        <p>You don't need to be interested in the business. But if you are, here's what I see.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         THE GAP
+         ═══════════════════════════════════════════ -->
+    <section class="section">
+        <div class="section-inner">
+            <span class="section-label">The Opportunity</span>
+            <h2>A Gap This Big Doesn't Stay Open Forever</h2>
+
+            <p>Here's the math that made me pay attention:</p>
+
+            <div class="gap-visual">
+                <div class="gap-row">
+                    <div class="gap-item">
+                        <span class="gap-label">Current Revenue</span>
+                        <span class="gap-number">$200&ndash;300M</span>
+                    </div>
+                    <span class="gap-arrow">&rarr;</span>
+                    <div class="gap-item">
+                        <span class="gap-label">Category Value</span>
+                        <span class="gap-number gold">$100B+</span>
+                    </div>
+                </div>
+                <p class="gap-caption">That's not a product that doesn't work. That's a product <strong>the world hasn't caught up to yet.</strong></p>
+            </div>
+
+            <p>When an independent AI system was asked to estimate the patent value of a technology that could restore the body's natural redox balance, it placed it in the <strong>hundreds of billions of dollars</strong> &mdash; alongside the most valuable medical patents in history.</p>
+
+            <p>The company doing $200&ndash;300 million? That's ASEA today. The gap between where it is and where the science says it should be represents one of the most asymmetric opportunities I've ever seen.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TIMING
+         ═══════════════════════════════════════════ -->
+    <section class="section section-alt">
+        <div class="section-inner">
+            <span class="section-label">Why Now</span>
+            <h2>Timing Is Everything</h2>
+
+            <p>Dr. Ahvie Herskowitz &mdash; a cardiologist from Johns Hopkins and UCSF &mdash; puts it this way:</p>
+
+            <div class="biz-quote">
+                <p>&ldquo;Handwashing took 40 years in the 1800s. ASEA is what, 15, 20 years old? You have to count to 40 years before anyone would actually do it.&rdquo;</p>
+                <p class="attr">&mdash; Dr. Ahvie Herskowitz, MD</p>
+            </div>
+
+            <p>If he's right &mdash; and history suggests he is &mdash; we're roughly halfway through the adoption curve. The science is accelerating (259 new papers in just the first half of 2026), but mainstream awareness hasn't caught up. That window between <em>the science knowing</em> and <em>the world knowing</em> is where the business opportunity lives.</p>
+
+            <ul class="timeline">
+                <li>
+                    <span class="year">1991</span>
+                    Medical Discoveries, Inc. begins developing the technology. Tested at Dana-Farber, Albany Medical, Baylor, UCLA.
+                </li>
+                <li>
+                    <span class="year">2009</span>
+                    ASEA launches after Dr. Gary Samuelson stabilizes redox signaling molecules outside the body. 40+ patents filed.
+                </li>
+                <li>
+                    <span class="year">2012&ndash;2020</span>
+                    Gene expression studies, metabolomics research at Appalachian State. Over 50 physician advocates independently adopt it.
+                </li>
+                <li>
+                    <span class="year">2024&ndash;2026</span>
+                    PubMed research doubles. AI systems independently rank redox modulation as a top-5 medical breakthrough. Revenue grows but awareness lags.
+                </li>
+                <li>
+                    <span class="year">2030+</span>
+                    The handwashing moment? If the pattern holds, this becomes mainstream &mdash; and the early movers are already established.
+                </li>
+            </ul>
+
+            <p>The people who got into probiotics before every grocery store had a kombucha section didn't get lucky. They saw the research before the market did. This is that same curve &mdash; earlier.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHY THIS MODEL
+         ═══════════════════════════════════════════ -->
+    <section class="section">
+        <div class="section-inner">
+            <span class="section-label">The Model</span>
+            <h2>Why Word of Mouth Is the Only Way This Works</h2>
+
+            <p>The label says salt and water. The taste is unusual. The science is 15 years ahead of public awareness. No retailer is going to put this on a shelf and expect it to sell itself.</p>
+
+            <p>This product requires <em>education.</em> Someone has to explain what redox signaling molecules are, why they matter, and why a product that looks like water is protected by 40+ patents. That's not a weakness of the business model &mdash; it's the reason the business model exists.</p>
+
+            <p>And it creates a structural advantage for the people who take the time to learn it:</p>
+
+            <div class="advantage-grid">
+                <div class="advantage-card">
+                    <h3>Education = Moat</h3>
+                    <p>The more complex the product is to explain, the harder it is for someone to just copy you. Your knowledge IS your competitive advantage.</p>
+                </div>
+                <div class="advantage-card">
+                    <h3>No Retail Competition</h3>
+                    <p>You'll never compete with Amazon's algorithm or a store shelf. This product can't sell itself without a conversation, which means you are the distribution channel.</p>
+                </div>
+                <div class="advantage-card">
+                    <h3>Recurring Revenue</h3>
+                    <p>People who understand what this does and feel the difference don't stop taking it. Monthly subscriptions create income that compounds over time.</p>
+                </div>
+                <div class="advantage-card">
+                    <h3>First-Mover Positioning</h3>
+                    <p>When this category goes mainstream &mdash; and the research trajectory says it will &mdash; you'll already be established. You can't go back and be early.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHO THIS IS FOR
+         ═══════════════════════════════════════════ -->
+    <section class="section section-warm" style="border-top: 1px solid var(--hairline-soft);">
+        <div class="section-inner">
+            <span class="section-label">Is This For You?</span>
+            <h2>This Business Works Best For People Who&hellip;</h2>
+
+            <ul class="who-list">
+                <li>Already love the product and talk about it anyway &mdash; you might as well get paid for what you're already doing</li>
+                <li>Are curious about the science and enjoy explaining things to people</li>
+                <li>Want supplemental income without quitting their job</li>
+                <li>Can't afford the product long-term and want it to pay for itself</li>
+                <li>See the gap between where this company is and where it should be &mdash; and want to be positioned when the world catches up</li>
+                <li>Have a network of health-conscious people (gym, yoga, wellness community, parents, athletes)</li>
+            </ul>
+
+            <div class="callout">
+                <p><strong>Here's what this is NOT:</strong> A get-rich-quick scheme. A passive income button. A replacement for hard work. Building a real business in any model takes time, consistency, and a genuine belief in what you're sharing.</p>
+                <p>What it IS: a way to build an asset around a product with real science, real differentiation, and a market that's about to wake up.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         THE REAL QUESTION
+         ═══════════════════════════════════════════ -->
+    <section class="section">
+        <div class="section-inner" style="max-width: 640px;">
+            <span class="section-label">The Real Question</span>
+            <h2>What Would You Do With an Extra $500, $2,000, or $10,000 a Month?</h2>
+
+            <p>I'm not going to promise you a number. What you earn depends on what you build. But let me ask the question differently:</p>
+
+            <p>What would change in your life if you had an extra $500 a month that showed up whether you worked that month or not? What about $2,000? What would you do with an extra $10,000?</p>
+
+            <p>For some people, that's the car payment that's been stressing them out. For others, it's the freedom to take a trip. For others, it's quitting a job they hate.</p>
+
+            <p>The product already exists. The science already supports it. The market hasn't caught up yet. The only variable is whether you want to be part of what happens next.</p>
+
+            <div class="biz-quote">
+                <p>&ldquo;The best time to plant a tree was 20 years ago. The second best time is now.&rdquo;</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CTA
+         ═══════════════════════════════════════════ -->
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2>Curious? Let's Talk.</h2>
+
+            <p>Not a pitch. Not a presentation. Just a conversation about what you see, what questions you have, and whether this makes sense for you.</p>
+
+            <p>The worst that happens is you learn something interesting about cellular biology. The best? You look back at this conversation as the one that changed your trajectory.</p>
+
+            <div class="contact-row">
+                <a id="cta-email" href="mailto:fstrehlow@gmail.com" class="btn-primary">Email Fritz</a>
+                <a href="index.html" class="btn-secondary">Back to the Science</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p id="footer-name">Fritz Strehlow &mdash; ASEA Independent Associate</p>
+        <p class="disclaimer">Income levels vary. No income is guaranteed. Results depend on individual effort, skill, and market conditions. This is not a guarantee of earnings. ASEA does not guarantee any level of income or success.</p>
+    </footer>
+
+    <script>
+    (function() {
+        var reps = {
+            fritz: { name: 'Fritz', fullName: 'Fritz Strehlow', email: 'fstrehlow@gmail.com', contactLabel: 'Email Fritz' },
+            paul: { name: 'Paul', fullName: 'Paul & Assia Strehlow', email: 'PAUL_EMAIL_HERE', contactLabel: 'Email Paul' },
+            ricky: { name: 'Ricky', fullName: 'Ricky Strehlow', email: 'RICKY_EMAIL_HERE', contactLabel: 'Email Ricky' }
+        };
+        var params = new URLSearchParams(window.location.search);
+        var repKey = (params.get('rep') || 'fritz').toLowerCase();
+        var rep = reps[repKey] || reps.fritz;
+        var emailBtn = document.getElementById('cta-email');
+        if (emailBtn) { emailBtn.href = 'mailto:' + rep.email; emailBtn.textContent = rep.contactLabel; }
+        var footerName = document.getElementById('footer-name');
+        if (footerName) { footerName.textContent = rep.fullName + ' — ASEA Independent Associate'; }
+        document.title = 'The Business — ' + rep.fullName;
+    })();
+    </script>
+
+</body>
+</html>
