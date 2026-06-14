@@ -96,6 +96,21 @@
             .nav-links { gap: 16px; }
         }
 
+        /* ─── HERO PHOTO ─── */
+        .hero-photo {
+            margin-bottom: 32px;
+        }
+
+        .hero-photo img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 15%;
+            border: 3px solid rgba(255,255,255,0.15);
+            box-shadow: rgba(0,0,0,0.3) 0px 8px 24px;
+        }
+
         /* ─── HOOK ─── */
         .hook {
             background: var(--hero-bg);
@@ -673,6 +688,9 @@
          ═══════════════════════════════════════════ -->
     <section class="hook">
         <div class="hook-inner">
+            <div class="hero-photo">
+                <img src="fritz-hero.jpg" alt="Fritz Strehlow">
+            </div>
             <p class="hook-preframe">The human body is an extraordinary masterpiece &mdash; remarkably resilient and designed to thrive. But today's world presents challenges unlike anything previous generations faced. Some of what you're about to read may be surprising, even unsettling. Stay with me, because understanding the problem is what makes the solution so compelling.</p>
 
             <h1 class="hook-headline">We're under attack.</h1>
@@ -860,6 +878,8 @@
 
             <p style="text-align: left;">ASEA is the only company in the world that has this technology. No one else has figured out how to stabilize redox signaling molecules outside the body. Zero competition. Patented. Available in 35 countries &mdash; and growing.</p>
 
+            <p style="text-align: left;">And it almost didn't happen this way. The founder's plan was to sell the technology to a pharmaceutical company &mdash; let them distribute it to the world. Big pharma wanted to buy it, but on one condition: shut down production and pull it from the people already using it. He walked away from generational wealth rather than do that. Network marketing was never the plan. It became the only model that let the product reach people through education instead of a retail shelf.</p>
+
             <p style="text-align: left;">Now consider the math: a company doing a few hundred million in annual revenue &mdash; in a category independently valued at <strong>hundreds of billions.</strong> A 15-year head start in a market that barely knows it exists. And a product so misunderstood that the only way to sell it is to <em>educate</em> people &mdash; which means the people who understand it have a real advantage.</p>
 
             <p style="text-align: left;">You don't need a medical degree. You don't need sales experience. You need curiosity, a willingness to learn, and the ability to have honest conversations.</p>
@@ -926,7 +946,7 @@
             <p class="closing-line">Talk to me whenever you want. I'll be glad to hear from you.</p>
 
             <div class="contact-row">
-                <a id="cta-email" href="mailto:fstrehlow@gmail.com" class="btn-primary">Email Fritz</a>
+                <a id="cta-email" href="mailto:fritz@myredoxsolution.com" class="btn-primary">Email Fritz</a>
                 <a id="cta-learn" href="https://myredoxsolution.com" class="btn-secondary" target="_blank">Learn More About ASEA</a>
             </div>
         </div>
@@ -944,7 +964,7 @@
             fritz: {
                 name: 'Fritz',
                 fullName: 'Fritz Strehlow',
-                email: 'fstrehlow@gmail.com',
+                email: 'fritz@myredoxsolution.com',
                 aseaUrl: 'https://myredoxsolution.com',
                 contactLabel: 'Email Fritz',
                 learnMoreLabel: 'Learn More About ASEA'
