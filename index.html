@@ -98,20 +98,65 @@
 
         /* ─── HERO PHOTO ─── */
         .hero-photo {
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .hero-greeting {
             font-family: 'Lora', Georgia, serif;
             color: var(--on-dark);
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 600;
-            margin-bottom: 32px;
+            margin-bottom: 8px;
+        }
+
+        .hero-bridge {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .hero-bridge p {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .hero-bridge p:last-child { margin-bottom: 0; }
+
+        .hook-wonder {
+            max-width: 520px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .hook-wonder p {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.75);
+            font-size: 16px;
+            line-height: 1.9;
+            margin-bottom: 0;
+        }
+
+        .hook-wonder .wonder-kicker {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 18px;
+            font-style: italic;
+            color: rgba(255,255,255,0.5);
+            margin-top: 20px;
+        }
+
+        .hook-transition {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.5);
+            font-size: 15px;
+            margin-bottom: 12px;
         }
 
         .hero-photo img {
-            width: 160px;
-            height: 160px;
+            width: 185px;
+            height: 185px;
             border-radius: 50%;
             object-fit: cover;
             object-position: center 15%;
@@ -699,8 +744,21 @@
             <div class="hero-photo">
                 <img src="fritz-hero.jpg" alt="Fritz Strehlow">
             </div>
-            <p class="hero-greeting">Glad you could make it!</p>
-            <p class="hook-preframe">The human body is an extraordinary masterpiece &mdash; remarkably resilient and designed to thrive. But today's world presents challenges unlike anything previous generations faced. Some of what you're about to read may be surprising, even unsettling. Stay with me, because understanding the problem is what makes the solution so compelling.</p>
+            <p class="hero-greeting">Hello. I'm glad you're here.</p>
+
+            <div class="hero-bridge">
+                <p>I'm Fritz. I spent most of my career in corporate accounting, where questioning bold claims wasn't just encouraged &mdash; it was expected.</p>
+                <p>If you're skeptical about health products, we already have something in common.</p>
+                <p>Everything on this website grew out of one simple question: <em>"What if there was something I hadn't considered?"</em></p>
+                <p>That question sent me on a journey I never expected. Before I tell you what I found, I think it's important to understand the problem first.</p>
+            </div>
+
+            <div class="hook-wonder">
+                <p>Every second, trillions of cells communicate, repair damage, destroy threats, create energy, rebuild tissue, and coordinate organs &mdash; all without you giving a single thought to any of it.</p>
+                <p class="wonder-kicker">Nothing mankind has ever engineered comes remotely close.</p>
+            </div>
+
+            <p class="hook-transition">To understand why this matters, we first need to understand what your body is up against every single day.</p>
 
             <h1 class="hook-headline">We're under attack.</h1>
             <p class="hook-sub">And most people have no idea.</p>
