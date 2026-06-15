@@ -544,6 +544,84 @@
             line-height: 1.65;
         }
 
+        /* ─── BIGGER PICTURE ─── */
+        .bigger-picture-question {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin: 32px 0;
+            padding: 24px 28px;
+            background: var(--card-gold);
+            border-radius: var(--rounded-lg);
+            border-left: 3px solid #c8a94e;
+            text-align: center;
+        }
+
+        .therapy-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 28px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .therapy-list li {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--charcoal);
+            padding: 8px 18px;
+            background: var(--surface);
+            border: 1px solid var(--hairline);
+            border-radius: 20px;
+        }
+
+        .hierarchy-visual {
+            margin: 36px auto;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        .hierarchy-top {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--on-dark);
+            background: var(--primary);
+            padding: 12px 24px;
+            border-radius: var(--rounded-md);
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .hierarchy-arrow {
+            font-size: 20px;
+            color: var(--primary);
+            margin: 4px 0;
+        }
+
+        .hierarchy-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .hierarchy-items span {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: var(--slate);
+            padding: 6px 14px;
+            background: var(--surface);
+            border: 1px solid var(--hairline);
+            border-radius: 16px;
+        }
+
         /* ─── DREAMS QUOTE ─── */
         .dreams-quote {
             background: var(--surface-warm);
@@ -901,6 +979,55 @@
             <div class="orchestra-note">
                 <p>This is why redox signaling molecules don't treat, cure, or diagnose anything. The conductor doesn't play the violin. But give your body back a strong conductor, and every section of the orchestra can start playing the way it was designed to.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         THE BIGGER PICTURE
+         ═══════════════════════════════════════════ -->
+    <section class="section section-alt">
+        <div class="section-inner" style="max-width: 660px;">
+            <span class="section-label">The Bigger Picture</span>
+            <h2>Before You Focus on the Therapy, Consider the Cells</h2>
+
+            <p>Some of the most exciting advances in health today focus on helping the body repair itself:</p>
+
+            <ul class="therapy-list">
+                <li>Stem cells</li>
+                <li>Peptides</li>
+                <li>Exosomes</li>
+                <li>PRP</li>
+                <li>Growth factors</li>
+                <li>Shockwave therapy</li>
+            </ul>
+
+            <p>These therapies all depend on your body's own cells to do the work. But what happens when those cells are operating under chronic oxidative stress?</p>
+
+            <p>Imagine hiring the world's best construction crew to remodel your house &mdash; but the phones don't work, the power keeps going out, the blueprints are smudged, and the building materials arrive late. The crew is excellent. But the environment they're working in isn't.</p>
+
+            <p>Healthy cellular communication is one of the body's most fundamental systems. Everything from repair and recovery to immune function and physical performance depends on cells communicating efficiently. Redox signaling is the language those cells use.</p>
+
+            <div class="hierarchy-visual">
+                <div class="hierarchy-top">Cellular Communication</div>
+                <div class="hierarchy-arrow">&darr;</div>
+                <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; color: var(--primary-deep); margin-bottom: 8px;">Redox Signaling</div>
+                <div class="hierarchy-arrow">&darr;</div>
+                <div class="hierarchy-items">
+                    <span>Gene Expression</span>
+                    <span>Immune Response</span>
+                    <span>Mitochondrial Function</span>
+                    <span>Inflammation Control</span>
+                    <span>Stem Cell Activity</span>
+                    <span>Tissue Repair</span>
+                    <span>Recovery</span>
+                </div>
+            </div>
+
+            <p>This doesn't mean redox signaling is the <em>only</em> driver of those systems. Biology is complex, with feedback loops running in every direction. But redox signaling plays a critical regulatory role in all of them.</p>
+
+            <p class="bigger-picture-question">No matter which therapy you choose, isn't the health of the cells doing the work still important?</p>
+
+            <p>That's the question that changed how I think about health. Not <em>"which product should I take?"</em> but <em>"what condition are my cells in when they receive it?"</em></p>
         </div>
     </section>
 
