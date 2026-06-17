@@ -104,6 +104,68 @@
             .nav-links { gap: 16px; }
         }
 
+        /* ─── PRODUCT BANNER ─── */
+        .product-banner {
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0f6f9 50%, #eef2f5 100%);
+            padding: 48px 24px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--hairline-soft);
+        }
+
+        .product-banner-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .product-banner-lineup {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        .product-banner-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-banner-item img {
+            border-radius: var(--rounded-lg);
+            object-fit: contain;
+        }
+
+        .product-banner-item.main img {
+            height: 280px;
+        }
+
+        .product-banner-item.side img {
+            height: 200px;
+        }
+
+        .product-banner-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: var(--slate);
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .product-banner-tagline {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--ink);
+            margin-top: 28px;
+        }
+
+        @media (max-width: 600px) {
+            .product-banner-item.main img { height: 200px; }
+            .product-banner-item.side img { height: 140px; }
+            .product-banner-lineup { gap: 16px; }
+            .product-banner-tagline { font-size: 17px; }
+        }
+
         /* ─── HERO PHOTO ─── */
         .hero-photo {
             margin-bottom: 16px;
@@ -959,6 +1021,29 @@
             <a href="doctors.html">Doctors</a>
         </div>
     </nav>
+
+    <!-- ═══════════════════════════════════════════
+         PRODUCT BANNER
+         ═══════════════════════════════════════════ -->
+    <section class="product-banner">
+        <div class="product-banner-inner">
+            <div class="product-banner-lineup">
+                <div class="product-banner-item side">
+                    <img src="Renu28 photo.webp" alt="ASEA Renu28 Revitalizing Redox Gel">
+                    <span class="product-banner-label">Renu 28</span>
+                </div>
+                <div class="product-banner-item main">
+                    <img src="ASEA Bottle.png" alt="ASEA Redox Cell Signaling Supplement">
+                    <span class="product-banner-label">ASEA Redox</span>
+                </div>
+                <div class="product-banner-item side">
+                    <img src="REDOXGold.jpg" alt="ASEA Redox Gold">
+                    <span class="product-banner-label">Redox Gold</span>
+                </div>
+            </div>
+            <p class="product-banner-tagline">Complex science, simple ingredients</p>
+        </div>
+    </section>
 
     <!-- ═══════════════════════════════════════════
          THE HOOK
