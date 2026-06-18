@@ -566,6 +566,31 @@
             .redox-two-jobs { grid-template-columns: 1fr; }
         }
 
+        .redox-intro-video {
+            margin-top: 40px;
+        }
+
+        .redox-intro-video-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: var(--rounded-lg);
+            overflow: hidden;
+        }
+
+        .redox-intro-video-wrap iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: var(--rounded-lg);
+        }
+
         /* ─── STORY TEASER ─── */
         .story-teaser {
             background: var(--surface-warm);
@@ -770,6 +795,81 @@
             color: rgba(255,255,255,0.7);
             margin-top: 28px;
             line-height: 1.6;
+        }
+
+        .visible-proof-video {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            margin: 36px auto 0;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: var(--rounded-lg);
+            overflow: hidden;
+        }
+
+        .visible-proof-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: var(--rounded-lg);
+        }
+
+        /* ─── REDOX GOLD SPOTLIGHT ─── */
+        .gold-spotlight {
+            background: linear-gradient(135deg, #1c2a35 0%, #2a3a48 100%);
+            padding: 64px 24px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .gold-spotlight-inner {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .gold-spotlight-inner .section-label {
+            color: #c8a94e;
+        }
+
+        .gold-spotlight-inner h2 {
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .gold-spotlight-subtitle {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .gold-spotlight-video {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: var(--rounded-lg);
+            overflow: hidden;
+        }
+
+        .gold-spotlight-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: var(--rounded-lg);
+        }
+
+        @media (max-width: 768px) {
+            .gold-spotlight { padding: 48px 20px; }
         }
 
         /* ─── CENTENARIAN THESIS (Dr. Herskowitz) ─── */
@@ -985,6 +1085,108 @@
         }
 
         .btn-secondary:hover { border-color: var(--charcoal); }
+
+        /* ─── MANUFACTURING & QUALITY ─── */
+        .mfg-quality {
+            background: var(--canvas);
+            padding: 64px 24px;
+            border-top: 1px solid var(--hairline-soft);
+        }
+
+        .mfg-quality-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mfg-quality-inner .section-label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .mfg-quality-inner h2 {
+            margin-bottom: 12px;
+        }
+
+        .mfg-quality-subtitle {
+            font-size: 16px;
+            color: var(--slate);
+            margin-bottom: 36px;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mfg-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .mfg-photos img {
+            width: 100%;
+            border-radius: var(--rounded-lg);
+            object-fit: cover;
+            aspect-ratio: 16 / 10;
+        }
+
+        .mfg-photos .mfg-photo-wide {
+            grid-column: 1 / -1;
+        }
+
+        .mfg-photo-caption {
+            font-size: 13px;
+            color: var(--stone);
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            padding: 32px 0 0;
+            border-top: 1px solid var(--hairline-soft);
+        }
+
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-badge svg {
+            width: 52px;
+            height: 52px;
+        }
+
+        .trust-badge-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--slate);
+            max-width: 90px;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .mfg-quality { padding: 48px 20px; }
+            .trust-badges { gap: 24px; }
+            .trust-badge svg { width: 44px; height: 44px; }
+        }
+
+        @media (max-width: 480px) {
+            .mfg-photos { grid-template-columns: 1fr; }
+            .trust-badges { gap: 20px; }
+            .trust-badge-label { font-size: 10px; }
+        }
 
         /* ─── FOOTER ─── */
         .footer {
@@ -1204,6 +1406,13 @@
                 <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px;">James Watson &mdash; co-discoverer of the DNA double helix &mdash; has said the most important research he's now pursuing is in reactive oxygen species and redox medicine.</p>
                 <p style="font-size: 14px; color: var(--slate); line-height: 1.6; margin-bottom: 0; font-style: italic;">This isn't fringe science looking for legitimacy. It's foundational science waiting for the world to catch up.</p>
             </div>
+
+            <div class="redox-intro-video">
+                <p style="font-size: 15px; color: var(--slate); text-align: center; margin-bottom: 16px;">A brief introduction from ASEA:</p>
+                <div class="redox-intro-video-wrap">
+                    <iframe src="https://player.vimeo.com/video/876529649" title="ASEA Redox — Brief Introduction" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1279,6 +1488,21 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         REDOX GOLD SPOTLIGHT
+         ═══════════════════════════════════════════ -->
+    <section class="gold-spotlight">
+        <div class="gold-spotlight-inner">
+            <span class="section-label">Performance &amp; Recovery</span>
+            <h2>Redox Gold</h2>
+            <p class="gold-spotlight-subtitle">Targeted redox signaling powered by a catalytic gold core. Designed for people who push their bodies &mdash; and expect them to bounce back.</p>
+
+            <div class="gold-spotlight-video">
+                <iframe src="https://player.vimeo.com/video/1053447267" title="ASEA Redox Gold — Performance &amp; Recovery" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
          CENTENARIAN THESIS (Dr. Herskowitz)
          ═══════════════════════════════════════════ -->
     <section class="centenarian-thesis">
@@ -1329,6 +1553,74 @@
             <p class="visible-proof-quote">As fun as that photograph is to help people understand, there's got to be something to a technology that can do that. But I think what's more important than young skin cells is young heart cells, young lung cells, young brain cells. And quite frankly, you wouldn't be living very long without a good functioning intestine, because that's where most of your immune system is. You want your cells to function as well as they can every moment of every day. This product can help them do that.&rdquo;</p>
 
             <p class="visible-proof-attribution">&mdash; Dr. Marty Morin, NIH Researcher &amp; Veterinarian</p>
+
+            <div class="visible-proof-video">
+                <iframe src="https://player.vimeo.com/video/876537976?h=f9e25f030b" title="Renu28 Redox Gel — Visible Results" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         MANUFACTURING & QUALITY
+         ═══════════════════════════════════════════ -->
+    <section class="mfg-quality">
+        <div class="mfg-quality-inner">
+            <span class="section-label">Manufacturing &amp; Quality</span>
+            <h2>Built to Pharmaceutical Standards</h2>
+            <p class="mfg-quality-subtitle">ASEA products are manufactured in an FDA-registered, GMP-certified facility in Pleasant Grove, Utah &mdash; and independently verified by third-party laboratories.</p>
+
+            <div class="mfg-photos">
+                <img src="asea-building.webp" alt="ASEA headquarters and manufacturing facility in Pleasant Grove, Utah" class="mfg-photo-wide">
+                <img src="asea-bottling.jpg" alt="ASEA automated bottling line in clean room environment">
+                <img src="asea-warehouse.webp" alt="ASEA product warehouse and distribution center">
+            </div>
+
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="26" cy="26" r="24" stroke="#2a7d7b" stroke-width="2.5" fill="#e6f3f2"/>
+                        <path d="M16 17h20v18H16z" fill="#2a7d7b" rx="2"/>
+                        <path d="M22 26l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <text x="26" y="14" text-anchor="middle" font-size="6" font-weight="700" fill="#2a7d7b" font-family="Inter, sans-serif">FDA</text>
+                    </svg>
+                    <span class="trust-badge-label">FDA Registered</span>
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="26" cy="26" r="24" stroke="#2a7d7b" stroke-width="2.5" fill="#e6f3f2"/>
+                        <path d="M18 20h16v14H18z" fill="#2a7d7b" rx="1"/>
+                        <path d="M22 27l2.5 2.5L30 24" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <text x="26" y="16" text-anchor="middle" font-size="5.5" font-weight="700" fill="#2a7d7b" font-family="Inter, sans-serif">NSF</text>
+                    </svg>
+                    <span class="trust-badge-label">NSF Certified</span>
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="26" cy="26" r="24" stroke="#2a7d7b" stroke-width="2.5" fill="#e6f3f2"/>
+                        <text x="26" y="24" text-anchor="middle" font-size="7" font-weight="700" fill="#2a7d7b" font-family="Inter, sans-serif">BQC</text>
+                        <text x="26" y="33" text-anchor="middle" font-size="5" fill="#1e5f5d" font-family="Inter, sans-serif">REDOX</text>
+                    </svg>
+                    <span class="trust-badge-label">BQC Redox Verified</span>
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="26" cy="26" r="24" stroke="#2a7d7b" stroke-width="2.5" fill="#e6f3f2"/>
+                        <text x="26" y="29" text-anchor="middle" font-size="6.5" font-weight="600" fill="#2a7d7b" font-family="Inter, sans-serif">K</text>
+                        <circle cx="26" cy="26" r="12" stroke="#2a7d7b" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <span class="trust-badge-label">Kosher Certified</span>
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="26" cy="26" r="24" stroke="#2a7d7b" stroke-width="2.5" fill="#e6f3f2"/>
+                        <path d="M20 22c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#2a7d7b" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <path d="M26 30v4M22 30h8" stroke="#2a7d7b" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="26" cy="26" r="4" fill="#2a7d7b"/>
+                        <path d="M24.5 25.5l1.5 1.5 2-2" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="trust-badge-label">Dermatest Approved</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1413,6 +1705,13 @@
                     <h3>Doctors & Evidence</h3>
                     <p>Cardiologists, cell biologists, and pain specialists who independently investigated this technology.</p>
                     <span class="card-arrow">See the evidence &rarr;</span>
+                </a>
+
+                <a class="explore-card" href="testimonials.html">
+                    <span class="card-icon">&#127909;</span>
+                    <h3>Real Experiences</h3>
+                    <p>180+ video testimonials from real people. Password-protected for compliance &mdash; ask me for access.</p>
+                    <span class="card-arrow">See the stories &rarr;</span>
                 </a>
 
                 <a class="explore-card" href="business.html">
