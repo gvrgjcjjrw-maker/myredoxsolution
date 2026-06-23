@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome — My Redox Solution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a7d7b;
+            --primary-deep: #1e5f5d;
+            --primary-light: #e6f3f2;
+            --hero-bg: #1c2a35;
+            --hero-bg-deep: #141f28;
+            --canvas: #ffffff;
+            --surface: #f8f6f3;
+            --surface-warm: #faf8f5;
+            --card-cream: #faf5ed;
+            --card-gold: #fdf6e8;
+            --hairline: #e5e1db;
+            --hairline-soft: #ede9e4;
+            --ink: #1a1a1a;
+            --charcoal: #37352f;
+            --slate: #5d5b54;
+            --steel: #787671;
+            --stone: #a4a097;
+            --muted: #bbb8b1;
+            --on-dark: #ffffff;
+            --on-dark-muted: #a4a097;
+            --rounded-sm: 6px;
+            --rounded-md: 8px;
+            --rounded-lg: 12px;
+            --rounded-xl: 16px;
+            --shadow-subtle: rgba(15, 15, 15, 0.04) 0px 1px 2px 0px;
+            --shadow-card: rgba(15, 15, 15, 0.08) 0px 4px 12px 0px;
+            --max-width: 760px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, 'Segoe UI', Helvetica, sans-serif;
+            background: var(--canvas);
+            color: var(--charcoal);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 { font-family: 'Lora', Georgia, serif; color: var(--ink); }
+        strong { font-weight: 600; color: var(--ink); }
+        em { font-style: italic; }
+        p { font-size: 17px; line-height: 1.7; margin-bottom: 20px; color: var(--charcoal); }
+
+        /* ─── NAV ─── */
+        .nav {
+            background: var(--hero-bg);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-home {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--on-dark);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .nav-home:hover { opacity: 1; }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover { color: var(--on-dark); }
+        .nav-links a.active { color: var(--on-dark); }
+
+        @media (max-width: 480px) {
+            .nav { flex-direction: column; gap: 12px; }
+            .nav-links { gap: 16px; }
+        }
+
+        /* ─── HOOK ─── */
+        .hook {
+            background: var(--hero-bg);
+            padding: 64px 24px 56px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .hook-inner {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .hook-headline {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--on-dark);
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 28px;
+        }
+
+        .hook-sub {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.6);
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .hook-quote-block {
+            max-width: 540px;
+            margin: 32px auto 36px;
+            padding: 28px 32px;
+            background: rgba(255,255,255,0.04);
+            border-left: 3px solid #e8c170;
+            border-radius: 0 8px 8px 0;
+            text-align: left;
+        }
+
+        .hook-quote-block blockquote {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--on-dark);
+            font-size: 20px;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .hook-quote-block .attribution {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.45);
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .hook-bridge {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 540px;
+            margin: 0 auto 32px;
+            text-align: left;
+        }
+
+        .hook-turn {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--on-dark);
+            font-size: 22px;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        .hook-turn .but {
+            display: block;
+            margin-top: 12px;
+            color: #e8c170;
+            font-weight: 600;
+        }
+
+        .hook-scroll-cue {
+            margin-top: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .hook-scroll-cue span {
+            display: block;
+            margin-top: 8px;
+            font-size: 18px;
+            animation: gentle-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes gentle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+
+        @media (max-width: 768px) {
+            .hook { padding: 48px 20px 44px; }
+            .hook-headline { font-size: 26px; }
+            .hook-turn { font-size: 19px; }
+        }
+
+        @media (max-width: 480px) {
+            .hook-headline { font-size: 23px; }
+            .hook-turn { font-size: 17px; }
+        }
+
+        /* ─── PARENT VOICES ─── */
+        .parent-voices {
+            background: var(--surface-warm);
+            padding: 64px 24px;
+            border-bottom: 1px solid var(--hairline-soft);
+        }
+
+        .parent-voices-inner {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .parent-voices-inner h2 {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .parent-voices-intro {
+            text-align: center;
+            color: var(--slate);
+            margin-bottom: 36px;
+        }
+
+        .voice-card {
+            background: var(--canvas);
+            border: 1px solid var(--hairline);
+            border-radius: var(--rounded-lg);
+            padding: 28px 28px 24px;
+            margin-bottom: 20px;
+        }
+
+        .voice-card blockquote {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 19px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.55;
+            margin-bottom: 10px;
+        }
+
+        .voice-card .voice-context {
+            font-size: 14px;
+            color: var(--slate);
+            line-height: 1.6;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        .voice-card .voice-name {
+            font-size: 14px;
+            color: var(--stone);
+            margin-bottom: 0;
+        }
+
+        .parent-voices-bottom {
+            text-align: center;
+            margin-top: 32px;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .parent-voices { padding: 48px 20px; }
+            .voice-card blockquote { font-size: 17px; }
+        }
+
+        /* ─── SORT-OF-WORKS ─── */
+        .sort-of-works {
+            padding: 64px 24px;
+            background: var(--canvas);
+            border-bottom: 1px solid var(--hairline-soft);
+        }
+
+        .sort-of-works-inner {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .sort-of-works-inner h2 { margin-bottom: 20px; }
+
+        @media (max-width: 768px) {
+            .sort-of-works { padding: 48px 20px; }
+        }
+
+        /* ─── SECTIONS ─── */
+        .section {
+            padding: 64px 24px;
+        }
+
+        .section-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-alt { background: var(--surface); }
+
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.3px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 48px 20px; }
+            h2 { font-size: 26px; }
+        }
+
+        @media (max-width: 480px) {
+            h2 { font-size: 22px; }
+            p { font-size: 16px; }
+        }
+
+        /* ─── REDOX SECTION ─── */
+        .redox-two-jobs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 36px 0;
+        }
+
+        .redox-job {
+            background: var(--surface);
+            border-radius: var(--rounded-lg);
+            padding: 28px 24px;
+        }
+
+        .redox-job h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary-deep);
+        }
+
+        .redox-job p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--slate);
+            margin-bottom: 0;
+        }
+
+        .redox-decline {
+            background: var(--hero-bg);
+            border-radius: var(--rounded-lg);
+            padding: 32px 28px;
+            margin: 36px 0;
+            text-align: center;
+        }
+
+        .redox-decline p {
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .redox-decline p:last-child { margin-bottom: 0; }
+
+        .redox-decline .decline-stat {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #e8c170;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .redox-punchline {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--ink);
+            text-align: center;
+            margin: 36px 0 0;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .redox-two-jobs { grid-template-columns: 1fr; }
+        }
+
+        /* ─── STORY TEASER ─── */
+        .story-teaser {
+            background: var(--surface-warm);
+            padding: 64px 24px;
+            border-top: 1px solid var(--hairline-soft);
+            border-bottom: 1px solid var(--hairline-soft);
+        }
+
+        .story-teaser-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-teaser-inner h2 { margin-bottom: 16px; }
+
+        .story-teaser-inner p {
+            font-size: 17px;
+            color: var(--charcoal);
+            line-height: 1.75;
+        }
+
+        .story-teaser-quote {
+            background: var(--canvas);
+            border-radius: var(--rounded-lg);
+            padding: 28px;
+            margin: 28px 0;
+            border: 1px solid var(--hairline);
+        }
+
+        .story-teaser-quote p {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .story-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .story-link:hover { color: var(--primary-deep); }
+
+        /* ─── ORCHESTRA (CONDENSED) ─── */
+        .orchestra-note {
+            background: var(--primary-light);
+            border-radius: var(--rounded-lg);
+            padding: 24px 28px;
+            margin-top: 28px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .orchestra-note p {
+            font-size: 15px;
+            color: var(--slate);
+            margin-bottom: 0;
+            line-height: 1.65;
+        }
+
+        /* ─── WHO ELSE ─── */
+        .who-section {
+            background: var(--surface-warm);
+            padding: 64px 24px;
+            border-bottom: 1px solid var(--hairline-soft);
+        }
+
+        .who-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .who-inner h2 {
+            margin-bottom: 12px;
+        }
+
+        .who-inner > p {
+            color: var(--slate);
+            margin-bottom: 32px;
+        }
+
+        .who-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .who-list li {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--charcoal);
+            padding: 14px 0 14px 32px;
+            border-bottom: 1px solid var(--hairline-soft);
+            position: relative;
+        }
+
+        .who-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 22px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .who-list li:last-child { border-bottom: none; }
+
+        @media (max-width: 768px) {
+            .who-section { padding: 48px 20px; }
+        }
+
+        /* ─── DREAMS QUOTE ─── */
+        .dreams-quote {
+            background: var(--surface-warm);
+            border-top: 1px solid var(--hairline-soft);
+            border-bottom: 1px solid var(--hairline-soft);
+            padding: 56px 24px;
+            text-align: center;
+        }
+
+        .dreams-quote blockquote {
+            max-width: 580px;
+            margin: 0 auto 16px;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 24px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        .dreams-quote .bridge {
+            max-width: 580px;
+            margin: 0 auto;
+            font-size: 17px;
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .dreams-quote blockquote { font-size: 20px; }
+        }
+
+        /* ─── EXPLORE DEEPER ─── */
+        .explore-section {
+            padding: 64px 24px;
+            background: var(--surface);
+        }
+
+        .explore-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .explore-inner h2 { margin-bottom: 12px; }
+        .explore-inner > p { color: var(--slate); margin-bottom: 32px; }
+
+        .explore-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .explore-card {
+            background: var(--canvas);
+            border: 1px solid var(--hairline);
+            border-radius: var(--rounded-lg);
+            padding: 28px 20px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: block;
+        }
+
+        .explore-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-card);
+            transform: translateY(-2px);
+        }
+
+        .explore-card .card-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .explore-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .explore-card p {
+            font-size: 14px;
+            line-height: 1.55;
+            color: var(--slate);
+            margin-bottom: 0;
+        }
+
+        .explore-card .card-arrow {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .explore-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+        }
+
+        /* ─── INVITATION ─── */
+        .invitation {
+            padding: 64px 24px;
+            text-align: center;
+            background: var(--canvas);
+            border-top: 1px solid var(--hairline-soft);
+        }
+
+        .invitation .section-inner { max-width: 580px; }
+        .invitation h2 { margin-bottom: 20px; }
+        .invitation p { color: var(--slate); font-size: 17px; }
+
+        .invitation .closing-line {
+            color: var(--ink);
+            font-weight: 500;
+            font-size: 18px;
+            margin-top: 32px;
+        }
+
+        .contact-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--on-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: var(--rounded-md);
+            text-decoration: none;
+            transition: background 0.15s ease;
+        }
+
+        .btn-primary:hover { background: var(--primary-deep); }
+
+        .btn-secondary {
+            display: inline-block;
+            color: var(--charcoal);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: var(--rounded-md);
+            text-decoration: none;
+            border: 1px solid var(--hairline);
+            transition: border-color 0.15s ease;
+        }
+
+        .btn-secondary:hover { border-color: var(--charcoal); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--surface);
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--hairline);
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--steel);
+            margin-bottom: 8px;
+        }
+
+        .footer .disclaimer {
+            font-size: 12px;
+            color: var(--stone);
+            font-style: italic;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a class="nav-home" href="index.html">My Redox Solution</a>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="my-story.html">My Story</a>
+            <a href="faq.html">FAQ</a>
+            <a href="doctors.html">Doctors</a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+         THE HOOK — Parent-focused entry
+         ═══════════════════════════════════════════ -->
+    <section class="hook">
+        <div class="hook-inner">
+            <h1 class="hook-headline">You've tried everything for your child.<br>What if the missing piece was already inside them?</h1>
+
+            <p class="hook-sub">Every parent of a child on the spectrum knows the feeling. The supplements that sort of work. The therapies that help a little. The protocols that promise everything and deliver just enough to keep you hoping &mdash; but never enough to stop searching.</p>
+
+            <p class="hook-sub">You're not imagining the progress. And you're not wrong that it's not enough.</p>
+
+            <div class="hook-quote-block">
+                <blockquote>&ldquo;No, Mom, I'm just looking at you.&rdquo;</blockquote>
+                <p class="attribution">&mdash; Jack, age 13, after 13 years of never making meaningful eye contact</p>
+            </div>
+
+            <p class="hook-bridge">Something shifted for Jack that his family hadn't seen in 13 years. His mother Megan says it simply: <em>"Getting my son back &mdash; I just, I never expected something like that."</em></p>
+
+            <p class="hook-bridge">They didn't add another instrument. They gave the body <strong style="color: var(--on-dark);">more of what it needs to operate the way it was designed to</strong> &mdash; and strengthened the orchestra's conductor.</p>
+
+            <p class="hook-turn">
+                Your child's body was designed to do extraordinary things.
+                <span class="but">It can only perform as well as it communicates.</span>
+            </p>
+
+            <div class="hook-scroll-cue">
+                <span>&darr;</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PARENT VOICES — The emotional spine
+         ═══════════════════════════════════════════ -->
+    <section class="parent-voices">
+        <div class="parent-voices-inner">
+            <h2>Parents Are Saying Things They Never Expected to Say</h2>
+            <p class="parent-voices-intro">These are real parents. Real words. Nothing scripted.</p>
+
+            <div class="voice-card">
+                <blockquote>&ldquo;Before, if you're crying, he'd be laughing. Now if you're crying, he would come and just hug me and hold me.&rdquo;</blockquote>
+                <p class="voice-name">&mdash; Natalia, Aiden's mother</p>
+            </div>
+
+            <div class="voice-card">
+                <blockquote>&ldquo;The coach said, 'I don't know what's going on, but Lance is different this year. He is in class for the full 60 minutes, and he is participating.'&rdquo;</blockquote>
+                <p class="voice-name">&mdash; Talia, quoting Lance's PE coach</p>
+            </div>
+
+            <div class="voice-card">
+                <blockquote>&ldquo;My daughter is in sixth grade. She has her first friend. Every day, they take the bus together, and when they get off, she holds her hand and walks her to the classroom.&rdquo;</blockquote>
+                <p class="voice-name">&mdash; Maria, Virginia's mother</p>
+            </div>
+
+            <div class="voice-card">
+                <blockquote>&ldquo;My 10-year-old son had never spoken a word. Now he says: 'That's cool.' 'Yes, Mom.' And he's asking for Pizza Hut pizza.&rdquo;</blockquote>
+                <p class="voice-name">&mdash; Maria, mother of three</p>
+            </div>
+
+            <div class="voice-card">
+                <blockquote>&ldquo;He said, 'I love you,' instead of screaming at me.&rdquo;</blockquote>
+                <p class="voice-name">&mdash; Tina, Jack's mother</p>
+            </div>
+
+            <div class="voice-card">
+                <blockquote>&ldquo;I was able to relax for the first time on any holiday since I can remember, since my kids were born. I almost didn't know what to do with myself.&rdquo;</blockquote>
+                <p class="voice-name">&mdash; Talia, Lance's mother</p>
+            </div>
+
+            <p class="parent-voices-bottom">None of these parents were looking for a miracle. They were just looking for something that actually worked.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         THE SORT-OF-WORKS PROBLEM
+         ═══════════════════════════════════════════ -->
+    <section class="sort-of-works">
+        <div class="sort-of-works-inner">
+            <span class="section-label">The Problem No One Talks About</span>
+            <h2>The &ldquo;Sort-of-Works&rdquo; Plateau</h2>
+
+            <p>If you're a parent navigating the spectrum, you probably have a cabinet full of supplements. A binder of protocols. A list of therapies you've tried, are trying, or are about to try.</p>
+
+            <p>And some of them work. Sort of. Enough to notice. Not enough to stop searching.</p>
+
+            <p>You can be doing all the right things, but if the signaling layer is weak, the whole system becomes less efficient. That's what most parents are running into without knowing it.</p>
+
+            <p>Here's why: most interventions target one pathway, one deficiency, one symptom. They're playing one instrument in the orchestra. And one instrument can sound beautiful &mdash; but it can't carry the whole symphony.</p>
+
+            <p><strong>What if the issue isn't a missing instrument? What if it's a weakening orchestra conductor?</strong></p>
+
+            <p>That's the question that changed everything for these families. And to understand the answer, you need to understand something most people &mdash; including most doctors &mdash; have never heard of.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         THE BIG IDEA
+         ═══════════════════════════════════════════ -->
+    <section class="section">
+        <div class="section-inner" style="max-width: 640px;">
+            <span class="section-label">The Big Idea</span>
+            <h2>The Greatest Engineering Achievement in History&hellip; Is Your Child's Body.</h2>
+
+            <p>Not a supercomputer. Not a spacecraft. <strong>The human body.</strong></p>
+
+            <p>From a single cell emerges trillions of cells, each performing specialized tasks while communicating with countless others every second of every day. The heart beats over 100,000 times a day. The immune system neutralizes threats you never even know about. The body heals, adapts, and recovers &mdash; all without a single conscious thought.</p>
+
+            <p>But sometimes, from the very beginning, some of those communication pathways don't develop the way they should. Or they get overwhelmed by environmental stressors before the body has a chance to build its defenses.</p>
+
+            <p>None of it means the body is broken. It means the body needs support &mdash; <strong style="color: var(--primary);">at the level where communication actually happens.</strong></p>
+
+            <p>Scientists have discovered that one of the keys lies in <strong>cellular communication</strong> &mdash; specifically, in molecules your body naturally produces called <strong>Redox Signaling Molecules.</strong></p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         REDOX EXPLAINER
+         ═══════════════════════════════════════════ -->
+    <section class="section section-alt">
+        <div class="section-inner" style="max-width: 660px;">
+            <span class="section-label">What I Learned</span>
+            <h2>Redox Signaling Molecules</h2>
+
+            <p>Your body produces molecules called Redox Signaling Molecules. You've been making them since before you were born. Every cell in your body depends on them.</p>
+
+            <p>They do two essential things:</p>
+
+            <div class="redox-two-jobs">
+                <div class="redox-job">
+                    <h3>They Protect</h3>
+                    <p>When a cell is damaged or under threat, redox signaling molecules activate your body's natural defense systems &mdash; telling the right cells to respond, repair, or replace what's been compromised.</p>
+                </div>
+                <div class="redox-job">
+                    <h3>They Communicate</h3>
+                    <p>They carry messages between cells &mdash; coordinating the countless processes that keep your body functioning. Healing a cut. Fighting off an illness. Recovering from a hard workout.</p>
+                </div>
+            </div>
+
+            <p>When the body is young and healthy, these molecules are abundant. Communication is strong. Recovery is fast. Development unfolds the way it should.</p>
+
+            <p>But production naturally declines over time:</p>
+
+            <div class="redox-decline">
+                <span class="decline-stat">~1% per year</span>
+                <p>Starting from puberty, your body produces roughly 1% fewer redox signaling molecules each year. Slowly, steadily, the network weakens.</p>
+                <p>The cells are still there. The design is still brilliant. But the messages aren't getting through the way they used to.</p>
+            </div>
+
+            <p class="redox-punchline">It's not that the body forgot what to do. It's that the body can't hear itself as clearly anymore.</p>
+
+            <div style="margin-top: 40px; padding: 28px 32px; background: var(--card-gold); border-radius: var(--rounded-lg); border-left: 3px solid #c8a94e;">
+                <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px;"><strong>How significant is this?</strong> When an independent AI system trained on the entire medical literature was asked to rank a technology capable of supplementing the body's natural redox signaling molecules, it placed it <strong>among the top 5 most significant developments in human health</strong> &mdash; alongside vaccines, antibiotics, and gene editing.</p>
+                <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px;">James Watson &mdash; co-discoverer of the DNA double helix &mdash; has said the most important research he's now pursuing is in reactive oxygen species and redox medicine.</p>
+                <p style="font-size: 14px; color: var(--slate); line-height: 1.6; margin-bottom: 0; font-style: italic;">This isn't fringe science looking for legitimacy. It's foundational science waiting for the world to catch up.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         HOW IT WORKS (ORCHESTRA)
+         ═══════════════════════════════════════════ -->
+    <section class="section">
+        <div class="section-inner" style="max-width: 640px;">
+            <span class="section-label">How It Actually Works</span>
+            <h2>The Conductor of Your Body's Orchestra</h2>
+
+            <p>Dr. Gary Samuelson is the atomic medical physicist who figured out how to stabilize redox signaling molecules outside the body &mdash; the scientific breakthrough that made this technology possible. He uses an analogy that makes it click:</p>
+
+            <p><strong>Redox signaling molecules are the conductor of your body's orchestra.</strong></p>
+
+            <p>The conductor doesn't play a single instrument. But without the conductor, every section &mdash; immune system, cardiovascular, neurological, hormonal &mdash; falls out of sync. The musicians are all there. The talent is all there. But the music just doesn't work.</p>
+
+            <p>When the conductor's direction is commanding and clear, every section responds with precision. As those signals become less distinct, the orchestra doesn't stop playing &mdash; it simply <strong>doesn't perform at the same level.</strong></p>
+
+            <div class="orchestra-note">
+                <p>This is why redox signaling molecules don't treat, cure, or diagnose anything. The conductor doesn't play the violin. But give your body back a strong conductor, and every section of the orchestra can start playing the way it was designed to.</p>
+            </div>
+
+            <div style="margin-top: 32px; padding: 24px 28px; background: var(--card-cream); border-radius: var(--rounded-lg); border-left: 3px solid var(--primary);">
+                <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px;"><strong>For parents on the spectrum journey:</strong> Think about what this means. Most supplements you've tried are playing one instrument &mdash; one nutrient, one pathway, one mechanism. That's why they "sort of work." They're not wrong. They're just incomplete.</p>
+                <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px;">Strengthening the conductor doesn't replace the instruments. It makes <em>every instrument you're already using</em> play better together. Not to replace what you're doing, but to strengthen the foundation everything else depends on.</p>
+                <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 0;"><strong>Hear it from the scientist himself:</strong> Dr. Samuelson presented this research directly to the autism community at the <a href="https://www.youtube.com/watch?v=l7EB0Vo8694" target="_blank" style="color: var(--primary); font-weight: 500;">Autism One Conference</a>. If you watch one thing, make it this.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         ONE MORE VOICE
+         ═══════════════════════════════════════════ -->
+    <div class="dreams-quote">
+        <blockquote>&ldquo;To see my child still growing at 26 years old &mdash; the sky is the limit.&rdquo;</blockquote>
+        <p class="bridge">&mdash; Dr. Lisa, her daughter's mother</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         STORY TEASER
+         ═══════════════════════════════════════════ -->
+    <section class="story-teaser">
+        <div class="story-teaser-inner">
+            <span class="section-label">My Experience</span>
+            <h2>A Skeptic's Story</h2>
+
+            <p>I spent my career in corporate accounting, where I learned to question bold claims and look for evidence. Over the years, I'd seen countless products promise extraordinary results, only to disappoint. Finding one that actually lived up to the hype felt like finding a needle in a haystack.</p>
+
+            <p>Then my financial advisor invited me to hear a brief presentation from a medical professional about ASEA. What caught my attention wasn't what he said. It was what he <em>didn't</em> say. There were no miracle claims. No exaggerated promises. Just a straightforward explanation.</p>
+
+            <p>That was enough for me to give it a try. I never imagined that decision would change my life.</p>
+
+            <div class="story-teaser-quote">
+                <p>&ldquo;I think this stuff is keeping me alive.&rdquo;</p>
+            </div>
+            <p style="font-size: 14px; color: var(--stone); margin-bottom: 8px;">&mdash; My father, who lived well into his 90s</p>
+
+            <a href="my-story.html" class="story-link">Read the full story &rarr;</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHO ELSE IS THIS FOR
+         ═══════════════════════════════════════════ -->
+    <section class="who-section">
+        <div class="who-inner">
+            <h2>This Isn't Only for Parents on the Spectrum</h2>
+            <p>Redox signaling affects every cell in every body. If any of these describe you, this page is for you too.</p>
+
+            <ul class="who-list">
+                <li>You're dealing with a health challenge and looking for answers</li>
+                <li>You're an athlete who wants every edge in recovery and performance</li>
+                <li>You've noticed you're slowing down and want to understand why</li>
+                <li>You're proactive about your health and want to stay ahead</li>
+                <li>Someone you love is struggling and you want to help</li>
+                <li>You're a health professional curious about foundational cellular science</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         BUSINESS TEASER
+         ═══════════════════════════════════════════ -->
+    <section class="section" style="border-top: 1px solid var(--hairline-soft);">
+        <div class="section-inner" style="max-width: 640px; text-align: center;">
+            <span class="section-label">There's Another Side to This Story</span>
+            <h2>Looking to Add a Revenue Stream?</h2>
+
+            <p style="text-align: left;">ASEA is the only company in the world that has this technology. No one else has figured out how to stabilize redox signaling molecules outside the body. Zero competition. 40+ patents. Available in 35 countries &mdash; and growing.</p>
+
+            <p style="text-align: left;">Now consider the math: a company doing $200&ndash;300 million in annual revenue &mdash; in a category independently valued at <strong>hundreds of billions.</strong> A 15-year head start in a market that barely knows it exists. And a product so misunderstood that the only way to sell it is to <em>educate</em> people &mdash; which means the people who understand it have a real advantage.</p>
+
+            <p style="text-align: left;">You don't need a medical degree. You don't need sales experience. You need curiosity, a willingness to learn, and the ability to have honest conversations.</p>
+
+            <p style="text-align: left;">If this doesn't interest you, that's fine &mdash; skip this entirely. But if some part of you is thinking <em>"this could be something"</em> &mdash; it might be worth a conversation.</p>
+
+            <a href="business.html" class="story-link" style="margin-top: 8px;">Explore the opportunity &rarr;</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         EXPLORE DEEPER
+         ═══════════════════════════════════════════ -->
+    <section class="explore-section">
+        <div class="explore-inner">
+            <h2>Go Deeper</h2>
+            <p>You've read the summary. Here's where you can dig in.</p>
+
+            <div class="explore-grid" style="grid-template-columns: 1fr 1fr;">
+                <a class="explore-card" href="my-story.html">
+                    <span class="card-icon">&#128214;</span>
+                    <h3>My Story</h3>
+                    <p>How a skeptical accountant ended up sharing a supplement with everyone he knows &mdash; including the dog.</p>
+                    <span class="card-arrow">Read more &rarr;</span>
+                </a>
+
+                <a class="explore-card" href="faq.html">
+                    <span class="card-icon">&#10067;</span>
+                    <h3>FAQ</h3>
+                    <p>15 real questions &mdash; from "Is this an MLM?" to "What does it taste like?" Honest answers.</p>
+                    <span class="card-arrow">See all questions &rarr;</span>
+                </a>
+
+                <a class="explore-card" href="doctors.html">
+                    <span class="card-icon">&#129657;</span>
+                    <h3>Doctors & Evidence</h3>
+                    <p>Cardiologists, cell biologists, and pain specialists who independently investigated this technology.</p>
+                    <span class="card-arrow">See the evidence &rarr;</span>
+                </a>
+
+                <a class="explore-card" href="business.html">
+                    <span class="card-icon">&#128176;</span>
+                    <h3>The Business</h3>
+                    <p>The timing, the math, and why this might be the most asymmetric opportunity you've never heard of.</p>
+                    <span class="card-arrow">See the opportunity &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         THE INVITATION
+         ═══════════════════════════════════════════ -->
+    <section class="invitation">
+        <div class="section-inner">
+            <h2>No Pressure. Just a Door.</h2>
+
+            <p>I'm not here to convince you of anything.</p>
+
+            <p>If what you've read resonates &mdash; if the idea of supporting your body's own design makes sense to you the way it made sense to me &mdash; I'd love to share more.</p>
+
+            <p>Not a sales pitch. A conversation.</p>
+
+            <p class="closing-line">Talk to me whenever you want. I'll be glad to hear from you.</p>
+
+            <div class="contact-row">
+                <a id="cta-email" href="mailto:fstrehlow@gmail.com" class="btn-primary">Email Fritz</a>
+                <a id="cta-learn" href="https://myredoxsolution.com" class="btn-secondary" target="_blank">Learn More About ASEA</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p id="footer-name">Fritz Strehlow &mdash; ASEA Independent Associate</p>
+        <p class="disclaimer">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Testimonials reflect individual experiences and are not guaranteed.</p>
+    </footer>
+
+    <script>
+    (function() {
+        var reps = {
+            fritz: {
+                name: 'Fritz',
+                fullName: 'Fritz Strehlow',
+                email: 'fstrehlow@gmail.com',
+                aseaUrl: 'https://myredoxsolution.com',
+                contactLabel: 'Email Fritz',
+                learnMoreLabel: 'Learn More About ASEA'
+            },
+            paul: {
+                name: 'Paul',
+                fullName: 'Paul & Assia Strehlow',
+                email: 'PAUL_EMAIL_HERE',
+                aseaUrl: 'https://aseaglobal.com/PaulIV',
+                contactLabel: 'Email Paul',
+                learnMoreLabel: 'Learn More About ASEA'
+            },
+            ricky: {
+                name: 'Ricky',
+                fullName: 'Ricky Strehlow',
+                email: 'RICKY_EMAIL_HERE',
+                aseaUrl: 'https://www.aseaglobal.com/RStrehlow',
+                contactLabel: 'Email Ricky',
+                learnMoreLabel: 'Learn More About ASEA'
+            }
+        };
+
+        var params = new URLSearchParams(window.location.search);
+        var repKey = (params.get('rep') || 'fritz').toLowerCase();
+        var rep = reps[repKey] || reps.fritz;
+
+        var emailBtn = document.getElementById('cta-email');
+        var learnBtn = document.getElementById('cta-learn');
+        if (emailBtn) { emailBtn.href = 'mailto:' + rep.email; emailBtn.textContent = rep.contactLabel; }
+        if (learnBtn) { learnBtn.href = rep.aseaUrl; learnBtn.textContent = rep.learnMoreLabel; }
+
+        var footerName = document.getElementById('footer-name');
+        if (footerName) { footerName.textContent = rep.fullName + ' — ASEA Independent Associate'; }
+
+        document.title = 'Welcome — ' + rep.fullName;
+    })();
+    </script>
+
+</body>
+</html>
