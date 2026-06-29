@@ -459,6 +459,63 @@
             .who-section { padding: 48px 20px; }
         }
 
+        /* ─── MEET FRITZ ─── */
+        .meet-fritz {
+            background: var(--canvas);
+            padding: 64px 24px;
+            border-bottom: 1px solid var(--hairline-soft);
+        }
+
+        .meet-fritz-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .meet-fritz-inner .hero-photo {
+            margin-bottom: 24px;
+        }
+
+        .meet-fritz-inner .hero-photo img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--hairline-soft);
+        }
+
+        .meet-fritz-inner h2 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .meet-fritz-inner p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .fritz-story-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .fritz-story-link:hover {
+            color: var(--primary-deep);
+        }
+
+        @media (max-width: 768px) {
+            .meet-fritz { padding: 48px 20px; }
+            .meet-fritz-inner .hero-photo img { width: 120px; height: 120px; }
+        }
+
         /* ─── SECTIONS ─── */
         .section {
             padding: 64px 24px;
@@ -1248,31 +1305,53 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         WHO IS THIS FOR (QUALIFIER)
+         ═══════════════════════════════════════════ -->
+    <section class="who-section">
+        <div class="who-inner">
+            <h2>This Page Is For You If&hellip;</h2>
+            <p>You don't have to check every box. Just one is enough.</p>
+
+            <ul class="who-list">
+                <li>You're dealing with a health challenge and looking for answers</li>
+                <li>You're an athlete who wants every edge in recovery and performance</li>
+                <li>You've noticed you're slowing down and want to understand why</li>
+                <li>You're proactive about your health and want to stay ahead</li>
+                <li>Someone you love is struggling and you want to help</li>
+                <li>You're a health professional curious about foundational cellular science</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         MEET FRITZ (PERSONAL INTRO)
+         ═══════════════════════════════════════════ -->
+    <section class="meet-fritz">
+        <div class="meet-fritz-inner">
+            <div class="hero-photo">
+                <img src="fritz-hero.jpg" alt="Fritz Strehlow">
+            </div>
+            <h2>I'm Fritz.</h2>
+            <p>I spent my career in corporate accounting &mdash; a world where bold claims get questioned and everything needs evidence. So when I stumbled onto something that sounded too good to be true, I did what any skeptic would do: I investigated.</p>
+            <p>What I found changed how I think about health, aging, and what the body is actually capable of. Now I share it with anyone who's curious enough to listen.</p>
+            <p>This page is my best attempt to show you what I wish someone had shown me years ago.</p>
+            <a href="my-story.html" class="fritz-story-link">Read my full story &rarr;</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
          THE HOOK
          ═══════════════════════════════════════════ -->
     <section class="hook">
         <div class="hook-inner">
-            <div class="hero-photo">
-                <img src="fritz-hero.jpg" alt="Fritz Strehlow">
-            </div>
-            <p class="hero-greeting">Hello. I'm glad you made it here.</p>
-
-            <div class="hero-bridge">
-                <p>If someone sent you here, they probably thought this information might be worth your time.</p>
-                <p>Maybe you're looking for answers.</p>
-                <p>Maybe you're simply curious.</p>
-                <p>Either way, my hope is that you'll leave with a different way of thinking about how the body works &mdash; and why so many people, including me, became fascinated by something called redox signaling.</p>
-            </div>
 
             <div class="hook-wonder">
                 <p>Every second, trillions of cells communicate, repair damage, destroy threats, create energy, rebuild tissue, and coordinate organs &mdash; all without you giving a single thought to any of it.</p>
                 <p class="wonder-kicker">Nothing mankind has ever engineered comes remotely close.</p>
             </div>
 
-            <p class="hook-transition">To understand why this matters, we first need to understand what your body is up against every single day.</p>
-
-            <h1 class="hook-headline">We're under attack.</h1>
-            <p class="hook-sub">And most people have no idea.</p>
+            <h1 class="hook-headline">Your body wasn't built for this.</h1>
+            <p class="hook-sub">And most of us don't realize what it's up against.</p>
 
             <div class="hook-stressors">
                 <p class="hook-stressors-title">Today's Body Faces Daily Stressors</p>
@@ -1321,28 +1400,14 @@
                 <span class="but">Up to a point.</span>
             </p>
 
+            <div class="hook-why" style="margin-top: 32px;">
+                <p>Maybe you've been doing everything right &mdash; eating better, exercising, taking supplements, seeing doctors. And you're still not where you want to be.</p>
+                <p>That's not a failure of willpower. It's not a lack of effort. It's a challenge at the cellular level that nobody told you about &mdash; until now.</p>
+            </div>
+
             <div class="hook-scroll-cue">
                 <span>&darr;</span>
             </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         WHO IS THIS FOR
-         ═══════════════════════════════════════════ -->
-    <section class="who-section">
-        <div class="who-inner">
-            <h2>This Page Is For You If&hellip;</h2>
-            <p>You don't have to check every box. Just one is enough.</p>
-
-            <ul class="who-list">
-                <li>You're dealing with a health challenge and looking for answers</li>
-                <li>You're an athlete who wants every edge in recovery and performance</li>
-                <li>You've noticed you're slowing down and want to understand why</li>
-                <li>You're proactive about your health and want to stay ahead</li>
-                <li>Someone you love is struggling and you want to help</li>
-                <li>You're a health professional curious about foundational cellular science</li>
-            </ul>
         </div>
     </section>
 
@@ -1625,6 +1690,32 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         FUTURE PACE
+         ═══════════════════════════════════════════ -->
+    <section class="section">
+        <div class="section-inner" style="max-width: 640px;">
+            <span class="section-label">What People Notice</span>
+            <h2>The Quiet Shifts</h2>
+
+            <p>Nobody wakes up on day one feeling like a new person. That's not how cellular health works.</p>
+
+            <p>What people typically describe is subtler than that &mdash; and in many ways, more convincing:</p>
+
+            <ul style="list-style: none; padding: 0; margin: 24px 0;">
+                <li style="padding: 12px 0 12px 28px; border-bottom: 1px solid var(--hairline-soft); position: relative; font-size: 16px; line-height: 1.7; color: var(--charcoal);"><span style="position: absolute; left: 0; color: var(--primary);">&bull;</span>Sleeping through the night for the first time in years</li>
+                <li style="padding: 12px 0 12px 28px; border-bottom: 1px solid var(--hairline-soft); position: relative; font-size: 16px; line-height: 1.7; color: var(--charcoal);"><span style="position: absolute; left: 0; color: var(--primary);">&bull;</span>Realizing halfway through the day that the afternoon fog never came</li>
+                <li style="padding: 12px 0 12px 28px; border-bottom: 1px solid var(--hairline-soft); position: relative; font-size: 16px; line-height: 1.7; color: var(--charcoal);"><span style="position: absolute; left: 0; color: var(--primary);">&bull;</span>Recovering from a workout in hours instead of days</li>
+                <li style="padding: 12px 0 12px 28px; border-bottom: 1px solid var(--hairline-soft); position: relative; font-size: 16px; line-height: 1.7; color: var(--charcoal);"><span style="position: absolute; left: 0; color: var(--primary);">&bull;</span>Noticing their skin looks different &mdash; without changing anything else</li>
+                <li style="padding: 12px 0 12px 28px; position: relative; font-size: 16px; line-height: 1.7; color: var(--charcoal);"><span style="position: absolute; left: 0; color: var(--primary);">&bull;</span>Feeling like the version of themselves they remember being ten years ago</li>
+            </ul>
+
+            <p>These aren't dramatic before-and-after claims. They're the kind of quiet shifts that make you wonder: <em>was this always possible, and I just didn't have the right support?</em></p>
+
+            <p style="font-size: 14px; color: var(--steel); font-style: italic; margin-top: 24px;">Individual results vary. These reflect commonly reported experiences, not guaranteed outcomes.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
          STORY TEASER
          ═══════════════════════════════════════════ -->
     <section class="story-teaser">
@@ -1632,16 +1723,17 @@
             <span class="section-label">My Experience</span>
             <h2>A Skeptic's Story</h2>
 
-            <p>I spent my career in corporate accounting, where I learned to question bold claims and look for evidence. Over the years, I'd seen countless products promise extraordinary results, only to disappoint. Finding one that actually lived up to the hype felt like finding a needle in a haystack.</p>
+            <p>My financial advisor invited me to hear a brief presentation from a medical professional about ASEA. What caught my attention wasn't what he said. It was what he <em>didn't</em> say. There were no miracle claims. No exaggerated promises. Just a straightforward explanation of the science.</p>
 
-            <p>Then my financial advisor invited me to hear a brief presentation from a medical professional about ASEA. What caught my attention wasn't what he said. It was what he <em>didn't</em> say. There were no miracle claims. No exaggerated promises. Just a straightforward explanation.</p>
+            <p>That was enough for me to give it a try. I never imagined that decision would change my life &mdash; or my family's.</p>
 
-            <p>That was enough for me to give it a try. I never imagined that decision would change my life.</p>
+            <p>My father was in his late 80s when I introduced him to ASEA. He was skeptical &mdash; the apple doesn't fall far from the tree. But he tried it. Weeks went by. Then one day, unprompted, he looked at me and said:</p>
 
             <div class="story-teaser-quote">
                 <p>&ldquo;I think this stuff is keeping me alive.&rdquo;</p>
             </div>
-            <p style="font-size: 14px; color: var(--stone); margin-bottom: 8px;">&mdash; My father, who lived well into his 90s</p>
+
+            <p>He stayed on it for the rest of his life and lived well into his 90s. My wife, who had zero interest at first, eventually started taking it on her own after watching what happened with me and my father. One by one, my family came around &mdash; not because I convinced them, but because they saw the changes for themselves.</p>
 
             <a href="my-story.html" class="story-link">Read the full story &rarr;</a>
         </div>
@@ -1729,15 +1821,17 @@
          ═══════════════════════════════════════════ -->
     <section class="invitation">
         <div class="section-inner">
-            <h2>No Pressure. Just a Door.</h2>
+            <h2>You Have Two Options.</h2>
 
-            <p>I'm not here to convince you of anything.</p>
+            <p>You can close this tab and keep doing what you've been doing. Nothing changes. Your cells keep declining at roughly 1% per year, quietly, in the background.</p>
 
-            <p>If what you've read resonates &mdash; if the idea of supporting your body's own design makes sense to you the way it made sense to me &mdash; I'd love to share more.</p>
+            <p>Or you can try the one thing that actually addresses the root &mdash; cellular communication &mdash; and see what your body does when it gets back what it's been missing.</p>
 
-            <p>Not a sales pitch. A conversation.</p>
+            <p>ASEA costs about <strong>$4.60 a day</strong> &mdash; less than most people spend on coffee. It comes with a <strong>30-day satisfaction guarantee.</strong> Most people notice something within the first 30 days. Some sooner. Some later. But the body doesn't lie.</p>
 
-            <p class="closing-line">Talk to me whenever you want. I'll be glad to hear from you.</p>
+            <p>I'm not here to pressure you into anything. But I'd be doing you a disservice if I didn't tell you: <strong>every year you wait, the gap widens.</strong> The 1% decline doesn't pause while you think it over.</p>
+
+            <p class="closing-line">If any part of this made sense to you &mdash; let's have a conversation. Not a sales pitch. Just two people talking about health.</p>
 
             <div class="contact-row">
                 <a id="cta-email" href="mailto:fritz@myredoxsolution.com" class="btn-primary">Email Fritz</a>
