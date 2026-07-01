@@ -625,10 +625,10 @@
         <div class="cta-inner">
             <h2>Could This Be the Missing Piece?</h2>
 
-            <p>Find out in 2 minutes. This short quiz will help you see whether your child's body might be running on a weakened signal &mdash; and what you can do about it.</p>
+            <p>Find out in 5 minutes. This short quiz will help you see whether your child's body might be running on a weakened signal &mdash; and what you can do about it.</p>
 
-            <a id="cta-quiz" href="mailto:fstrehlow@gmail.com?subject=I%20want%20to%20learn%20more%20(Parents%20page)" class="btn-cta">Take the 2-Minute Quiz</a>
-            <p class="cta-subtext">No email required to start. Your answers are private.</p>
+            <a id="cta-quiz" href="https://form.typeform.com/to/r6dYQq5U" class="btn-cta" target="_blank" rel="noopener">Take the 5-Minute Quiz</a>
+            <p class="cta-subtext">No email required. Your answers are private.</p>
 
             <p style="margin-top: 32px; font-size: 14px; color: var(--stone);">Prefer to talk first? <a id="cta-email" href="mailto:fstrehlow@gmail.com" style="color: var(--primary); text-decoration: underline;">Email Fritz</a> &mdash; no pressure, just a conversation.</p>
         </div>
@@ -648,7 +648,7 @@
     <div class="sticky-bar" id="stickyBar">
         <div class="sticky-bar-inner">
             <span class="sticky-bar-text">See if this applies to your child</span>
-            <a href="mailto:fstrehlow@gmail.com?subject=I%20want%20to%20learn%20more%20(Parents%20page)" class="btn-sticky" id="sticky-quiz">Take the Quiz</a>
+            <a href="https://form.typeform.com/to/r6dYQq5U" class="btn-sticky" target="_blank" rel="noopener" id="sticky-quiz">Take the Quiz</a>
         </div>
     </div>
 
@@ -702,9 +702,7 @@
         var ctaEmail = document.getElementById('cta-email');
         var stickyQuiz = document.getElementById('sticky-quiz');
 
-        if (ctaQuiz) { ctaQuiz.href = mailtoUrl; }
         if (ctaEmail) { ctaEmail.href = 'mailto:' + rep.email; ctaEmail.textContent = rep.contactLabel; }
-        if (stickyQuiz) { stickyQuiz.href = mailtoUrl; }
 
         var footerName = document.getElementById('footer-name');
         if (footerName) { footerName.textContent = rep.fullName + ' — ASEA Independent Associate'; }
