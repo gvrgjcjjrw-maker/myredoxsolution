@@ -394,6 +394,52 @@
             .product-detail { grid-template-columns: 1fr; }
         }
 
+        /* ─── PRICING TIERS ─── */
+        .pricing-tiers {
+            margin: 20px 0;
+        }
+
+        .pricing-tier {
+            padding: 14px 18px;
+            background: var(--canvas);
+            border: 1px solid var(--hairline);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pricing-tier:last-child { margin-bottom: 0; }
+
+        .tier-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .tier-detail {
+            font-size: 13px;
+            color: var(--slate);
+            margin-top: 2px;
+        }
+
+        .tier-best {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .tier-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary-deep);
+            background: var(--canvas);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            padding: 3px 10px;
+            white-space: nowrap;
+        }
+
         /* ─── MID-PAGE CTA ─── */
         .mid-cta {
             text-align: center;
@@ -580,16 +626,32 @@
                     <p class="detail-value">Drinkable liquid</p>
                 </div>
                 <div class="product-detail-item">
-                    <p class="detail-label">Daily use</p>
-                    <p class="detail-value">4 oz, morning</p>
+                    <p class="detail-label">How you take it</p>
+                    <p class="detail-value">Morning, on an empty stomach</p>
                 </div>
-                <div class="product-detail-item">
-                    <p class="detail-label">One month</p>
-                    <p class="detail-value">4 bottles (32 oz each)</p>
+            </div>
+
+            <p>Dosage varies by person &mdash; you'll find what works for you in the first few weeks. There are three ways to buy:</p>
+
+            <div class="pricing-tiers">
+                <div class="pricing-tier">
+                    <div>
+                        <p class="tier-name">Retail</p>
+                        <p class="tier-detail">One-time purchase, no commitment</p>
+                    </div>
                 </div>
-                <div class="product-detail-item">
-                    <p class="detail-label">Cost</p>
-                    <p class="detail-value">~$4/day</p>
+                <div class="pricing-tier">
+                    <div>
+                        <p class="tier-name">Subscribe &amp; Save</p>
+                        <p class="tier-detail">Reduced price, cancel anytime</p>
+                    </div>
+                </div>
+                <div class="pricing-tier tier-best">
+                    <div>
+                        <p class="tier-name">Brand Partner</p>
+                        <p class="tier-detail">$40 one-time &rarr; wholesale prices, locked in</p>
+                    </div>
+                    <span class="tier-tag">Best value</span>
                 </div>
             </div>
 
@@ -616,7 +678,7 @@
 
             <p class="handoff-note">The button above takes you to ASEA's official site to order. Look for &ldquo;ASEA Redox Cell Signaling Supplement.&rdquo; If anything on that page is confusing, just email me instead &mdash; I'll walk you through it.</p>
 
-            <p class="close-links">Or keep exploring: <a href="doctors.html">the science</a> &middot; <a href="testimonials.html">real experiences</a></p>
+            <p class="close-links">Or keep exploring: <a href="doctors.html">hear from doctors who use it</a> &middot; <a href="testimonials.html">read what people noticed first</a></p>
 
             <p class="close-note">If it's not for you, no problem. You know where to find me.</p>
         </div>
