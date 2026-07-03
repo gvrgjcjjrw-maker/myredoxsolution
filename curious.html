@@ -246,6 +246,28 @@
             .notices { grid-template-columns: 1fr; }
         }
 
+        .guarantee-box {
+            margin-top: 20px;
+            padding: 20px 24px;
+            background: var(--primary-light);
+            border: 1px solid var(--primary);
+            border-radius: var(--rounded-lg);
+        }
+
+        .guarantee-box strong {
+            display: block;
+            font-size: 16px;
+            color: var(--primary-deep);
+            margin-bottom: 8px;
+        }
+
+        .guarantee-box p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--charcoal);
+            margin-bottom: 0;
+        }
+
         /* ─── CLOSE ─── */
         .close-section {
             padding: 56px 24px;
@@ -302,6 +324,35 @@
             color: var(--primary);
             font-weight: 600;
         }
+
+        .close-option-primary {
+            background: var(--primary) !important;
+            color: #fff !important;
+            border-color: var(--primary) !important;
+            font-weight: 600;
+        }
+
+        .close-option-primary:hover {
+            background: var(--primary-deep) !important;
+            border-color: var(--primary-deep) !important;
+        }
+
+        .close-option-primary .option-arrow {
+            color: #fff !important;
+        }
+
+        .close-links {
+            font-size: 14px;
+            color: var(--stone);
+            margin-top: 16px;
+        }
+
+        .close-links a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .close-links a:hover { text-decoration: underline; }
 
         .close-note {
             font-size: 14px;
@@ -362,12 +413,15 @@
             <p>As you get older, the signal weakens:</p>
 
             <span class="stat-callout">~1% per year from puberty</span>
+            <p style="font-size:13px; color:var(--stone); margin-top:0;">(published research in redox biology)</p>
 
             <p>By the time you're in your 40s, your cells are working on a bad connection. They're still trying to do their job &mdash; repair, protect, recover &mdash; but the instructions aren't getting through the way they used to.</p>
 
             <p class="metaphor">&ldquo;Imagine an orchestra playing without a conductor.&rdquo;</p>
 
             <p>The instruments are still there. Some are good instruments. But without coordination, you get noise &mdash; not music. That's what's happening inside your body as these signaling molecules decline.</p>
+
+            <p>You already know what this looks like. The workout that used to energize you now wipes you out. The sleep that used to recharge you barely takes the edge off. The focus that used to be automatic now requires coffee, willpower, and a quiet room. Nothing is broken. The signals are just getting lost.</p>
         </div>
     </section>
 
@@ -383,6 +437,8 @@
             <p>It's not a vitamin. Not a mineral. Not a probiotic. Not an antioxidant. It doesn't fit into any existing category, which is exactly why it was hard to explain at the gym.</p>
 
             <p>When something genuinely new comes along, there's nothing to compare it to. Your brain tries to file it under &ldquo;supplement&rdquo; and moves on. But this isn't a supplement. It's the biohack that all the other biohacks depend on.</p>
+
+            <p>One more thing: yes, I'm a brand partner. I chose that because I use this myself and wanted to share it. No, I'm not going to ask you to sell it, build a team, or join anything. I just think you should try it.</p>
         </div>
     </section>
 
@@ -398,12 +454,12 @@
             <div class="research-cards">
                 <div class="research-card">
                     <p class="institution">University of Bath (UK)</p>
-                    <p>Found that ASEA impacted the cellular switch that modulates oxidants and antioxidants toward balance.</p>
+                    <p>Researchers measured gene expression changes and found ASEA shifted key pathways involved in cellular signaling toward oxidant-antioxidant balance. Peer-reviewed and published.</p>
                 </div>
 
                 <div class="research-card">
                     <p class="institution">University of Western Sydney (Australia)</p>
-                    <p>Confirmed measurable effects on redox signaling pathways in controlled study conditions.</p>
+                    <p>Controlled study confirmed measurable effects on redox signaling pathways &mdash; independent of the company, funded by the university.</p>
                 </div>
             </div>
 
@@ -444,7 +500,10 @@
 
             <p>What you notice tells you where your body needed it most. Everyone's experience is different because everyone's body has different priorities.</p>
 
-            <p>There's a 30-day satisfaction guarantee. If nothing changes, you get your money back.</p>
+            <div class="guarantee-box">
+                <strong>The 30-Day &ldquo;Notice Something&rdquo; Guarantee</strong>
+                <p>A month's supply runs about the cost of a daily coffee habit. Try it for 30 days. If you don't notice any difference &mdash; energy, recovery, sleep, clarity, anything &mdash; you get a full refund. No hoops. No awkward conversation with me. Just your money back.</p>
+            </div>
         </div>
     </section>
 
@@ -457,19 +516,15 @@
             <p>I sent you this link because you seemed genuinely interested &mdash; and I wanted you to have the full picture instead of my fumbling explanation.</p>
 
             <div class="close-options">
-                <a class="close-option" href="https://aseaglobal.com/redoxsolution" target="_blank" rel="noopener">
+                <a class="close-option close-option-primary" href="https://aseaglobal.com/redoxsolution" target="_blank" rel="noopener">
                     I want to try it <span class="option-arrow">&rarr;</span>
-                </a>
-                <a class="close-option" href="doctors.html">
-                    Show me more science <span class="option-arrow">&rarr;</span>
-                </a>
-                <a class="close-option" href="testimonials.html">
-                    Let me see real experiences <span class="option-arrow">&rarr;</span>
                 </a>
                 <a class="close-option" id="cta-email" href="mailto:fritz@myredoxsolution.com">
                     I have questions &mdash; email Fritz <span class="option-arrow">&rarr;</span>
                 </a>
             </div>
+
+            <p class="close-links">Or keep exploring: <a href="doctors.html">the science</a> &middot; <a href="testimonials.html">real experiences</a></p>
 
             <p class="close-note">If it's not for you, no problem. You know where to find me.</p>
         </div>
