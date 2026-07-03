@@ -27,7 +27,7 @@
     /></noscript>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome — My Redox Solution</title>
+    <title>My Redox Solution — Fritz Strehlow</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -37,35 +37,25 @@
             --primary-deep: #1e5f5d;
             --primary-light: #e6f3f2;
             --hero-bg: #1c2a35;
-            --hero-bg-deep: #141f28;
             --canvas: #ffffff;
             --surface: #f8f6f3;
             --surface-warm: #faf8f5;
-            --card-cream: #faf5ed;
-            --card-gold: #fdf6e8;
             --hairline: #e5e1db;
             --hairline-soft: #ede9e4;
             --ink: #1a1a1a;
             --charcoal: #37352f;
             --slate: #5d5b54;
-            --steel: #787671;
             --stone: #a4a097;
-            --muted: #bbb8b1;
             --on-dark: #ffffff;
-            --on-dark-muted: #a4a097;
-            --rounded-sm: 6px;
-            --rounded-md: 8px;
             --rounded-lg: 12px;
             --rounded-xl: 16px;
-            --shadow-subtle: rgba(15, 15, 15, 0.04) 0px 1px 2px 0px;
             --shadow-card: rgba(15, 15, 15, 0.08) 0px 4px 12px 0px;
-            --max-width: 760px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', -apple-system, system-ui, 'Segoe UI', Helvetica, sans-serif;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
             background: var(--canvas);
             color: var(--charcoal);
             line-height: 1.6;
@@ -73,2033 +63,554 @@
         }
 
         h1, h2, h3 { font-family: 'Lora', Georgia, serif; color: var(--ink); }
-        strong { font-weight: 600; color: var(--ink); }
-        em { font-style: italic; }
-        p { font-size: 17px; line-height: 1.7; margin-bottom: 20px; color: var(--charcoal); }
 
-        /* ─── NAV ─── */
-        .nav {
+        /* ─── HERO ─── */
+        .hero {
             background: var(--hero-bg);
-            padding: 16px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-home {
-            font-family: 'Lora', Georgia, serif;
-            color: var(--on-dark);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            opacity: 0.9;
-        }
-
-        .nav-home:hover { opacity: 1; }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-family: 'Inter', sans-serif;
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.15s;
-        }
-
-        .nav-links a:hover { color: var(--on-dark); }
-        .nav-links a.active { color: var(--on-dark); }
-        .nav-links a.shop-btn { background: var(--primary, #2a7d7b); color: #fff !important; padding: 6px 16px; border-radius: 20px; font-size: 13px; letter-spacing: 0.3px; transition: background 0.2s; }
-        .nav-links a.shop-btn:hover { background: var(--primary-deep, #1e5f5d); }
-
-        @media (max-width: 480px) {
-            .nav { flex-direction: column; gap: 12px; }
-            .nav-links { gap: 16px; }
-        }
-
-        /* ─── PRODUCT BANNER ─── */
-        .product-banner {
-            background: linear-gradient(135deg, #e8f4f8 0%, #f0f6f9 50%, #eef2f5 100%);
-            padding: 48px 24px 40px;
-            text-align: center;
-            border-bottom: 1px solid var(--hairline-soft);
-        }
-
-        .product-banner-inner {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .product-banner-lineup {
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            gap: 32px;
-        }
-
-        .product-banner-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .product-banner-item img {
-            border-radius: var(--rounded-lg);
-            object-fit: contain;
-        }
-
-        .product-banner-item.main img {
-            height: 280px;
-        }
-
-        .product-banner-item.side img {
-            height: 200px;
-        }
-
-        .product-banner-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: var(--slate);
-            margin-top: 10px;
-            font-weight: 500;
-        }
-
-        .product-banner-tagline {
-            font-family: 'Lora', Georgia, serif;
-            font-size: 20px;
-            font-style: italic;
-            color: var(--ink);
-            margin-top: 28px;
-        }
-
-        @media (max-width: 600px) {
-            .product-banner-item.main img { height: 200px; }
-            .product-banner-item.side img { height: 140px; }
-            .product-banner-lineup { gap: 16px; }
-            .product-banner-tagline { font-size: 17px; }
-        }
-
-        /* ─── HERO PHOTO ─── */
-        .hero-photo {
-            margin-bottom: 16px;
-        }
-
-        .hero-greeting {
-            font-family: 'Lora', Georgia, serif;
-            color: var(--on-dark);
-            font-size: 26px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .hero-bridge {
-            max-width: 500px;
-            margin: 0 auto 40px;
+            padding: 72px 24px 64px;
             text-align: center;
         }
 
-        .hero-bridge p {
-            font-family: 'Inter', sans-serif;
-            color: rgba(255,255,255,0.6);
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-
-        .hero-bridge p:last-child { margin-bottom: 0; }
-
-        .hook-wonder {
-            max-width: 520px;
-            margin: 0 auto 40px;
-            text-align: center;
-        }
-
-        .hook-wonder p {
-            font-family: 'Inter', sans-serif;
-            color: rgba(255,255,255,0.75);
-            font-size: 16px;
-            line-height: 1.9;
-            margin-bottom: 0;
-        }
-
-        .hook-wonder .wonder-kicker {
-            font-family: 'Lora', Georgia, serif;
-            font-size: 18px;
-            font-style: italic;
-            color: rgba(255,255,255,0.5);
-            margin-top: 20px;
-        }
-
-        .hook-transition {
-            font-family: 'Inter', sans-serif;
-            color: rgba(255,255,255,0.5);
-            font-size: 15px;
-            margin-bottom: 12px;
-        }
-
-        .hero-photo img {
-            width: 185px;
-            height: 185px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center 15%;
-            border: 3px solid rgba(255,255,255,0.15);
-            box-shadow: rgba(0,0,0,0.3) 0px 8px 24px;
-        }
-
-        /* ─── HOOK ─── */
-        .hook {
-            background: var(--hero-bg);
-            padding: 64px 24px 56px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .hook-inner {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .hook-preframe {
-            font-family: 'Inter', sans-serif;
-            color: rgba(255,255,255,0.45);
-            font-size: 15px;
-            font-style: italic;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            max-width: 460px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hook-headline {
+        .hero-headline {
             font-family: 'Lora', Georgia, serif;
             color: var(--on-dark);
             font-size: 32px;
             font-weight: 700;
             line-height: 1.3;
-            margin-bottom: 36px;
+            max-width: 560px;
+            margin: 0 auto 28px;
         }
 
-        .hook-sub {
-            font-family: 'Inter', sans-serif;
-            color: rgba(255,255,255,0.5);
-            font-size: 17px;
-            margin-top: -20px;
-            margin-bottom: 36px;
+        .hero-hook {
+            max-width: 520px;
+            margin: 0 auto;
         }
 
-        .hook-stressors {
-            max-width: 720px;
-            margin: 0 auto 40px;
-            border-top: 2px solid var(--primary);
-        }
-
-        .hook-stressors-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 16px;
-        }
-
-        .hook-stressors-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0 24px;
-        }
-
-        .stressor-col-header {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            color: #fff;
-            padding: 14px 0 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.15);
-        }
-
-        .stressor-col-item {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.07);
-            line-height: 1.4;
-        }
-
-        .hook-why {
-            max-width: 540px;
-            margin: 0 auto 40px;
-            text-align: left;
-        }
-
-        .hook-why p {
-            font-family: 'Inter', sans-serif;
-            color: rgba(255,255,255,0.7);
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-
-        .hook-why p:last-child {
-            color: var(--on-dark);
-            font-style: italic;
-            margin-bottom: 0;
-        }
-
-        .hook-proof {
-            max-width: 540px;
-            margin: 0 auto 44px;
-            text-align: left;
-            padding: 28px 32px;
-            background: rgba(255,255,255,0.04);
-            border-left: 3px solid #e8c170;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .hook-proof p {
-            font-family: 'Inter', sans-serif;
-            color: rgba(255,255,255,0.7);
-            font-size: 15px;
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-
-        .hook-proof-lead { color: var(--on-dark) !important; font-weight: 600; font-size: 16px !important; }
-        .hook-proof strong { color: var(--on-dark); }
-        .hook-proof-kicker { color: #e8c170 !important; font-style: italic; margin-bottom: 0 !important; }
-
-        .hook-turn {
+        .hero-hook p {
             font-family: 'Lora', Georgia, serif;
-            color: var(--on-dark);
             font-size: 22px;
-            line-height: 1.7;
-            margin-bottom: 0;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 20px;
         }
 
-        .hook-turn .but {
-            display: block;
-            margin-top: 12px;
-            color: #e8c170;
-            font-weight: 600;
-        }
-
-        .hook-scroll-cue {
-            margin-top: 40px;
+        .hero-hook .hook-turn {
             font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: rgba(255,255,255,0.3);
-            letter-spacing: 0.5px;
-        }
-
-        .hook-scroll-cue span {
-            display: block;
-            margin-top: 8px;
-            font-size: 18px;
-            animation: gentle-bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes gentle-bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(5px); }
-        }
-
-        @media (max-width: 768px) {
-            .hook { padding: 48px 20px 44px; }
-            .hook-headline { font-size: 26px; }
-            .hook-turn { font-size: 19px; }
-            .hook-stressors-grid { grid-template-columns: 1fr 1fr; gap: 0 16px; }
-            .stressor-col-header { font-size: 13px; }
-            .stressor-col-item { font-size: 13px; }
+            font-size: 16px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.7;
         }
 
         @media (max-width: 480px) {
-            .hook-headline { font-size: 23px; }
-            .hook-turn { font-size: 17px; }
+            .hero { padding: 56px 20px 48px; }
+            .hero-headline { font-size: 26px; }
+            .hero-hook p { font-size: 17px; }
         }
 
-        /* ─── WHO IS THIS FOR ─── */
-        .who-section {
+        /* ─── THE IDEA ─── */
+        .the-idea {
+            padding: 56px 24px;
             background: var(--surface-warm);
-            padding: 64px 24px;
             border-bottom: 1px solid var(--hairline-soft);
         }
 
-        .who-inner {
-            max-width: 640px;
+        .the-idea-inner {
+            max-width: 560px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .who-inner h2 {
-            margin-bottom: 12px;
-        }
-
-        .who-inner > p {
-            color: var(--slate);
-            margin-bottom: 32px;
-        }
-
-        .who-list {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-        }
-
-        .who-list li {
+        .the-idea-inner p {
             font-size: 17px;
-            line-height: 1.6;
-            color: var(--charcoal);
-            padding: 14px 0 14px 32px;
-            border-bottom: 1px solid var(--hairline-soft);
-            position: relative;
-        }
-
-        .who-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 22px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-
-        .who-list li:last-child { border-bottom: none; }
-
-        @media (max-width: 768px) {
-            .who-section { padding: 48px 20px; }
-        }
-
-        /* ─── MEET FRITZ ─── */
-        .meet-fritz {
-            background: var(--canvas);
-            padding: 64px 24px;
-            border-bottom: 1px solid var(--hairline-soft);
-        }
-
-        .meet-fritz-inner {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .meet-fritz-inner .hero-photo {
-            margin-bottom: 24px;
-        }
-
-        .meet-fritz-inner .hero-photo img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center 5%;
-            border: 3px solid var(--hairline-soft);
-        }
-
-        .meet-fritz-inner h2 {
-            font-size: 28px;
-            margin-bottom: 16px;
-        }
-
-        .meet-fritz-inner p {
-            font-size: 16px;
-            line-height: 1.8;
+            line-height: 1.75;
             color: var(--charcoal);
             margin-bottom: 16px;
-            text-align: left;
         }
 
-        .fritz-story-link {
+        .the-idea-inner p:last-child { margin-bottom: 0; }
+
+        .the-idea-stat {
             display: inline-block;
-            margin-top: 8px;
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .fritz-story-link:hover {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 20px;
+            font-weight: 700;
             color: var(--primary-deep);
+            background: var(--primary-light);
+            padding: 8px 20px;
+            border-radius: 8px;
+            margin: 8px 0 16px;
         }
 
-        @media (max-width: 768px) {
-            .meet-fritz { padding: 48px 20px; }
-            .meet-fritz-inner .hero-photo img { width: 120px; height: 120px; }
+        .the-idea-quote {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--ink);
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--hairline);
         }
 
-        /* ─── DECISION TREE ─── */
-        .path-picker {
-            padding: 48px 24px;
-            background: var(--surface);
+        .the-idea-quote-src {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: var(--stone);
+            font-style: normal;
+            margin-top: 8px;
         }
-        .path-picker-inner {
+
+        /* ─── PATHS ─── */
+        .paths {
+            padding: 56px 24px;
+            background: var(--canvas);
+        }
+
+        .paths-inner {
             max-width: 640px;
             margin: 0 auto;
             text-align: center;
         }
-        .path-picker-inner h2 {
-            font-size: 24px;
+
+        .paths-inner h2 {
+            font-size: 26px;
             margin-bottom: 8px;
         }
-        .path-picker-inner > p {
+
+        .paths-intro {
             font-size: 15px;
             color: var(--slate);
             margin-bottom: 28px;
         }
+
         .path-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 14px;
             text-align: left;
         }
+
         .path-card {
             display: block;
-            padding: 20px 22px;
-            background: var(--canvas);
+            padding: 24px;
+            background: var(--surface-warm);
             border: 1px solid var(--hairline);
             border-radius: var(--rounded-lg);
             text-decoration: none;
             color: var(--charcoal);
             transition: border-color 0.2s, box-shadow 0.2s;
-            cursor: pointer;
         }
+
         .path-card:hover {
             border-color: var(--primary);
             box-shadow: var(--shadow-card);
         }
+
         .path-card-icon {
-            font-size: 22px;
-            margin-bottom: 8px;
+            font-size: 28px;
             display: block;
+            margin-bottom: 12px;
         }
+
         .path-card-title {
             font-family: 'Lora', Georgia, serif;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 17px;
             color: var(--ink);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
+
         .path-card-desc {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--slate);
-            line-height: 1.5;
-            margin-bottom: 0;
+            line-height: 1.55;
+            margin-bottom: 12px;
         }
+
+        .path-card-arrow {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .path-card-primary {
+            grid-column: 1 / -1;
+            background: var(--primary-light);
+            border-color: var(--primary);
+        }
+
+        .path-card-primary .path-card-title {
+            font-size: 19px;
+        }
+
+        .path-card-primary .path-card-desc {
+            font-size: 15px;
+        }
+
         @media (max-width: 600px) {
             .path-grid { grid-template-columns: 1fr; }
+            .path-card-primary .path-card-title { font-size: 17px; }
         }
 
-        /* ─── SKEPTIC TO LEADER ─── */
-        .skeptic-leaders {
-            padding: 64px 24px;
-            background: var(--canvas);
+        /* ─── PROOF STRIP ─── */
+        .proof-strip {
+            padding: 48px 24px;
+            background: var(--surface);
+            border-top: 1px solid var(--hairline-soft);
+            border-bottom: 1px solid var(--hairline-soft);
         }
-        .skeptic-leaders-inner {
-            max-width: 700px;
+
+        .proof-strip-inner {
+            max-width: 640px;
             margin: 0 auto;
         }
-        .skeptic-leaders-inner h2 {
-            text-align: center;
-            margin-bottom: 12px;
-        }
-        .skeptic-leaders-inner > p {
-            text-align: center;
-        }
-        .skeptic-story-card {
-            margin-top: 36px;
-            padding: 32px;
-            background: var(--surface-warm);
-            border-radius: var(--rounded-lg);
-            border-left: 3px solid var(--primary);
-        }
-        .skeptic-story-card h3 {
-            font-family: 'Lora', Georgia, serif;
-            font-size: 20px;
-            color: var(--ink);
-            margin-bottom: 4px;
-        }
-        .skeptic-story-card .skeptic-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            display: block;
-        }
-        .skeptic-story-card blockquote {
-            font-family: 'Lora', Georgia, serif;
-            font-style: italic;
-            font-size: 18px;
-            color: var(--ink);
-            line-height: 1.6;
-            border: none;
-            padding: 0;
-            margin: 16px 0;
-        }
-        .skeptic-story-card .then {
-            display: block;
+
+        .proof-strip-label {
             font-family: 'Inter', sans-serif;
             font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: var(--primary);
-            margin: 20px 0 8px;
-        }
-
-        /* ─── SECTIONS ─── */
-        .section {
-            padding: 64px 24px;
-        }
-
-        .section-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
-        .section-alt { background: var(--surface); }
-
-        .section-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        h2 {
-            font-size: 32px;
-            font-weight: 600;
-            line-height: 1.2;
-            letter-spacing: -0.3px;
+            text-align: center;
             margin-bottom: 24px;
         }
 
-        @media (max-width: 768px) {
-            .section { padding: 48px 20px; }
-            h2 { font-size: 26px; }
-        }
-
-        @media (max-width: 480px) {
-            h2 { font-size: 22px; }
-            p { font-size: 16px; }
-        }
-
-        /* ─── REDOX SECTION ─── */
-        .redox-two-jobs {
+        .proof-quotes {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin: 36px 0;
-        }
-
-        .redox-job {
-            background: var(--surface);
-            border-radius: var(--rounded-lg);
-            padding: 28px 24px;
-        }
-
-        .redox-job h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: var(--primary-deep);
-        }
-
-        .redox-job p {
-            font-size: 15px;
-            line-height: 1.65;
-            color: var(--slate);
-            margin-bottom: 0;
-        }
-
-        .redox-decline {
-            background: var(--hero-bg);
-            border-radius: var(--rounded-lg);
-            padding: 32px 28px;
-            margin: 36px 0;
-            text-align: center;
-        }
-
-        .redox-decline p {
-            color: rgba(255,255,255,0.75);
-            margin-bottom: 12px;
-            font-size: 16px;
-        }
-
-        .redox-decline p:last-child { margin-bottom: 0; }
-
-        .redox-decline .decline-stat {
-            font-family: 'Lora', Georgia, serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: #e8c170;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .redox-punchline {
-            font-family: 'Lora', Georgia, serif;
-            font-size: 20px;
-            font-style: italic;
-            color: var(--ink);
-            text-align: center;
-            margin: 36px 0 0;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 768px) {
-            .redox-two-jobs { grid-template-columns: 1fr; }
-        }
-
-        .redox-intro-video {
-            margin-top: 40px;
-        }
-
-        .redox-intro-video-wrap {
-            position: relative;
-            width: 100%;
-            max-width: 560px;
-            margin: 0 auto;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: var(--rounded-lg);
-            overflow: hidden;
-        }
-
-        .redox-intro-video-wrap iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: var(--rounded-lg);
-        }
-
-        /* ─── STORY TEASER ─── */
-        .story-teaser {
-            background: var(--surface-warm);
-            padding: 64px 24px;
-            border-top: 1px solid var(--hairline-soft);
-            border-bottom: 1px solid var(--hairline-soft);
-        }
-
-        .story-teaser-inner {
-            max-width: 640px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .story-teaser-inner h2 { margin-bottom: 16px; }
-
-        .story-teaser-inner p {
-            font-size: 17px;
-            color: var(--charcoal);
-            line-height: 1.75;
-        }
-
-        .story-teaser-quote {
-            background: var(--canvas);
-            border-radius: var(--rounded-lg);
-            padding: 28px;
-            margin: 28px 0;
-            border: 1px solid var(--hairline);
-        }
-
-        .story-teaser-quote p {
-            font-family: 'Lora', Georgia, serif;
-            font-size: 20px;
-            font-style: italic;
-            color: var(--ink);
-            line-height: 1.5;
-            margin-bottom: 0;
-            text-align: center;
-        }
-
-        .story-link {
-            display: inline-block;
-            margin-top: 8px;
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--primary);
-            text-decoration: none;
-            transition: color 0.15s;
-        }
-
-        .story-link:hover { color: var(--primary-deep); }
-
-        /* ─── ORCHESTRA (CONDENSED) ─── */
-        .orchestra-note {
-            background: var(--primary-light);
-            border-radius: var(--rounded-lg);
-            padding: 24px 28px;
-            margin-top: 28px;
-            border-left: 3px solid var(--primary);
-        }
-
-        .orchestra-note p {
-            font-size: 15px;
-            color: var(--slate);
-            margin-bottom: 0;
-            line-height: 1.65;
-        }
-
-        /* ─── BIGGER PICTURE ─── */
-        .bigger-picture-question {
-            font-family: 'Lora', Georgia, serif;
-            font-size: 20px;
-            font-style: italic;
-            color: var(--ink);
-            line-height: 1.5;
-            margin: 32px 0;
-            padding: 24px 28px;
-            background: var(--card-gold);
-            border-radius: var(--rounded-lg);
-            border-left: 3px solid #c8a94e;
-            text-align: center;
-        }
-
-        .therapy-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin: 28px 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .therapy-list li {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--charcoal);
-            padding: 8px 18px;
-            background: var(--surface);
-            border: 1px solid var(--hairline);
-            border-radius: 20px;
-        }
-
-        .hierarchy-visual {
-            margin: 36px auto;
-            max-width: 420px;
-            text-align: center;
-        }
-
-        .hierarchy-top {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 15px;
-            color: var(--on-dark);
-            background: var(--primary);
-            padding: 12px 24px;
-            border-radius: var(--rounded-md);
-            display: inline-block;
-            margin-bottom: 8px;
-        }
-
-        .hierarchy-arrow {
-            font-size: 20px;
-            color: var(--primary);
-            margin: 4px 0;
-        }
-
-        .hierarchy-items {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .hierarchy-items span {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: var(--slate);
-            padding: 6px 14px;
-            background: var(--surface);
-            border: 1px solid var(--hairline);
-            border-radius: 16px;
-        }
-
-        /* ─── VISIBLE PROOF (Dr. Morin) ─── */
-        .visible-proof {
-            background: var(--hero-bg);
-            padding: 64px 24px;
-            color: #fff;
-        }
-
-        .visible-proof-inner {
-            max-width: 720px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .visible-proof-inner .section-label {
-            color: rgba(255,255,255,0.6);
-        }
-
-        .visible-proof-inner h2 {
-            color: #fff;
-            margin-bottom: 32px;
-        }
-
-        .visible-proof-photo {
-            width: 100%;
-            max-width: 480px;
-            border-radius: var(--rounded-lg);
-            margin: 0 auto 32px;
-            display: block;
-            border: 3px solid rgba(255,255,255,0.15);
-        }
-
-        .visible-proof-quote {
-            font-family: 'Lora', Georgia, serif;
-            font-size: 17px;
-            font-style: italic;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.85);
-            text-align: left;
-            margin: 0 auto 20px;
-            max-width: 620px;
-        }
-
-        .visible-proof-attribution {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: rgba(255,255,255,0.5);
-            text-align: left;
-            max-width: 620px;
-            margin: 0 auto;
-        }
-
-        .visible-proof-kicker {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            color: rgba(255,255,255,0.7);
-            margin-top: 28px;
-            line-height: 1.6;
-        }
-
-        .visible-proof-video {
-            position: relative;
-            width: 100%;
-            max-width: 560px;
-            margin: 36px auto 0;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: var(--rounded-lg);
-            overflow: hidden;
-        }
-
-        .visible-proof-video iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: var(--rounded-lg);
-        }
-
-        /* ─── REDOX GOLD SPOTLIGHT ─── */
-        .gold-spotlight {
-            background: linear-gradient(135deg, #1c2a35 0%, #2a3a48 100%);
-            padding: 64px 24px;
-            text-align: center;
-            color: #fff;
-        }
-
-        .gold-spotlight-inner {
-            max-width: 640px;
-            margin: 0 auto;
-        }
-
-        .gold-spotlight-inner .section-label {
-            color: #c8a94e;
-        }
-
-        .gold-spotlight-inner h2 {
-            color: #fff;
-            margin-bottom: 12px;
-        }
-
-        .gold-spotlight-subtitle {
-            font-size: 16px;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-
-        .gold-spotlight-video {
-            position: relative;
-            width: 100%;
-            max-width: 560px;
-            margin: 0 auto;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: var(--rounded-lg);
-            overflow: hidden;
-        }
-
-        .gold-spotlight-video iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: var(--rounded-lg);
-        }
-
-        @media (max-width: 768px) {
-            .gold-spotlight { padding: 48px 20px; }
-        }
-
-        /* ─── CENTENARIAN THESIS (Dr. Herskowitz) ─── */
-        .centenarian-thesis {
-            background: var(--surface-warm);
-            border-top: 1px solid var(--hairline-soft);
-            border-bottom: 1px solid var(--hairline-soft);
-            padding: 64px 24px;
-        }
-
-        .centenarian-inner {
-            max-width: 680px;
-            margin: 0 auto;
-        }
-
-        .centenarian-inner .section-label {
-            text-align: center;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .centenarian-inner h2 {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .centenarian-inner p {
-            font-size: 17px;
-            line-height: 1.7;
-            color: var(--slate);
-            margin-bottom: 16px;
-        }
-
-        .centenarian-quote {
-            font-family: 'Lora', Georgia, serif;
-            font-size: 18px;
-            font-style: italic;
-            line-height: 1.6;
-            color: var(--ink);
-            margin: 28px 0;
-            padding: 20px 24px;
-            border-left: 3px solid var(--primary);
-            background: var(--canvas);
-            border-radius: 0 var(--rounded-lg) var(--rounded-lg) 0;
-        }
-
-        .centenarian-credentials {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: var(--muted);
-            line-height: 1.6;
-            margin-top: 28px;
-            padding-top: 20px;
-            border-top: 1px solid var(--hairline);
-        }
-
-        .centenarian-credentials strong {
-            color: var(--charcoal);
-        }
-
-        /* ─── DREAMS QUOTE ─── */
-        .dreams-quote {
-            background: var(--surface-warm);
-            border-top: 1px solid var(--hairline-soft);
-            border-bottom: 1px solid var(--hairline-soft);
-            padding: 56px 24px;
-            text-align: center;
-        }
-
-        .dreams-quote blockquote {
-            max-width: 580px;
-            margin: 0 auto 16px;
-            font-family: 'Lora', Georgia, serif;
-            font-size: 24px;
-            font-style: italic;
-            color: var(--ink);
-            line-height: 1.5;
-        }
-
-        .dreams-quote .bridge {
-            max-width: 580px;
-            margin: 0 auto;
-            font-size: 17px;
-            color: var(--slate);
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .dreams-quote blockquote { font-size: 20px; }
-        }
-
-        /* ─── EXPLORE DEEPER ─── */
-        .explore-section {
-            padding: 64px 24px;
-            background: var(--surface);
-        }
-
-        .explore-inner {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .explore-inner h2 { margin-bottom: 12px; }
-        .explore-inner > p { color: var(--slate); margin-bottom: 32px; }
-
-        .explore-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 20px;
         }
 
-        .explore-card {
+        .proof-quote-card {
+            padding: 24px 28px;
             background: var(--canvas);
-            border: 1px solid var(--hairline);
             border-radius: var(--rounded-lg);
-            padding: 28px 20px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            display: block;
+            border-left: 3px solid var(--primary);
         }
 
-        .explore-card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow-card);
-            transform: translateY(-2px);
-        }
-
-        .explore-card .card-icon {
-            font-size: 28px;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .explore-card h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .explore-card p {
-            font-size: 14px;
-            line-height: 1.55;
-            color: var(--slate);
-            margin-bottom: 0;
-        }
-
-        .explore-card .card-arrow {
-            display: inline-block;
-            margin-top: 12px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-            .explore-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
-        }
-
-        /* ─── INVITATION ─── */
-        .invitation {
-            padding: 64px 24px;
-            text-align: center;
-            background: var(--canvas);
-            border-top: 1px solid var(--hairline-soft);
-        }
-
-        .invitation .section-inner { max-width: 580px; }
-        .invitation h2 { margin-bottom: 20px; }
-        .invitation p { color: var(--slate); font-size: 17px; }
-
-        .invitation .closing-line {
+        .proof-quote-card blockquote {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 17px;
+            font-style: italic;
             color: var(--ink);
-            font-weight: 500;
-            font-size: 18px;
-            margin-top: 32px;
+            line-height: 1.55;
+            margin-bottom: 10px;
         }
 
-        .contact-row {
+        .proof-quote-card .proof-src {
+            font-size: 13px;
+            color: var(--stone);
+        }
+
+        .proof-quote-card .proof-context {
+            font-size: 13px;
+            color: var(--slate);
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        /* ─── TRUST ROW ─── */
+        .trust-row {
+            padding: 36px 24px;
+            background: var(--canvas);
+            text-align: center;
+            border-bottom: 1px solid var(--hairline-soft);
+        }
+
+        .trust-row-inner {
+            max-width: 500px;
+            margin: 0 auto;
             display: flex;
-            gap: 16px;
             justify-content: center;
-            margin-top: 32px;
+            gap: 32px;
             flex-wrap: wrap;
+        }
+
+        .trust-item {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--slate);
+        }
+
+        /* ─── CONTACT ─── */
+        .contact {
+            padding: 56px 24px;
+            background: var(--hero-bg);
+            text-align: center;
+        }
+
+        .contact-inner {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .contact-inner h2 {
+            color: var(--on-dark);
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .contact-inner p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-bottom: 24px;
         }
 
         .btn-primary {
             display: inline-block;
+            padding: 14px 36px;
             background: var(--primary);
-            color: var(--on-dark);
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            font-weight: 500;
-            padding: 14px 28px;
-            border-radius: var(--rounded-md);
+            color: #fff;
             text-decoration: none;
-            transition: background 0.15s ease;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.2s;
         }
 
         .btn-primary:hover { background: var(--primary-deep); }
 
-        .btn-secondary {
-            display: inline-block;
-            color: var(--charcoal);
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            font-weight: 500;
-            padding: 14px 28px;
-            border-radius: var(--rounded-md);
-            text-decoration: none;
-            border: 1px solid var(--hairline);
-            transition: border-color 0.15s ease;
-        }
-
-        .btn-secondary:hover { border-color: var(--charcoal); }
-
-        /* ─── MANUFACTURING & QUALITY ─── */
-        .mfg-quality {
-            background: var(--canvas);
-            padding: 64px 24px;
-            border-top: 1px solid var(--hairline-soft);
-        }
-
-        .mfg-quality-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .mfg-quality-inner .section-label {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .mfg-quality-inner h2 {
-            margin-bottom: 12px;
-        }
-
-        .mfg-quality-subtitle {
-            font-size: 16px;
-            color: var(--slate);
-            margin-bottom: 36px;
-            max-width: 560px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .mfg-photos {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 40px;
-        }
-
-        .mfg-photos img {
-            width: 100%;
-            border-radius: var(--rounded-lg);
-            object-fit: cover;
-            aspect-ratio: 16 / 10;
-        }
-
-        .mfg-photos .mfg-photo-wide {
-            grid-column: 1 / -1;
-        }
-
-        .mfg-photo-caption {
-            font-size: 13px;
-            color: var(--stone);
-            margin-top: 4px;
-            text-align: center;
-        }
-
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 32px;
-            flex-wrap: wrap;
-            padding: 32px 0 0;
-            border-top: 1px solid var(--hairline-soft);
-        }
-
-        .trust-badge {
+        .contact-routes {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 8px;
+            margin-bottom: 24px;
         }
 
-        .trust-badge svg {
-            width: 52px;
-            height: 52px;
+        .contact-route {
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        .trust-badge-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--slate);
-            max-width: 90px;
-            text-align: center;
-            line-height: 1.3;
+        .contact-route:hover { color: #fff; }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 10px 28px;
+            border: 1px solid rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: border-color 0.2s, color 0.2s;
         }
 
-        @media (max-width: 768px) {
-            .mfg-quality { padding: 48px 20px; }
-            .trust-badges { gap: 24px; }
-            .trust-badge svg { width: 44px; height: 44px; }
-        }
+        .btn-secondary:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
 
-        @media (max-width: 480px) {
-            .mfg-photos { grid-template-columns: 1fr; }
-            .trust-badges { gap: 20px; }
-            .trust-badge-label { font-size: 10px; }
+        .contact-note {
+            font-size: 13px;
+            color: rgba(255,255,255,0.35);
+            margin-top: 16px;
+            margin-bottom: 8px;
         }
 
         /* ─── FOOTER ─── */
         .footer {
-            background: var(--surface);
-            padding: 40px 24px;
+            background: var(--hero-bg);
+            padding: 24px;
             text-align: center;
-            border-top: 1px solid var(--hairline);
+            border-top: 1px solid rgba(255,255,255,0.06);
         }
 
         .footer p {
             font-size: 13px;
-            color: var(--steel);
+            color: rgba(255,255,255,0.35);
+            line-height: 1.6;
             margin-bottom: 8px;
         }
 
-        .footer .disclaimer {
-            font-size: 12px;
-            color: var(--stone);
-            font-style: italic;
-            max-width: 600px;
-            margin: 16px auto 0;
-            line-height: 1.5;
+        .footer p:last-child { margin-bottom: 0; }
+
+        .footer a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+        }
+
+        .footer a:hover { color: rgba(255,255,255,0.7); }
+
+        .footer-links {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            margin: 0 12px;
         }
     </style>
 </head>
 <body>
 
-    <nav class="nav">
-        <a class="nav-home" href="index.html">My Redox Solution</a>
-        <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
+    <!-- ═══════════════════════════════════════════
+         HERO — Identification + Hook
+         ═══════════════════════════════════════════ -->
+    <section class="hero">
+        <h1 class="hero-headline">You've Tried Everything.<br>Most of It &ldquo;Sort of Worked.&rdquo;</h1>
+
+        <div class="hero-hook">
+            <p>There's a pattern underneath &mdash; something about how your body actually heals at the cellular level. Most doctors have never heard of it. The ones below have. And it changed how they practice.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PROOF STRIP — Moved up: belief before education
+         ═══════════════════════════════════════════ -->
+    <section class="proof-strip">
+        <div class="proof-strip-inner">
+            <p class="proof-strip-label">They Were Skeptics Too</p>
+
+            <div class="proof-quotes">
+                <div class="proof-quote-card">
+                    <blockquote>&ldquo;I don't believe you. But I'm desperate. So I'm going to take it just to prove it won't work &mdash; just like everything else.&rdquo;</blockquote>
+                    <p class="proof-src">&mdash; Donnellyn Dominguez, Licensed Midwife</p>
+                    <p class="proof-context">After spending $20,000 on natural products and taking 25 supplements a day. Three weeks later, she was awake past 6pm for the first time in 16 months.</p>
+                </div>
+
+                <div class="proof-quote-card">
+                    <blockquote>&ldquo;In all of my years working with patients with your type of injury, I've never watched a recovery so rapid, so far out from the initial trauma. What the hell is that stuff you started drinking?&rdquo;</blockquote>
+                    <p class="proof-src">&mdash; Cognitive therapist of Danielle Matthews, TBI survivor</p>
+                    <p class="proof-context">Danielle had a biology degree and called ASEA &ldquo;salt water.&rdquo; She only tried it to prove her parents wrong.</p>
+                </div>
+
+                <div class="proof-quote-card">
+                    <blockquote>&ldquo;I think this stuff is keeping me alive.&rdquo;</blockquote>
+                    <p class="proof-src">&mdash; Fritz's father, in his late 80s</p>
+                    <p class="proof-context">He was skeptical too. The apple doesn't fall far from the tree. He stayed on it for the rest of his life and lived well into his 90s.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         THE IDEA — Emotional revelation, not biology lesson
+         ═══════════════════════════════════════════ -->
+    <section class="the-idea">
+        <div class="the-idea-inner">
+            <p>Here's what nobody told you about supplements: they're instruments. Some are good instruments. But without a conductor, an orchestra is just noise.</p>
+
+            <p>Your body's conductor is a set of molecules called <strong>redox signaling molecules</strong>. They tell every cell what to do &mdash; when to heal, when to fight, when to recover.</p>
+
+            <p>Production drops naturally:</p>
+
+            <span class="the-idea-stat">~1% per year from puberty</span>
+
+            <p>That's why things &ldquo;sort of work.&rdquo; The instruments are there. The conductor is fading.</p>
+
+            <p>ASEA is the only technology that provides these conductor molecules from outside the body &mdash; stabilized, bioavailable, and verified by independent labs.</p>
+
+            <p class="the-idea-quote">&ldquo;It's a miracle this stuff exists.&rdquo;</p>
+            <p class="the-idea-quote-src">&mdash; Dr. Ahvie Herskowitz, MD &mdash; Johns Hopkins, UCSF, 115+ peer-reviewed publications</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PATHS — Self-select (parent card dominant)
+         ═══════════════════════════════════════════ -->
+    <section class="paths">
+        <div class="paths-inner">
+            <h2>What Brought You Here?</h2>
+            <p class="paths-intro">Start with what matters most to you.</p>
+
+            <div class="path-grid">
+                <a class="path-card path-card-primary" href="parents.html">
+                    <span class="path-card-icon">&#128156;</span>
+                    <div class="path-card-title">My Child Is Struggling</div>
+                    <p class="path-card-desc">Your supplement protocol &ldquo;sort of works.&rdquo; There's a reason for that &mdash; and a pattern nobody named.</p>
+                    <span class="path-card-arrow">Take the 5-minute quiz &rarr;</span>
+                </a>
+
+                <a class="path-card" href="doctors.html">
+                    <span class="path-card-icon">&#129657;</span>
+                    <div class="path-card-title">Show Me the Science</div>
+                    <p class="path-card-desc">Cardiologists, cell biologists, and pain specialists who investigated this independently.</p>
+                    <span class="path-card-arrow">See the evidence &rarr;</span>
+                </a>
+
+                <a class="path-card" href="testimonials.html">
+                    <span class="path-card-icon">&#127909;</span>
+                    <div class="path-card-title">Real Experiences</div>
+                    <p class="path-card-desc">They called it a scam. Then they tried it. 180+ video testimonials from real people.</p>
+                    <span class="path-card-arrow">Watch the stories &rarr;</span>
+                </a>
+
+                <a class="path-card" href="faq.html">
+                    <span class="path-card-icon">&#10067;</span>
+                    <div class="path-card-title">I Have Questions</div>
+                    <p class="path-card-desc">&ldquo;Is this an MLM?&rdquo; &ldquo;What does it taste like?&rdquo; Honest answers to real questions.</p>
+                    <span class="path-card-arrow">See the FAQ &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TRUST ROW — Quick credibility
+         ═══════════════════════════════════════════ -->
+    <section class="trust-row">
+        <div class="trust-row-inner">
+            <span class="trust-item">FDA Registered Facility</span>
+            <span class="trust-item">NSF Certified</span>
+            <span class="trust-item">Patented Technology</span>
+            <span class="trust-item">30-Day Guarantee</span>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CONTACT — Route first, email second
+         ═══════════════════════════════════════════ -->
+    <section class="contact">
+        <div class="contact-inner">
+            <h2>Ready for Answers?</h2>
+            <p>Pick the path that fits you:</p>
+            <div class="contact-routes">
+                <a href="parents.html" class="contact-route">My child is struggling &rarr;</a>
+                <a href="doctors.html" class="contact-route">Show me the science &rarr;</a>
+                <a href="testimonials.html" class="contact-route">Real experiences &rarr;</a>
+                <a href="faq.html" class="contact-route">I have questions &rarr;</a>
+            </div>
+            <p class="contact-note">Or talk to a real person &mdash;</p>
+            <a id="cta-email" href="mailto:fritz@myredoxsolution.com" class="btn-secondary">Email Fritz</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="footer-links">
             <a href="my-story.html">My Story</a>
             <a href="faq.html">FAQ</a>
             <a href="doctors.html">Doctors</a>
-            <a href="https://aseaglobal.com/redoxsolution" class="shop-btn" target="_blank" rel="noopener">Shop</a>
+            <a href="https://aseaglobal.com/redoxsolution" target="_blank" rel="noopener">Shop</a>
         </div>
-    </nav>
-
-    <!-- ═══════════════════════════════════════════
-         PRODUCT BANNER
-         ═══════════════════════════════════════════ -->
-    <section class="product-banner">
-        <div class="product-banner-inner">
-            <div class="product-banner-lineup">
-                <div class="product-banner-item side">
-                    <img src="Renu28 photo.webp" alt="ASEA Renu28 Revitalizing Redox Gel">
-                    <span class="product-banner-label">Renu 28</span>
-                </div>
-                <div class="product-banner-item main">
-                    <img src="ASEA Bottle.png" alt="ASEA Redox Cell Signaling Supplement">
-                    <span class="product-banner-label">ASEA Redox</span>
-                </div>
-                <div class="product-banner-item side">
-                    <img src="REDOXGold.jpg" alt="ASEA Redox Gold">
-                    <span class="product-banner-label">Redox Gold</span>
-                </div>
-            </div>
-            <p class="product-banner-tagline">Complex science, simple ingredients</p>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         WHO IS THIS FOR (QUALIFIER)
-         ═══════════════════════════════════════════ -->
-    <section class="who-section">
-        <div class="who-inner">
-            <h2>This Page Is For You If&hellip;</h2>
-            <p>You don't have to check every box. Just one is enough.</p>
-
-            <ul class="who-list">
-                <li>You're dealing with a health challenge and looking for answers</li>
-                <li>You're an athlete who wants every edge in recovery and performance</li>
-                <li>You've noticed you're slowing down and want to understand why</li>
-                <li>You're proactive about your health and want to stay ahead</li>
-                <li>Someone you love is struggling and you want to help</li>
-                <li>You're a health professional curious about foundational cellular science</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         MEET FRITZ (PERSONAL INTRO)
-         ═══════════════════════════════════════════ -->
-    <section class="meet-fritz">
-        <div class="meet-fritz-inner">
-            <div class="hero-photo">
-                <img src="fritz-hero.jpg" alt="Fritz Strehlow">
-            </div>
-            <h2>I'm Fritz.</h2>
-            <p>I spent my career in corporate accounting &mdash; a world where bold claims get questioned and everything needs evidence. So when I stumbled onto something that sounded too good to be true, I did what any skeptic would do: I investigated.</p>
-            <p>What I found changed how I think about health, aging, and what the body is actually capable of. Now I share it with anyone who's curious enough to listen.</p>
-            <p>This page is my best attempt to show you what I wish someone had shown me years ago.</p>
-            <a href="my-story.html" class="fritz-story-link">Read my full story &rarr;</a>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         THE HOOK
-         ═══════════════════════════════════════════ -->
-    <section class="hook">
-        <div class="hook-inner">
-
-            <div class="hook-wonder">
-                <p>Every second, trillions of cells communicate, repair damage, destroy threats, create energy, rebuild tissue, and coordinate organs &mdash; all without you giving a single thought to any of it.</p>
-                <p class="wonder-kicker">Nothing mankind has ever engineered comes remotely close.</p>
-            </div>
-
-            <h1 class="hook-headline">Your body wasn't built for this.</h1>
-            <p class="hook-sub">And most of us don't realize what it's up against.</p>
-
-            <div class="hook-stressors">
-                <p class="hook-stressors-title">Today's Body Faces Daily Stressors</p>
-                <div class="hook-stressors-grid">
-                    <div class="stressor-col">
-                        <div class="stressor-col-header">Lifestyle</div>
-                        <div class="stressor-col-item">Poor sleep</div>
-                        <div class="stressor-col-item">Processed foods &amp; excess sugar</div>
-                        <div class="stressor-col-item">Alcohol &amp; smoking</div>
-                    </div>
-                    <div class="stressor-col">
-                        <div class="stressor-col-header">Environment</div>
-                        <div class="stressor-col-item">Environmental toxins</div>
-                        <div class="stressor-col-item">Air pollution</div>
-                        <div class="stressor-col-item">PFAS (Forever Chemicals)</div>
-                    </div>
-                    <div class="stressor-col">
-                        <div class="stressor-col-header">Modern Living</div>
-                        <div class="stressor-col-item">Digital overload</div>
-                        <div class="stressor-col-item">Loneliness</div>
-                        <div class="stressor-col-item">Physical inactivity</div>
-                    </div>
-                    <div class="stressor-col">
-                        <div class="stressor-col-header">Resilience</div>
-                        <div class="stressor-col-item">Aging</div>
-                        <div class="stressor-col-item">Slower recovery</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hook-why">
-                <p>Even exercise &mdash; one of the best things you can do for your health &mdash; is technically a stressor. A productive one, but a stressor nonetheless. Your body has to recover from it at the cellular level every single time.</p>
-                <p>Why don't you feel the vast majority of it? Because your body has a built-in protection system &mdash; trillions of cells communicating every second, identifying threats, repairing damage, and neutralizing toxins before you ever notice.</p>
-                <p>It's been quietly keeping you healthy since the day you were born.</p>
-            </div>
-
-            <div class="hook-proof">
-                <p class="hook-proof-lead">The world our bodies navigate today is dramatically different than it was a generation ago.</p>
-                <p>Researchers have detected <strong>hundreds of man-made chemicals</strong> in umbilical cord blood, showing that exposure to environmental compounds can begin even before birth.</p>
-                <p>While our bodies are remarkably resilient, they must continually respond to an ever-changing chemical environment.</p>
-                <p class="hook-proof-kicker">That's the world we're born into. Imagine what's accumulated over 30, 40, 50 years of living.</p>
-            </div>
-
-            <p class="hook-turn">
-                Your body was built to handle it.
-                <span class="but">Up to a point.</span>
-            </p>
-
-            <div class="hook-why" style="margin-top: 32px;">
-                <p>Maybe you've been doing everything right &mdash; eating better, exercising, taking supplements, seeing doctors. And you're still not where you want to be.</p>
-                <p>That's not a failure of willpower. It's not a lack of effort. It's a challenge at the cellular level that nobody told you about &mdash; until now.</p>
-            </div>
-
-            <div class="hook-scroll-cue">
-                <span>&darr;</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         DECISION TREE / PATH PICKER
-         ═══════════════════════════════════════════ -->
-    <section class="path-picker">
-        <div class="path-picker-inner">
-            <h2>What Brought You Here?</h2>
-            <p>You don't have to read everything. Find the part that speaks to you.</p>
-
-            <div class="path-grid">
-                <a class="path-card" href="#health-proof">
-                    <span class="path-card-icon">&#128156;</span>
-                    <div class="path-card-title">Health Challenge</div>
-                    <p class="path-card-desc">Nothing's worked. You're running out of options. Start with people who felt the same way.</p>
-                </a>
-                <a class="path-card" href="#athlete-edge">
-                    <span class="path-card-icon">&#9889;</span>
-                    <div class="path-card-title">Athletic Performance</div>
-                    <p class="path-card-desc">Recovery, endurance, and an edge that Olympic athletes are already using.</p>
-                </a>
-                <a class="path-card" href="#skeptic-science">
-                    <span class="path-card-icon">&#128300;</span>
-                    <div class="path-card-title">Show Me the Science</div>
-                    <p class="path-card-desc">Skip the stories. Show me the doctors, the research, and the evidence.</p>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         THE BIG IDEA
-         ═══════════════════════════════════════════ -->
-    <section class="section">
-        <div class="section-inner" style="max-width: 640px;">
-            <span class="section-label">The Big Idea</span>
-            <h2>The Greatest Engineering Achievement in History&hellip; Is You.</h2>
-
-            <p>Not a supercomputer. Not a spacecraft. <strong>You.</strong></p>
-
-            <p>From a single cell emerges trillions of cells, each performing specialized tasks while communicating with countless others every second of every day. Your heart beats over 100,000 times a day. Your immune system neutralizes threats you never even know about. Your body heals, adapts, and recovers &mdash; all without a single conscious thought.</p>
-
-            <p>But over time, life creates challenges. Stress accumulates. Sleep suffers. Environmental toxins build up. The changes don't arrive all at once. They come gradually &mdash; so gradually you almost don't notice.</p>
-
-            <p>None of it means the body is broken. It simply means the body is slowing down &mdash; <strong style="color: var(--primary);">and asking for support.</strong></p>
-
-            <p>Scientists have discovered that one of the keys lies in <strong>cellular communication</strong> &mdash; specifically, in molecules your body naturally produces called <strong>Redox Signaling Molecules.</strong></p>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         REDOX EXPLAINER
-         ═══════════════════════════════════════════ -->
-    <section class="section section-alt">
-        <div class="section-inner" style="max-width: 660px;">
-            <span class="section-label">What I Learned</span>
-            <h2>Redox Signaling Molecules</h2>
-
-            <p>Your body produces molecules called Redox Signaling Molecules. You've been making them since before you were born. Every cell in your body depends on them.</p>
-
-            <p>They do two essential things:</p>
-
-            <div class="redox-two-jobs">
-                <div class="redox-job">
-                    <h3>They Protect</h3>
-                    <p>When a cell is damaged or under threat, redox signaling molecules activate your body's natural defense systems &mdash; telling the right cells to respond, repair, or replace what's been compromised.</p>
-                </div>
-                <div class="redox-job">
-                    <h3>They Communicate</h3>
-                    <p>They carry messages between cells &mdash; coordinating the countless processes that keep your body functioning. Healing a cut. Fighting off an illness. Recovering from a hard workout.</p>
-                </div>
-            </div>
-
-            <p>When you're young, your body produces these molecules abundantly. Communication is strong. Recovery is fast. Energy is high.</p>
-
-            <p>But production naturally declines over time:</p>
-
-            <div class="redox-decline">
-                <span class="decline-stat">~1% per year</span>
-                <p>Starting from puberty, your body produces roughly 1% fewer redox signaling molecules each year. Slowly, steadily, the network weakens.</p>
-                <p>The cells are still there. The design is still brilliant. But the messages aren't getting through the way they used to.</p>
-            </div>
-
-            <p class="redox-punchline">It's not that the body forgot what to do. It's that the body can't hear itself as clearly anymore.</p>
-
-            <div style="margin-top: 40px; padding: 28px 32px; background: var(--card-gold); border-radius: var(--rounded-lg); border-left: 3px solid #c8a94e;">
-                <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px;"><strong>How significant is this?</strong> When an independent AI system trained on the entire medical literature was asked to rank a technology capable of restoring the body's natural redox balance, it placed it <strong>among the top 5 most important medical breakthroughs in human history</strong> &mdash; alongside vaccines, antibiotics, and gene editing.</p>
-                <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px;">James Watson &mdash; co-discoverer of the DNA double helix &mdash; has said the most important research he's now pursuing is in reactive oxygen species and redox medicine.</p>
-                <p style="font-size: 14px; color: var(--slate); line-height: 1.6; margin-bottom: 12px; font-style: italic;">This isn't fringe science looking for legitimacy. It's foundational science waiting for the world to catch up.</p>
-                <p style="font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 0;">Dr. William Seeds &mdash; orthopedic surgeon and President of the International Peptide Society &mdash; puts it simply: <strong>&ldquo;That's the foundation of cellular medicine.&rdquo;</strong></p>
-            </div>
-
-            <div class="redox-intro-video">
-                <p style="font-size: 15px; color: var(--slate); text-align: center; margin-bottom: 16px;">A brief introduction from ASEA:</p>
-                <div class="redox-intro-video-wrap">
-                    <iframe src="https://player.vimeo.com/video/876529649" title="ASEA Redox — Brief Introduction" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         HOW IT WORKS (CONDENSED ORCHESTRA + THERMOSTAT)
-         ═══════════════════════════════════════════ -->
-    <section class="section">
-        <div class="section-inner" style="max-width: 640px;">
-            <span class="section-label">How It Actually Works</span>
-            <h2>The Conductor of Your Body's Orchestra</h2>
-
-            <p>Dr. Gary Samuelson, an atomic medical physicist, uses an analogy that makes this click:</p>
-
-            <p><strong>Redox signaling molecules are the conductor of your body's orchestra.</strong></p>
-
-            <p>The conductor doesn't play a single instrument. But without the conductor, every section &mdash; immune system, cardiovascular, neurological, hormonal &mdash; falls out of sync. The musicians are all there. The talent is all there. But the music just doesn't work.</p>
-
-            <p>When the conductor is strong, the music is extraordinary. When the conductor weakens, every section suffers &mdash; not because anything is broken, but because <strong>the coordination is fading.</strong></p>
-
-            <div class="orchestra-note">
-                <p>This is why redox signaling molecules don't treat, cure, or diagnose anything. The conductor doesn't play the violin. But give your body back a strong conductor, and every section of the orchestra can start playing the way it was designed to.</p>
-            </div>
-
-            <div style="margin-top: 32px; text-align: center;">
-                <p style="font-family: 'Lora', Georgia, serif; font-size: 22px; font-style: italic; color: var(--primary-deep); margin-bottom: 8px;">&ldquo;Let the cell figure it out.&rdquo;</p>
-                <p style="font-size: 13px; color: var(--stone);">&mdash; Dr. William Seeds, MD &mdash; Orthopedic Surgeon, President of the International Peptide Society</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         SKEPTIC TO LEADER — REAL STORIES
-         ═══════════════════════════════════════════ -->
-    <section class="skeptic-leaders" id="health-proof">
-        <div class="skeptic-leaders-inner">
-            <span class="section-label" style="text-align: center; display: block;">They Called It a Scam</span>
-            <h2>Then It Changed Their Lives</h2>
-            <p style="color: var(--slate);">Two women. Both called it a scam. Both refused to touch it. Here's what happened next.</p>
-
-            <div class="skeptic-story-card">
-                <h3>Donnellyn Dominguez</h3>
-                <span class="skeptic-title">Licensed Midwife &bull; 1,000+ Deliveries</span>
-
-                <blockquote>&ldquo;I love her&hellip; but she just scammed me. This is swimming pool water.&rdquo;</blockquote>
-
-                <p>Donnellyn had spent $20,000 on natural products. She was taking 25 supplements a day. Nothing worked. When her nutritionist gave her a bottle of ASEA, she tasted it and refused to touch it again. A man named Jim Glenn called, texted, and emailed for <strong>seven months</strong>. She ignored every one.</p>
-
-                <p>When she finally answered, she told him: <em>&ldquo;I don't believe you. But I'm desperate. So I'm going to take it just to prove it won't work &mdash; just like everything else.&rdquo;</em></p>
-
-                <p>Three weeks later, she was awake at 11pm for the first time in 16 months &mdash; after going to bed at 6pm every night. Her prayer that night:</p>
-
-                <blockquote>&ldquo;God, please don't let this be another disappointment. I didn't think I could handle one more.&rdquo;</blockquote>
-
-                <p>It wasn't a disappointment. Donnellyn got her life back. She loved delivering babies, but when it was time to retire from her birthing center &mdash; one of the largest in Texas &mdash; she had a new chapter waiting. Today she wakes up with energy, runs her own schedule, and earns more than she ever did as a midwife.</p>
-
-                <blockquote>&ldquo;Had this not happened to me, I would have retired with Social Security &mdash; about $1,200 a month.&rdquo;</blockquote>
-
-                <p style="font-size: 14px; color: var(--steel); font-style: italic; margin-bottom: 0;">Her final word: &ldquo;This is hope in a bottle. And I didn't believe in it &mdash; so this wasn't placebo.&rdquo;</p>
-            </div>
-
-            <div class="skeptic-story-card">
-                <h3>Danielle Matthews</h3>
-                <span class="skeptic-title">Biology Degree &bull; Traumatic Brain Injury Survivor</span>
-
-                <blockquote>&ldquo;Mom, what does your friend think salt water is going to do?&rdquo;</blockquote>
-
-                <p>Danielle had a biology degree. Her boyfriend was getting his PhD in biology. She Googled &ldquo;ASEA,&rdquo; found a page calling it a salt water scam, and showed it to her mother: <em>&ldquo;Told you.&rdquo;</em></p>
-
-                <p>She only agreed to try it for one reason: to prove her parents wrong. She made them a deal &mdash; she'd drink it for six months and not change anything else. First two months: nothing.</p>
-
-                <p>Month three: the pounding in her head &mdash; present every single moment since a serious car accident over two years earlier &mdash; <strong>stopped.</strong> It hasn't come back in over five years.</p>
-
-                <p>Her cognitive therapist, who had seen her weekly for over a year, said:</p>
-
-                <blockquote>&ldquo;In all of my years working with patients with your type of injury, I've never watched a recovery so rapid, so far out from the initial trauma. What the hell is that stuff you started drinking?&rdquo;</blockquote>
-
-                <p style="margin-bottom: 0;">The woman who couldn't retrieve simple words, who slept 20 hours a day, whose neurologist told her she'd done all the healing she was going to do &mdash; today she communicates for a living. She travels. She speaks on stages. She got her life back from something her own doctors said was permanent.</p>
-            </div>
-
-            <p style="text-align: center; margin-top: 36px; font-size: 13px; color: var(--stone);">These stories represent individual experiences. Results vary. ASEA makes no claims to diagnose, treat, cure, or prevent any disease.</p>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         THE BIGGER PICTURE
-         ═══════════════════════════════════════════ -->
-    <section class="section section-alt">
-        <div class="section-inner" style="max-width: 660px;">
-            <span class="section-label">The Bigger Picture</span>
-            <h2>Before You Focus on the Therapy, Consider the Cells</h2>
-
-            <p>Some of the most exciting advances in health today focus on helping the body repair itself:</p>
-
-            <ul class="therapy-list">
-                <li>Stem cells</li>
-                <li>Peptides</li>
-                <li>Exosomes</li>
-                <li>PRP</li>
-                <li>Growth factors</li>
-                <li>Shockwave therapy</li>
-            </ul>
-
-            <p>These therapies all depend on your body's own cells to do the work. But what happens when those cells are operating under chronic oxidative stress?</p>
-
-            <p>Imagine hiring the world's best construction crew to remodel your house &mdash; but the phones don't work, the power keeps going out, the blueprints are smudged, and the building materials arrive late. The crew is excellent. But the environment they're working in isn't.</p>
-
-            <p>Healthy cellular communication is one of the body's most fundamental systems. Everything from repair and recovery to immune function and physical performance depends on cells communicating efficiently. Redox signaling is the language those cells use.</p>
-
-            <div class="hierarchy-visual">
-                <div class="hierarchy-top">Cellular Communication</div>
-                <div class="hierarchy-arrow">&darr;</div>
-                <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; color: var(--primary-deep); margin-bottom: 8px;">Redox Signaling</div>
-                <div class="hierarchy-arrow">&darr;</div>
-                <div class="hierarchy-items">
-                    <span>Gene Expression</span>
-                    <span>Immune Response</span>
-                    <span>Mitochondrial Function</span>
-                    <span>Inflammation Control</span>
-                    <span>Stem Cell Activity</span>
-                    <span>Tissue Repair</span>
-                    <span>Recovery</span>
-                </div>
-            </div>
-
-            <p>This doesn't mean redox signaling is the <em>only</em> driver of those systems. Biology is complex, with feedback loops running in every direction. But redox signaling plays a critical regulatory role in all of them.</p>
-
-            <p class="bigger-picture-question">No matter which therapy you choose, isn't the health of the cells doing the work still important?</p>
-
-            <p>That's the question that changed how I think about health. Not <em>"which product should I take?"</em> but <em>"what condition are my cells in when they receive it?"</em></p>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         REDOX GOLD SPOTLIGHT
-         ═══════════════════════════════════════════ -->
-    <section class="gold-spotlight" id="athlete-edge">
-        <div class="gold-spotlight-inner">
-            <span class="section-label">Performance &amp; Recovery</span>
-            <h2>Redox Gold</h2>
-            <p class="gold-spotlight-subtitle">Targeted redox signaling powered by a catalytic gold core. Designed for people who push their bodies &mdash; and expect them to bounce back.</p>
-
-            <div class="gold-spotlight-video">
-                <iframe src="https://player.vimeo.com/video/1053447267" title="ASEA Redox Gold — Performance &amp; Recovery" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         CENTENARIAN THESIS (Dr. Herskowitz)
-         ═══════════════════════════════════════════ -->
-    <section class="centenarian-thesis" id="skeptic-science">
-        <div class="centenarian-inner">
-            <span class="section-label">Cellular Efficiency</span>
-            <h2>Why Some People Age 25 Years Slower</h2>
-
-            <p>Early in his career, Dr. Ahvie Herskowitz studied centenarians &mdash; people who live past 100. What he found surprised him.</p>
-
-            <div class="centenarian-quote">
-                &ldquo;100-plus-year-old people die of the exact same things that the rest of us die from &mdash; but they die 25 years later.&rdquo;
-            </div>
-
-            <p>His hypothesis: it comes down to <strong>cellular efficiency</strong>. More repair pathways. Genetics that make cellular function more effective. Centenarians don't avoid disease &mdash; their cells simply handle it better, for longer.</p>
-
-            <p>When Dr. Herskowitz encountered ASEA, the mitochondrial pathway he'd been visualizing for years snapped into place. The genetic advantages centenarians have ALL involve the same pathways that redox signaling molecules operate on.</p>
-
-            <div class="centenarian-quote">
-                &ldquo;The definition of aging is no different than the efficiency with which we generate energy. When you can move cellular function to a more efficient curve, you become functionally younger.&rdquo;
-            </div>
-
-            <p>His analogy: think of your cells like an engine. When it's running on all eight cylinders, everything works. It can still run on six &mdash; you might not even notice. But when it drops to three, you feel it. Redox signaling molecules help bring the other cylinders back online.</p>
-
-            <div class="centenarian-quote">
-                &ldquo;It isn't yet the fountain of youth, but it is integrated into that system that explains why centenarians can delay the same things that happen to the rest of us by 20 to 25 years.&rdquo;
-            </div>
-
-            <div class="centenarian-credentials">
-                <strong>Dr. Ahvie Herskowitz, MD</strong> &mdash; Albert Einstein College of Medicine; residencies in Pathology and Internal Medicine, fellowship in Cardiology at Johns Hopkins; Clinical Professor, Department of Medicine, UCSF; former Associate Professor of Medicine &amp; Immunology at Johns Hopkins; founder of Anatara Medicine; co-founder &amp; Chief Medical Officer, Institute for OneWorld Health (first U.S. nonprofit pharmaceutical company); founder, San Francisco Stem Cell Treatment Center; 115+ peer-reviewed publications. Former volunteer member, ASEA Medical Professionals Board.
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         VISIBLE PROOF (Dr. Morin)
-         ═══════════════════════════════════════════ -->
-    <section class="visible-proof">
-        <div class="visible-proof-inner">
-            <span class="section-label">Visible Proof</span>
-            <h2>What Healthy Cells Look Like</h2>
-
-            <img src="Dr. Marty Morin.jpeg" alt="Dr. Marty Morin — split face comparison after 28 days with Renu28 gel" class="visible-proof-photo">
-
-            <p class="visible-proof-quote">&ldquo;The thing I want you to note isn't just that there are fewer wrinkles on the side that says 28 days with gel applied. I want you to note that it's thicker. There is no moisturizer in this product, and yet it appears that my skin on that side of my face got thicker. To me, that was more important than the reduction in the wrinkles &mdash; that the skin was healing itself.</p>
-
-            <p class="visible-proof-quote">Don't get confused. This product is just putting back molecules you had a lot of when you were young, and giving your cells a chance. If they can do better, they will.</p>
-
-            <p class="visible-proof-quote">As fun as that photograph is to help people understand, there's got to be something to a technology that can do that. But I think what's more important than young skin cells is young heart cells, young lung cells, young brain cells. And quite frankly, you wouldn't be living very long without a good functioning intestine, because that's where most of your immune system is. You want your cells to function as well as they can every moment of every day. This product can help them do that.&rdquo;</p>
-
-            <p class="visible-proof-attribution">&mdash; Dr. Marty Morin, NIH Researcher &amp; Veterinarian</p>
-
-            <div class="visible-proof-video">
-                <iframe src="https://player.vimeo.com/video/876537976?h=f9e25f030b" title="Renu28 Redox Gel — Visible Results" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         MANUFACTURING & QUALITY
-         ═══════════════════════════════════════════ -->
-    <section class="mfg-quality">
-        <div class="mfg-quality-inner">
-            <span class="section-label">Manufacturing &amp; Quality</span>
-            <h2>Built to Pharmaceutical Standards</h2>
-            <p class="mfg-quality-subtitle">ASEA products are manufactured in an FDA-registered, GMP-certified facility in Pleasant Grove, Utah &mdash; and independently verified by third-party laboratories.</p>
-
-            <div class="mfg-photos">
-                <img src="asea-building.webp" alt="ASEA headquarters and manufacturing facility in Pleasant Grove, Utah" class="mfg-photo-wide">
-                <img src="asea-bottling.jpg" alt="ASEA automated bottling line in clean room environment">
-                <img src="asea-warehouse.webp" alt="ASEA product warehouse and distribution center">
-            </div>
-
-            <div class="trust-badges">
-                <div class="trust-badge">
-                    <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="26" cy="26" r="24" stroke="#2a7d7b" stroke-width="2.5" fill="#e6f3f2"/>
-                        <path d="M16 17h20v18H16z" fill="#2a7d7b" rx="2"/>
-                        <path d="M22 26l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <text x="26" y="14" text-anchor="middle" font-size="6" font-weight="700" fill="#2a7d7b" font-family="Inter, sans-serif">FDA</text>
-                    </svg>
-                    <span class="trust-badge-label">FDA Registered</span>
-                </div>
-                <div class="trust-badge">
-                    <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="26" cy="26" r="24" stroke="#2a7d7b" stroke-width="2.5" fill="#e6f3f2"/>
-                        <path d="M18 20h16v14H18z" fill="#2a7d7b" rx="1"/>
-                        <path d="M22 27l2.5 2.5L30 24" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <text x="26" y="16" text-anchor="middle" font-size="5.5" font-weight="700" fill="#2a7d7b" font-family="Inter, sans-serif">NSF</text>
-                    </svg>
-                    <span class="trust-badge-label">NSF Certified</span>
-                </div>
-                <div class="trust-badge">
-                    <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="26" cy="26" r="24" stroke="#2a7d7b" stroke-width="2.5" fill="#e6f3f2"/>
-                        <text x="26" y="24" text-anchor="middle" font-size="7" font-weight="700" fill="#2a7d7b" font-family="Inter, sans-serif">BQC</text>
-                        <text x="26" y="33" text-anchor="middle" font-size="5" fill="#1e5f5d" font-family="Inter, sans-serif">REDOX</text>
-                    </svg>
-                    <span class="trust-badge-label">BQC Redox Verified</span>
-                </div>
-                <div class="trust-badge">
-                    <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="26" cy="26" r="24" stroke="#2a7d7b" stroke-width="2.5" fill="#e6f3f2"/>
-                        <text x="26" y="29" text-anchor="middle" font-size="6.5" font-weight="600" fill="#2a7d7b" font-family="Inter, sans-serif">K</text>
-                        <circle cx="26" cy="26" r="12" stroke="#2a7d7b" stroke-width="1.5" fill="none"/>
-                    </svg>
-                    <span class="trust-badge-label">Kosher Certified</span>
-                </div>
-                <div class="trust-badge">
-                    <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="26" cy="26" r="24" stroke="#2a7d7b" stroke-width="2.5" fill="#e6f3f2"/>
-                        <path d="M20 22c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#2a7d7b" stroke-width="2" fill="none" stroke-linecap="round"/>
-                        <path d="M26 30v4M22 30h8" stroke="#2a7d7b" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="26" cy="26" r="4" fill="#2a7d7b"/>
-                        <path d="M24.5 25.5l1.5 1.5 2-2" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="trust-badge-label">Dermatest Approved</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         FUTURE PACE
-         ═══════════════════════════════════════════ -->
-    <section class="section">
-        <div class="section-inner" style="max-width: 640px;">
-            <span class="section-label">What People Notice</span>
-            <h2>The Quiet Shifts</h2>
-
-            <p>Nobody wakes up on day one feeling like a new person. That's not how cellular health works.</p>
-
-            <p>What people typically describe is subtler than that &mdash; and in many ways, more convincing:</p>
-
-            <ul style="list-style: none; padding: 0; margin: 24px 0;">
-                <li style="padding: 12px 0 12px 28px; border-bottom: 1px solid var(--hairline-soft); position: relative; font-size: 16px; line-height: 1.7; color: var(--charcoal);"><span style="position: absolute; left: 0; color: var(--primary);">&bull;</span>Sleeping through the night for the first time in years</li>
-                <li style="padding: 12px 0 12px 28px; border-bottom: 1px solid var(--hairline-soft); position: relative; font-size: 16px; line-height: 1.7; color: var(--charcoal);"><span style="position: absolute; left: 0; color: var(--primary);">&bull;</span>Realizing halfway through the day that the afternoon fog never came</li>
-                <li style="padding: 12px 0 12px 28px; border-bottom: 1px solid var(--hairline-soft); position: relative; font-size: 16px; line-height: 1.7; color: var(--charcoal);"><span style="position: absolute; left: 0; color: var(--primary);">&bull;</span>Recovering from a workout in hours instead of days</li>
-                <li style="padding: 12px 0 12px 28px; border-bottom: 1px solid var(--hairline-soft); position: relative; font-size: 16px; line-height: 1.7; color: var(--charcoal);"><span style="position: absolute; left: 0; color: var(--primary);">&bull;</span>Noticing their skin looks different &mdash; without changing anything else</li>
-                <li style="padding: 12px 0 12px 28px; position: relative; font-size: 16px; line-height: 1.7; color: var(--charcoal);"><span style="position: absolute; left: 0; color: var(--primary);">&bull;</span>Feeling like the version of themselves they remember being ten years ago</li>
-            </ul>
-
-            <p>These aren't dramatic before-and-after claims. They're the kind of quiet shifts that make you wonder: <em>was this always possible, and I just didn't have the right support?</em></p>
-
-            <p style="font-size: 14px; color: var(--steel); font-style: italic; margin-top: 24px;">Individual results vary. These reflect commonly reported experiences, not guaranteed outcomes.</p>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         STORY TEASER
-         ═══════════════════════════════════════════ -->
-    <section class="story-teaser">
-        <div class="story-teaser-inner">
-            <span class="section-label">My Experience</span>
-            <h2>A Skeptic's Story</h2>
-
-            <p>My financial advisor invited me to hear a brief presentation from a medical professional about ASEA. What caught my attention wasn't what he said. It was what he <em>didn't</em> say. There were no miracle claims. No exaggerated promises. Just a straightforward explanation of the science.</p>
-
-            <p>That was enough for me to give it a try. I never imagined that decision would change my life &mdash; or my family's.</p>
-
-            <p>My father was in his late 80s when I introduced him to ASEA. He was skeptical &mdash; the apple doesn't fall far from the tree. But he tried it. Weeks went by. Then one day, unprompted, he looked at me and said:</p>
-
-            <div class="story-teaser-quote">
-                <p>&ldquo;I think this stuff is keeping me alive.&rdquo;</p>
-            </div>
-
-            <p>He stayed on it for the rest of his life and lived well into his 90s. My wife, who had zero interest at first, eventually started taking it on her own after watching what happened with me and my father. One by one, my family came around &mdash; not because I convinced them, but because they saw the changes for themselves.</p>
-
-            <a href="my-story.html" class="story-link">Read the full story &rarr;</a>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         DREAMS QUOTE
-         ═══════════════════════════════════════════ -->
-    <div class="dreams-quote">
-        <blockquote>"A healthy person has a thousand wishes. A sick person, just one."</blockquote>
-        <p class="bridge">One's wishes and health are more connected than most people realize.</p>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         BUSINESS TEASER
-         ═══════════════════════════════════════════ -->
-    <section class="section" style="border-top: 1px solid var(--hairline-soft);" id="business-opportunity">
-        <div class="section-inner" style="max-width: 640px; text-align: center;">
-            <span class="section-label">There's Another Side to This Story</span>
-            <h2>Looking to Add a Revenue Stream?</h2>
-
-            <p style="text-align: left;">ASEA is the only company in the world that has this technology. No one else has figured out how to stabilize redox signaling molecules outside the body. Zero competition. Patented. Available in 35 countries &mdash; and growing.</p>
-
-            <p style="text-align: left;">And it almost didn't happen this way. The founder's plan was to sell the technology to a pharmaceutical company &mdash; let them distribute it to the world. Big pharma wanted to buy it, but on one condition: shut down production and pull it from the people already using it. He walked away from generational wealth rather than do that. Network marketing was never the plan. It became the only model that let the product reach people through education instead of a retail shelf.</p>
-
-            <p style="text-align: left;">Now consider the math: a company doing a few hundred million in annual revenue &mdash; in a category independently valued at <strong>hundreds of billions.</strong> A 15-year head start in a market that barely knows it exists. And a product so misunderstood that the only way to sell it is to <em>educate</em> people &mdash; which means the people who understand it have a real advantage.</p>
-
-            <p style="text-align: left;">You don't need a medical degree. You don't need sales experience. You need curiosity, a willingness to learn, and the ability to have honest conversations.</p>
-
-            <p style="text-align: left;">If this doesn't interest you, that's fine &mdash; skip this entirely. But if some part of you is thinking <em>"this could be something"</em> &mdash; it might be worth a conversation.</p>
-
-            <a href="business.html" class="story-link" style="margin-top: 8px;">Explore the opportunity &rarr;</a>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         EXPLORE DEEPER
-         ═══════════════════════════════════════════ -->
-    <section class="explore-section">
-        <div class="explore-inner">
-            <h2>Go Deeper</h2>
-            <p>You've read the summary. Here's where you can dig in.</p>
-
-            <div class="explore-grid" style="grid-template-columns: 1fr 1fr;">
-                <a class="explore-card" href="my-story.html">
-                    <span class="card-icon">&#128214;</span>
-                    <h3>My Story</h3>
-                    <p>How a skeptical accountant ended up sharing a supplement with everyone he knows &mdash; including the dog.</p>
-                    <span class="card-arrow">Read more &rarr;</span>
-                </a>
-
-                <a class="explore-card" href="faq.html">
-                    <span class="card-icon">&#10067;</span>
-                    <h3>FAQ</h3>
-                    <p>15 real questions &mdash; from "Is this an MLM?" to "What does it taste like?" Honest answers.</p>
-                    <span class="card-arrow">See all questions &rarr;</span>
-                </a>
-
-                <a class="explore-card" href="doctors.html">
-                    <span class="card-icon">&#129657;</span>
-                    <h3>Doctors & Evidence</h3>
-                    <p>Cardiologists, cell biologists, and pain specialists who independently investigated this technology.</p>
-                    <span class="card-arrow">See the evidence &rarr;</span>
-                </a>
-
-                <a class="explore-card" href="testimonials.html">
-                    <span class="card-icon">&#127909;</span>
-                    <h3>Real Experiences</h3>
-                    <p>180+ video testimonials from real people. Password-protected for compliance &mdash; ask me for access.</p>
-                    <span class="card-arrow">See the stories &rarr;</span>
-                </a>
-
-                <a class="explore-card" href="business.html">
-                    <span class="card-icon">&#128176;</span>
-                    <h3>The Business</h3>
-                    <p>The timing, the math, and why this might be the most asymmetric opportunity you've never heard of.</p>
-                    <span class="card-arrow">See the opportunity &rarr;</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         THE INVITATION
-         ═══════════════════════════════════════════ -->
-    <section class="invitation">
-        <div class="section-inner">
-            <h2>You Have Two Options.</h2>
-
-            <p>You can close this tab and keep doing what you've been doing. Nothing changes. Your cells keep declining at roughly 1% per year, quietly, in the background.</p>
-
-            <p>Or you can try the one thing that actually addresses the root &mdash; cellular communication &mdash; and see what your body does when it gets back what it's been missing.</p>
-
-            <p>ASEA costs about <strong>$4.60 a day</strong> &mdash; less than most people spend on coffee. It comes with a <strong>30-day satisfaction guarantee.</strong> Most people notice something within the first 30 days. Some sooner. Some later. But the body doesn't lie.</p>
-
-            <p>I'm not here to pressure you into anything. But I'd be doing you a disservice if I didn't tell you: <strong>every year you wait, the gap widens.</strong> The 1% decline doesn't pause while you think it over.</p>
-
-            <p class="closing-line">If any part of this made sense to you &mdash; let's have a conversation. Not a sales pitch. Just two people talking about health.</p>
-
-            <div class="contact-row">
-                <a id="cta-email" href="mailto:fritz@myredoxsolution.com" class="btn-primary">Email Fritz</a>
-                <a id="cta-learn" href="https://myredoxsolution.com" class="btn-secondary" target="_blank">Learn More About ASEA</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <p id="footer-name">Fritz Strehlow &mdash; ASEA Independent Associate</p>
-        <p class="disclaimer">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Testimonials reflect individual experiences and are not guaranteed.</p>
+        <p id="footer-name">Fritz Strehlow &mdash; ASEA Brand Partner</p>
+        <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</p>
     </footer>
 
     <script>
     (function() {
-        // ─── REP PERSONALIZATION SYSTEM ───
         var reps = {
             fritz: {
                 name: 'Fritz',
                 fullName: 'Fritz Strehlow',
                 email: 'fritz@myredoxsolution.com',
-                aseaUrl: 'https://myredoxsolution.com',
-                contactLabel: 'Email Fritz',
-                learnMoreLabel: 'Learn More About ASEA'
+                contactLabel: 'Email Fritz'
             },
             paul: {
                 name: 'Paul',
                 fullName: 'Paul & Assia Strehlow',
                 email: 'PAUL_EMAIL_HERE',
-                aseaUrl: 'https://aseaglobal.com/PaulIV',
-                contactLabel: 'Email Paul',
-                learnMoreLabel: 'Learn More About ASEA'
+                contactLabel: 'Email Paul'
             },
             ricky: {
                 name: 'Ricky',
                 fullName: 'Ricky Strehlow',
                 email: 'RICKY_EMAIL_HERE',
-                aseaUrl: 'https://www.aseaglobal.com/RStrehlow',
-                contactLabel: 'Email Ricky',
-                learnMoreLabel: 'Learn More About ASEA'
+                contactLabel: 'Email Ricky'
             }
         };
 
@@ -2108,14 +619,12 @@
         var rep = reps[repKey] || reps.fritz;
 
         var emailBtn = document.getElementById('cta-email');
-        var learnBtn = document.getElementById('cta-learn');
         if (emailBtn) { emailBtn.href = 'mailto:' + rep.email; emailBtn.textContent = rep.contactLabel; }
-        if (learnBtn) { learnBtn.href = rep.aseaUrl; learnBtn.textContent = rep.learnMoreLabel; }
 
         var footerName = document.getElementById('footer-name');
-        if (footerName) { footerName.textContent = rep.fullName + ' — ASEA Independent Associate'; }
+        if (footerName) { footerName.textContent = rep.fullName + ' — ASEA Brand Partner'; }
 
-        document.title = 'Welcome — ' + rep.fullName;
+        document.title = 'My Redox Solution — ' + rep.fullName;
     })();
     </script>
 
