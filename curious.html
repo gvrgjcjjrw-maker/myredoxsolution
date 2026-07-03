@@ -360,6 +360,63 @@
             margin-top: 20px;
         }
 
+        /* ─── PRODUCT INFO ─── */
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .product-detail-item {
+            padding: 14px 16px;
+            background: var(--canvas);
+            border: 1px solid var(--hairline);
+            border-radius: 8px;
+        }
+
+        .product-detail-item .detail-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--stone);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .product-detail-item .detail-value {
+            font-size: 15px;
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        @media (max-width: 480px) {
+            .product-detail { grid-template-columns: 1fr; }
+        }
+
+        /* ─── MID-PAGE CTA ─── */
+        .mid-cta {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .mid-cta a {
+            font-size: 14px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .mid-cta a:hover { text-decoration: underline; }
+
+        /* ─── HANDOFF NOTE ─── */
+        .handoff-note {
+            font-size: 13px;
+            color: var(--stone);
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+
         /* ─── FOOTER ─── */
         .footer {
             background: var(--hero-bg);
@@ -422,6 +479,8 @@
             <p>The instruments are still there. Some are good instruments. But without coordination, you get noise &mdash; not music. That's what's happening inside your body as these signaling molecules decline.</p>
 
             <p>You already know what this looks like. The workout that used to energize you now wipes you out. The sleep that used to recharge you barely takes the edge off. The focus that used to be automatic now requires coffee, willpower, and a quiet room. Nothing is broken. The signals are just getting lost.</p>
+
+            <p>Now imagine the reverse. The workout that leaves you feeling charged instead of drained. The morning where you wake up before the alarm &mdash; and actually want to get up. The afternoon where your focus is just <em>there</em>, without the third cup of coffee. That's what restored signaling looks like.</p>
         </div>
     </section>
 
@@ -432,11 +491,11 @@
         <div class="section-inner">
             <h2>So What Is It?</h2>
 
-            <p>ASEA is the first and only technology that provides these signaling molecules &mdash; called <strong>redox signaling molecules</strong> &mdash; in a form your body can actually use.</p>
+            <p>It's the biohack that all the other biohacks depend on.</p>
 
-            <p>It's not a vitamin. Not a mineral. Not a probiotic. Not an antioxidant. It doesn't fit into any existing category, which is exactly why it was hard to explain at the gym.</p>
+            <p>ASEA is the first and only technology that provides your body's native signaling molecules &mdash; called <strong>redox signaling molecules</strong> &mdash; in a form your cells can actually use. It's not a vitamin, mineral, or supplement. It's in a category by itself, which is exactly why it was hard to explain at the gym.</p>
 
-            <p>When something genuinely new comes along, there's nothing to compare it to. Your brain tries to file it under &ldquo;supplement&rdquo; and moves on. But this isn't a supplement. It's the biohack that all the other biohacks depend on.</p>
+            <p>When something genuinely new comes along, there's nothing to compare it to. Your brain tries to file it under &ldquo;supplement&rdquo; and moves on. But this is something different &mdash; it works at the level underneath everything else.</p>
 
             <p>One more thing: yes, I'm a brand partner. I chose that because I use this myself and wanted to share it. No, I'm not going to ask you to sell it, build a team, or join anything. I just think you should try it.</p>
         </div>
@@ -454,12 +513,12 @@
             <div class="research-cards">
                 <div class="research-card">
                     <p class="institution">University of Bath (UK)</p>
-                    <p>Researchers measured gene expression changes and found ASEA shifted key pathways involved in cellular signaling toward oxidant-antioxidant balance. Peer-reviewed and published.</p>
+                    <p>Researchers measured gene expression across 31 signaling pathways. ASEA activated 5 key genes involved in shifting cells toward oxidant-antioxidant balance. Peer-reviewed and published in redox biology journals.</p>
                 </div>
 
                 <div class="research-card">
                     <p class="institution">University of Western Sydney (Australia)</p>
-                    <p>Controlled study confirmed measurable effects on redox signaling pathways &mdash; independent of the company, funded by the university.</p>
+                    <p>Double-blind, placebo-controlled study confirmed measurable effects on redox signaling pathways. Independently designed and funded by the university &mdash; not the company.</p>
                 </div>
             </div>
 
@@ -472,11 +531,10 @@
          ═══════════════════════════════════════════ -->
     <section class="google-challenge">
         <div class="google-challenge-inner">
-            <h2>Try This</h2>
-            <p>Open Google and type:</p>
-            <div class="search-demo">oxidative stress + <span>whatever concerns you</span></div>
-            <p>See what comes up.</p>
-            <p>I'm not making any claims about ASEA and specific conditions. I'm asking you to look at the science of oxidative stress itself &mdash; and decide whether a technology that helps your body manage it might be worth a conversation.</p>
+            <h2>This Isn't Fringe Science</h2>
+            <p>There are over 10,000 published studies on oxidative stress and its role in human health. It's one of the most studied areas in modern biology.</p>
+            <p>ASEA is the first product that actually does something about it &mdash; and the research is starting to show why it matters.</p>
+            <p style="font-size:14px; color:rgba(255,255,255,0.45); margin-top:8px;">Curious? Google <em>&ldquo;oxidative stress&rdquo;</em> + whatever concerns you. See what comes up.</p>
         </div>
     </section>
 
@@ -502,8 +560,40 @@
 
             <div class="guarantee-box">
                 <strong>The 30-Day &ldquo;Notice Something&rdquo; Guarantee</strong>
-                <p>A month's supply runs about the cost of a daily coffee habit. Try it for 30 days. If you don't notice any difference &mdash; energy, recovery, sleep, clarity, anything &mdash; you get a full refund. No hoops. No awkward conversation with me. Just your money back.</p>
+                <p>Try it for 30 days. If you don't notice any difference &mdash; energy, recovery, sleep, clarity, anything &mdash; you get a full refund. No hoops. No awkward conversation with me. Just your money back.</p>
             </div>
+
+            <p class="mid-cta"><a href="#try-it">Ready? Here's how to try it &darr;</a></p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHAT YOU GET — Product clarity
+         ═══════════════════════════════════════════ -->
+    <section class="section" id="try-it">
+        <div class="section-inner">
+            <h2>What You're Getting</h2>
+
+            <div class="product-detail">
+                <div class="product-detail-item">
+                    <p class="detail-label">What it is</p>
+                    <p class="detail-value">Drinkable liquid</p>
+                </div>
+                <div class="product-detail-item">
+                    <p class="detail-label">Daily use</p>
+                    <p class="detail-value">4 oz, morning</p>
+                </div>
+                <div class="product-detail-item">
+                    <p class="detail-label">One month</p>
+                    <p class="detail-value">4 bottles (32 oz each)</p>
+                </div>
+                <div class="product-detail-item">
+                    <p class="detail-label">Cost</p>
+                    <p class="detail-value">~$4/day</p>
+                </div>
+            </div>
+
+            <p>Most people start with a one-month supply to see how their body responds. The 30-day money-back guarantee covers you either way.</p>
         </div>
     </section>
 
@@ -523,6 +613,8 @@
                     I have questions &mdash; email Fritz <span class="option-arrow">&rarr;</span>
                 </a>
             </div>
+
+            <p class="handoff-note">The button above takes you to ASEA's official site to order. Look for &ldquo;ASEA Redox Cell Signaling Supplement.&rdquo; If anything on that page is confusing, just email me instead &mdash; I'll walk you through it.</p>
 
             <p class="close-links">Or keep exploring: <a href="doctors.html">the science</a> &middot; <a href="testimonials.html">real experiences</a></p>
 
