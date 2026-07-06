@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBQF7KR0QH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EBQF7KR0QH');
+    </script>
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '2092321484829739');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2092321484829739&ev=PageView&noscript=1"
+    /></noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sort-of-Works Quiz — My Redox Solution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a7d7b;
+            --hero-bg: #1c2a35;
+            --canvas: #ffffff;
+            --charcoal: #37352f;
+            --stone: #a4a097;
+            --on-dark: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body { height: 100%; }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, 'Segoe UI', Helvetica, sans-serif;
+            background: var(--canvas);
+            color: var(--charcoal);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-bar {
+            background: var(--hero-bg);
+            padding: 16px 24px;
+            text-align: center;
+        }
+
+        .top-bar-brand {
+            font-family: 'Lora', Georgia, serif;
+            color: var(--on-dark);
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .quiz-embed {
+            flex: 1;
+            min-height: 520px;
+        }
+
+        .footer {
+            padding: 16px 24px 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: var(--stone);
+            line-height: 1.6;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span class="top-bar-brand">My Redox Solution</span>
+    </div>
+
+    <div id="quiz-embed" class="quiz-embed"></div>
+
+    <footer class="footer">
+        <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    </footer>
+
+    <script src="https://embed.typeform.com/next/embed.js"></script>
+    <script>
+    (function() {
+        var started = false;
+        function trackStart() {
+            if (started) return;
+            started = true;
+            if (window.fbq) fbq('trackCustom', 'QuizStart');
+            if (window.gtag) gtag('event', 'quiz_start');
+        }
+        window.tf.createWidget('r6dYQq5U', {
+            container: document.getElementById('quiz-embed'),
+            inlineOnMobile: true,
+            onStarted: trackStart,
+            onQuestionChanged: trackStart,
+            onSubmit: function() {
+                if (window.fbq) {
+                    fbq('track', 'Lead');
+                    fbq('trackCustom', 'QuizComplete');
+                }
+                if (window.gtag) gtag('event', 'quiz_complete');
+            }
+        });
+    })();
+    </script>
+
+</body>
+</html>
