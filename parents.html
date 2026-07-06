@@ -507,6 +507,11 @@
                 <span class="but">It can only perform as well as it communicates.</span>
             </p>
 
+            <div style="margin-top: 32px;">
+                <a id="hero-quiz" href="https://form.typeform.com/to/r6dYQq5U" class="btn-cta" target="_blank" rel="noopener">Take the 5-Minute Quiz</a>
+                <p style="margin-top: 12px; font-size: 14px; color: rgba(255,255,255,0.55);">No email required. Your answers are private.</p>
+            </div>
+
             <div class="hook-scroll-cue">&darr;</div>
         </div>
     </section>
@@ -568,6 +573,10 @@
             <p>Here's why: most interventions target one pathway, one deficiency, one symptom. They're playing one instrument in the orchestra.</p>
 
             <p><strong>What if the issue isn't a missing instrument? What if it's a weakening orchestra conductor?</strong></p>
+
+            <div style="text-align: center; margin-top: 32px;">
+                <a id="mid-quiz" href="https://form.typeform.com/to/r6dYQq5U" class="btn-cta" target="_blank" rel="noopener">See If This Fits Your Child &mdash; Take the Quiz</a>
+            </div>
         </div>
     </section>
 
@@ -659,10 +668,10 @@
         var shown = false;
         window.addEventListener('scroll', function() {
             var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollY > 400 && !shown) {
+            if (scrollY > 200 && !shown) {
                 sticky.classList.add('visible');
                 shown = true;
-            } else if (scrollY <= 400 && shown) {
+            } else if (scrollY <= 200 && shown) {
                 sticky.classList.remove('visible');
                 shown = false;
             }
