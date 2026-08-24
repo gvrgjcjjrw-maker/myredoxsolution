@@ -894,7 +894,7 @@
         <a href="https://aseaglobal.com/redoxsolution" target="_blank" rel="noopener" style="background:#2a7d7b;color:#fff;padding:6px 16px;border-radius:20px;text-decoration:none;font-size:13px;font-weight:500;">Shop</a>
     </div>
 
-    <section class="welcome-hero">
+    <section class="welcome-hero" data-sec="01-welcome-hero">
         <div class="welcome-hero-inner">
             <div class="fritz-photo">
                 <img src="fritz.jpg" alt="Fritz Strehlow">
@@ -917,7 +917,7 @@
     <!-- ═══════════════════════════════════════════
          STRESSOR NARRATIVE
          ═══════════════════════════════════════════ -->
-    <section class="stressor-narrative" id="stressorNarrative">
+    <section class="stressor-narrative" id="stressorNarrative" data-sec="02-stressor-narrative">
         <div class="narrative-stage">
 
             <!-- Couple photo with gradual age crossfade -->
@@ -968,7 +968,7 @@
     <!-- ═══════════════════════════════════════════
          ORCHESTRA ANALOGY
          ═══════════════════════════════════════════ -->
-    <section class="orchestra-section">
+    <section class="orchestra-section" data-sec="03-orchestra-section">
         <div class="orchestra-inner">
             <span class="orchestra-icon">&#127931;</span>
             <h2>Think of It Like an Orchestra</h2>
@@ -1019,7 +1019,7 @@
     <!-- ═══════════════════════════════════════════
          THE SCOPE — EVIDENCE SECTION
          ═══════════════════════════════════════════ -->
-    <section class="section">
+    <section class="section" data-sec="04-section">
         <div class="section-inner">
             <span class="section-label">What the Science Is Saying</span>
             <h2>This Is Bigger Than I Expected</h2>
@@ -1047,9 +1047,9 @@
                     <span class="card-label">Published Research</span>
                     <div class="graph-wrapper">
                         <!-- Replace with PubMed graph screenshot -->
-                        <img src="pubmed-redox-signaling.jpg" alt="PubMed search results showing explosive growth in redox signaling research — 48,222 published papers">
+                        <img src="pubmed-redox-signaling.jpg" alt="PubMed search results showing explosive growth in redox signaling research — 49,925 published papers">
                     </div>
-                    <span class="stat-big">48,222</span>
+                    <span class="stat-big">49,925</span>
                     <h3>Published Studies on Redox&nbsp;Signaling</h3>
                     <p>This is a search for "redox signaling" on PubMed — the U.S. National Library of Medicine. Look at the growth curve. This field barely existed 30 years ago. Now it's one of the fastest-growing areas in biomedical research.</p>
                     <p>The science isn't weak. The awareness is.</p>
@@ -1072,7 +1072,7 @@
     <!-- ═══════════════════════════════════════════
          TESTIMONIAL TAG CLOUD
          ═══════════════════════════════════════════ -->
-    <section class="section section-alt">
+    <section class="section section-alt" data-sec="05-section-alt">
         <div class="section-inner" style="max-width: 860px;">
             <div class="cloud-intro">
                 <span class="section-label">Real People, Real Experiences</span>
@@ -1132,7 +1132,7 @@
     <!-- ═══════════════════════════════════════════
          SELF-SELECTION PATHS
          ═══════════════════════════════════════════ -->
-    <section class="section">
+    <section class="section" data-sec="06-section">
         <div class="section-inner" style="max-width: 860px;">
             <div class="paths-intro">
                 <h2>Where Would You Like to Start?</h2>
@@ -1176,7 +1176,7 @@
     <!-- ═══════════════════════════════════════════
          QUIET CLOSE
          ═══════════════════════════════════════════ -->
-    <section class="quiet-close section-alt">
+    <section class="quiet-close section-alt" data-sec="07-quiet-close">
         <div class="section-inner">
             <h2>No Pressure. Just a Door.</h2>
 
@@ -1307,5 +1307,102 @@
         });
     })();
     </script>
+    <!-- ENGAGEMENT TRACKING (injected) -->
+    <script>
+    (function() {
+        // Engagement instrumentation. The point of this block is to produce ONE event
+        // (QualifiedRead) that an accidental tap or a non-rendering bot cannot generate,
+        // so campaigns have something real to optimise toward instead of raw clicks.
+        var fired = {};
+        function send(name, params) {
+            if (fired[name]) return;
+            fired[name] = true;
+            if (window.gtag) gtag('event', name, params || {});
+            if (window.fbq) fbq('trackCustom', name, params || {});
+        }
+
+        // Engaged time only accrues while the tab is genuinely visible.
+        var engagedMs = 0, lastTick = Date.now();
+        function isVisible() { return document.visibilityState === 'visible'; }
+        function accrue() {
+            var now = Date.now();
+            if (isVisible()) engagedMs += now - lastTick;
+            lastTick = now;
+        }
+        document.addEventListener('visibilitychange', accrue);
+
+        var doc = document.documentElement;
+        function reachable() { return doc.scrollHeight - window.innerHeight; }
+        // Short pages (embeds, single-screen layouts) have no meaningful scroll signal,
+        // so they qualify on dwell alone rather than emitting a bogus scroll_100.
+        var SHORT_PAGE = reachable() < 400;
+
+        var maxPct = 0;
+        function depth() {
+            var r = reachable();
+            if (r <= 0) return 0;
+            var y = window.pageYOffset || doc.scrollTop;
+            return Math.min(100, Math.round((y / r) * 100));
+        }
+
+        function checkQualified() {
+            if (engagedMs < 30000) return;
+            if (SHORT_PAGE || maxPct >= 50) {
+                send('QualifiedRead', { scroll_pct: maxPct, engaged_seconds: Math.round(engagedMs/1000) });
+            }
+        }
+
+        if (!SHORT_PAGE) {
+            var ticking = false;
+            window.addEventListener('scroll', function() {
+                if (ticking) return;
+                ticking = true;
+                window.requestAnimationFrame(function() {
+                    ticking = false;
+                    accrue();
+                    var pct = depth();
+                    if (pct > maxPct) maxPct = pct;
+                    [25, 50, 75, 100].forEach(function(m) { if (maxPct >= m) send('scroll_' + m); });
+                    checkQualified();
+                });
+            }, { passive: true });
+
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            send('sec_' + e.target.getAttribute('data-sec').replace(/-/g, '_'));
+                            io.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.35 });
+                document.querySelectorAll('[data-sec]').forEach(function(el) { io.observe(el); });
+            }
+        }
+
+        setInterval(function() {
+            accrue();
+            var s = Math.round(engagedMs / 1000);
+            if (s >= 30)  send('read_30s');
+            if (s >= 60)  send('read_60s');
+            if (s >= 120) send('read_120s');
+            checkQualified();
+        }, 5000);
+
+        var sentExit = false;
+        function exitSnapshot() {
+            if (sentExit || isVisible()) return;
+            sentExit = true;
+            accrue();
+            var params = { scroll_pct: maxPct, engaged_seconds: Math.round(engagedMs/1000) };
+            if (window.gtag) gtag('event', 'page_exit', params);
+            if (window.fbq) fbq('trackCustom', 'PageExit', params);
+        }
+        document.addEventListener('visibilitychange', exitSnapshot);
+        window.addEventListener('pagehide', function(){ sentExit = false; exitSnapshot(); });
+    })();
+    </script>
+    <!-- /ENGAGEMENT TRACKING -->
+
 </body>
 </html>
