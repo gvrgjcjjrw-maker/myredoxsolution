@@ -441,6 +441,61 @@
             font-size: 13px;
             margin: 0 12px;
         }
+    
+        /* ── PubMed proof ───────────────────────── */
+        .pubmed-proof {
+            padding: 72px 24px;
+            background: var(--surface, #fff);
+            border-top: 1px solid rgba(0,0,0,0.07);
+        }
+        .pubmed-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .pubmed-label {
+            display: inline-block;
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.55;
+            margin-bottom: 12px;
+        }
+        .pubmed-figure {
+            margin: 28px 0 20px;
+        }
+        .pubmed-figure img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            border: 1px solid rgba(0,0,0,0.10);
+            border-radius: 6px;
+            display: block;
+        }
+        .pubmed-figure figcaption {
+            font-size: 14px;
+            opacity: 0.6;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+        .pubmed-stat {
+            font-size: 30px;
+            font-weight: 700;
+            margin: 0 0 14px;
+            line-height: 1.2;
+        }
+        .pubmed-proof p {
+            font-size: 17px;
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+        .pubmed-kicker {
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            .pubmed-proof { padding: 56px 20px; }
+            .pubmed-stat { font-size: 26px; }
+        }
     </style>
 </head>
 <body>
@@ -448,38 +503,38 @@
     <!-- ═══════════════════════════════════════════
          HERO — Identification + Hook
          ═══════════════════════════════════════════ -->
-    <section class="hero">
+    <section class="hero" data-sec="01-hero">
         <h1 class="hero-headline">You've Tried Everything.<br>Most of It &ldquo;Sort&nbsp;of&nbsp;Worked.&rdquo;</h1>
 
         <div class="hero-hook">
-            <p>There's a pattern underneath &mdash; something about how your body actually heals at the cellular level. Most doctors have never heard of it. The ones below have. And it changed how they practice.</p>
+            <p>There's a pattern underneath &mdash; something about how your body actually works at the cellular level. Most doctors have never heard of it. The researchers and physicians below have spent their careers there.</p>
         </div>
     </section>
 
     <!-- ═══════════════════════════════════════════
          PROOF STRIP — Moved up: belief before education
          ═══════════════════════════════════════════ -->
-    <section class="proof-strip">
+    <section class="proof-strip" data-sec="02-proof-strip">
         <div class="proof-strip-inner">
-            <p class="proof-strip-label">They Were Skeptics Too</p>
+            <p class="proof-strip-label">The People Who Would Know</p>
 
             <div class="proof-quotes">
                 <div class="proof-quote-card">
-                    <blockquote>&ldquo;I don't believe you. But I'm desperate. So I'm going to take it just to prove it won't work &mdash; just like everything else.&rdquo;</blockquote>
-                    <p class="proof-src">&mdash; Donnellyn Dominguez, Licensed Midwife</p>
-                    <p class="proof-context">After spending $20,000 on natural products and taking 25 supplements a day. Three weeks later, she was awake past 6pm for the first time in 16 months.</p>
+                    <blockquote>&ldquo;How big is the discovery of redox signaling molecules? It is foundational &mdash; nothing else happens without the foundational.&rdquo;</blockquote>
+                    <p class="proof-src">&mdash; Dr. Ralph Stephens, PhD &mdash; Cell Biology</p>
+                    <p class="proof-context">Trained at the Mayo Clinic and the Wistar Institute. Ran Ohio State's Cell Culture Laboratory for over 20 years. Spent 40 years researching how cells divide &mdash; then came out of retirement for this.</p>
                 </div>
 
                 <div class="proof-quote-card">
-                    <blockquote>&ldquo;In all of my years working with patients with your type of injury, I've never watched a recovery so rapid, so far out from the initial trauma. What the hell is that stuff you started drinking?&rdquo;</blockquote>
-                    <p class="proof-src">&mdash; Cognitive therapist of Danielle Matthews, TBI survivor</p>
-                    <p class="proof-context">Danielle had a biology degree and called ASEA &ldquo;salt water.&rdquo; She only tried it to prove her parents wrong.</p>
+                    <blockquote>&ldquo;I had an immediate effect. And I realized, in order for me to have an immediate effect &mdash; of being clearer, feeling energized &mdash; this had to be working on a cellular level. So I studied it. I gave it to 100 patients, and I observed them.&rdquo;</blockquote>
+                    <p class="proof-src">&mdash; Dr. Ahvie Herskowitz, MD &mdash; Johns Hopkins, UCSF, 115+ peer-reviewed publications</p>
+                    <p class="proof-context">Pathology and cardiology. He didn't start with the science &mdash; he started with an observation he couldn't explain, and then went looking for the mechanism.</p>
                 </div>
 
                 <div class="proof-quote-card">
-                    <blockquote>&ldquo;I think this stuff is keeping me alive.&rdquo;</blockquote>
-                    <p class="proof-src">&mdash; Fritz's father, in his late 80s</p>
-                    <p class="proof-context">He was skeptical too. The apple doesn't fall far from the tree. He stayed on it for the rest of his life and lived well into his 90s.</p>
+                    <blockquote>Redox signaling molecules were &ldquo;one of the key missing links&rdquo; in the tissue-recovery question he had been pursuing throughout his career.</blockquote>
+                    <p class="proof-src">&mdash; on Dr. Philippe Souvestre, MD, PhD, in ASEA's announcement of his appointment, October 2021</p>
+                    <p class="proof-context">130+ peer-reviewed publications. PhD in cognitive neurosciences, eight post-doctorates, former French Air Force flight surgeon. He didn't discover this and get curious &mdash; he'd been looking for it for four decades.</p>
                 </div>
             </div>
         </div>
@@ -488,7 +543,7 @@
     <!-- ═══════════════════════════════════════════
          THE IDEA — Emotional revelation, not biology lesson
          ═══════════════════════════════════════════ -->
-    <section class="the-idea">
+    <section class="the-idea" data-sec="03-the-idea">
         <div class="the-idea-inner">
             <p>Here's what nobody told you about supplements: they're instruments. Some are good instruments. But without a conductor, an orchestra is just noise.</p>
 
@@ -500,17 +555,32 @@
 
             <p>That's why things &ldquo;sort of work.&rdquo; The instruments are there. The conductor is fading.</p>
 
-            <p>ASEA is the only technology that provides these conductor molecules from outside the body &mdash; stabilized, bioavailable, and verified by independent labs.</p>
+            <p>ASEA's patented technology produces and stabilizes these conductor molecules outside the body &mdash; bioavailable, and verified by independent labs. There is nothing else like it on the shelf, which is exactly why you've never heard of it.</p>
 
-            <p class="the-idea-quote">&ldquo;It's a miracle this stuff exists.&rdquo;</p>
-            <p class="the-idea-quote-src">&mdash; Dr. Ahvie Herskowitz, MD &mdash; Johns Hopkins, UCSF, 115+ peer-reviewed publications</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PUBMED — third-party proof, no claim attached
+         ═══════════════════════════════════════════ -->
+    <section class="pubmed-proof" data-sec="03b-pubmed">
+        <div class="pubmed-inner">
+            <span class="pubmed-label">Published Research</span>
+            <h2>You Haven't Heard of It. The Research Has.</h2>
+            <figure class="pubmed-figure">
+                <img src="pubmed-redox-signaling.jpg" alt="PubMed search results for redox signaling, showing 48,222 published papers and a steeply rising publication curve" loading="lazy">
+                <figcaption>A search for &ldquo;redox signaling&rdquo; on PubMed, the U.S. National Library of Medicine.</figcaption>
+            </figure>
+            <p class="pubmed-stat">48,222 published studies</p>
+            <p>Look at the growth curve. This field barely existed 30 years ago. Now it's one of the fastest-growing areas in biomedical research &mdash; and it still hasn't reached most doctors' offices.</p>
+            <p class="pubmed-kicker">The science isn't weak. The awareness is.</p>
         </div>
     </section>
 
     <!-- ═══════════════════════════════════════════
          PATHS — Self-select (parent card dominant)
          ═══════════════════════════════════════════ -->
-    <section class="paths">
+    <section class="paths" data-sec="04-paths">
         <div class="paths-inner">
             <h2>What Brought You Here?</h2>
             <p class="paths-intro">Start with what matters most to you.</p>
@@ -550,7 +620,7 @@
     <!-- ═══════════════════════════════════════════
          TRUST ROW — Quick credibility
          ═══════════════════════════════════════════ -->
-    <section class="trust-row">
+    <section class="trust-row" data-sec="05-trust-row">
         <div class="trust-row-inner">
             <span class="trust-item">FDA Registered Facility</span>
             <span class="trust-item">NSF Certified</span>
@@ -562,7 +632,7 @@
     <!-- ═══════════════════════════════════════════
          CONTACT — Route first, email second
          ═══════════════════════════════════════════ -->
-    <section class="contact">
+    <section class="contact" data-sec="06-contact">
         <div class="contact-inner">
             <h2>Ready for Answers?</h2>
             <p>Pick the path that fits you:</p>
@@ -627,6 +697,103 @@
         document.title = 'My Redox Solution — ' + rep.fullName;
     })();
     </script>
+
+    <!-- ENGAGEMENT TRACKING (injected) -->
+    <script>
+    (function() {
+        // Engagement instrumentation. The point of this block is to produce ONE event
+        // (QualifiedRead) that an accidental tap or a non-rendering bot cannot generate,
+        // so campaigns have something real to optimise toward instead of raw clicks.
+        var fired = {};
+        function send(name, params) {
+            if (fired[name]) return;
+            fired[name] = true;
+            if (window.gtag) gtag('event', name, params || {});
+            if (window.fbq) fbq('trackCustom', name, params || {});
+        }
+
+        // Engaged time only accrues while the tab is genuinely visible.
+        var engagedMs = 0, lastTick = Date.now();
+        function isVisible() { return document.visibilityState === 'visible'; }
+        function accrue() {
+            var now = Date.now();
+            if (isVisible()) engagedMs += now - lastTick;
+            lastTick = now;
+        }
+        document.addEventListener('visibilitychange', accrue);
+
+        var doc = document.documentElement;
+        function reachable() { return doc.scrollHeight - window.innerHeight; }
+        // Short pages (embeds, single-screen layouts) have no meaningful scroll signal,
+        // so they qualify on dwell alone rather than emitting a bogus scroll_100.
+        var SHORT_PAGE = reachable() < 400;
+
+        var maxPct = 0;
+        function depth() {
+            var r = reachable();
+            if (r <= 0) return 0;
+            var y = window.pageYOffset || doc.scrollTop;
+            return Math.min(100, Math.round((y / r) * 100));
+        }
+
+        function checkQualified() {
+            if (engagedMs < 30000) return;
+            if (SHORT_PAGE || maxPct >= 50) {
+                send('QualifiedRead', { scroll_pct: maxPct, engaged_seconds: Math.round(engagedMs/1000) });
+            }
+        }
+
+        if (!SHORT_PAGE) {
+            var ticking = false;
+            window.addEventListener('scroll', function() {
+                if (ticking) return;
+                ticking = true;
+                window.requestAnimationFrame(function() {
+                    ticking = false;
+                    accrue();
+                    var pct = depth();
+                    if (pct > maxPct) maxPct = pct;
+                    [25, 50, 75, 100].forEach(function(m) { if (maxPct >= m) send('scroll_' + m); });
+                    checkQualified();
+                });
+            }, { passive: true });
+
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            send('sec_' + e.target.getAttribute('data-sec').replace(/-/g, '_'));
+                            io.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.35 });
+                document.querySelectorAll('[data-sec]').forEach(function(el) { io.observe(el); });
+            }
+        }
+
+        setInterval(function() {
+            accrue();
+            var s = Math.round(engagedMs / 1000);
+            if (s >= 30)  send('read_30s');
+            if (s >= 60)  send('read_60s');
+            if (s >= 120) send('read_120s');
+            checkQualified();
+        }, 5000);
+
+        var sentExit = false;
+        function exitSnapshot() {
+            if (sentExit || isVisible()) return;
+            sentExit = true;
+            accrue();
+            var params = { scroll_pct: maxPct, engaged_seconds: Math.round(engagedMs/1000) };
+            if (window.gtag) gtag('event', 'page_exit', params);
+            if (window.fbq) fbq('trackCustom', 'PageExit', params);
+        }
+        document.addEventListener('visibilitychange', exitSnapshot);
+        window.addEventListener('pagehide', function(){ sentExit = false; exitSnapshot(); });
+    })();
+    </script>
+    <!-- /ENGAGEMENT TRACKING -->
 
 </body>
 </html>
