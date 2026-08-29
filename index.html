@@ -496,6 +496,57 @@
             .pubmed-proof { padding: 56px 20px; }
             .pubmed-stat { font-size: 26px; }
         }
+    
+        /* ── ASEA science video ─────────────────── */
+        .asea-film {
+            padding: 72px 24px;
+            border-top: 1px solid rgba(0,0,0,0.07);
+        }
+        .asea-film-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .af-label {
+            display: inline-block;
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.55;
+            margin-bottom: 12px;
+        }
+        .af-intro {
+            font-size: 17px;
+            line-height: 1.65;
+            margin: 0 auto 28px;
+            max-width: 620px;
+        }
+        .af-frame {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
+        }
+        .af-frame iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+        .af-note {
+            font-size: 15px;
+            line-height: 1.6;
+            opacity: 0.8;
+            margin: 24px auto 0;
+            max-width: 620px;
+            text-align: left;
+        }
+        @media (max-width: 600px) {
+            .asea-film { padding: 56px 20px; }
+            .af-intro { font-size: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -580,6 +631,26 @@
     <!-- ═══════════════════════════════════════════
          PATHS — Self-select (parent card dominant)
          ═══════════════════════════════════════════ -->
+    <!-- ═══════════════════════════════════════════
+         ASEA SCIENCE VIDEO — official corporate material
+         ═══════════════════════════════════════════ -->
+    <section class="asea-film" data-sec="asea-film">
+        <div class="asea-film-inner">
+            <span class="af-label">From ASEA</span>
+            <h2>The Science, in Three&nbsp;Minutes</h2>
+            <p class="af-intro">This is ASEA's own film. I did not make it and I do not narrate it &mdash; I am pointing you at it because it lays out the record better than I can, and it ends by telling you to go check the studies yourself.</p>
+            <div class="af-frame">
+                <iframe src="https://player.vimeo.com/video/1222127241?dnt=1"
+                        title="The Science Behind ASEA 2026"
+                        loading="lazy"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+            <p class="af-note"><strong>One thing to be straight about:</strong> the 1998 Nobel Prize referenced in the film was awarded to Furchgott, Ignarro and Murad for nitric oxide as a signaling molecule &mdash; not for this product, and not for redox signaling as a category. The prize established the science of cell signaling. It says nothing about what is in the bottle. I would rather point that out than let the sequence do the work.</p>
+        </div>
+    </section>
+
     <section class="paths" data-sec="04-paths">
         <div class="paths-inner">
             <h2>What Brought You Here?</h2>
